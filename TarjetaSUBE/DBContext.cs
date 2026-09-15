@@ -36,11 +36,11 @@ namespace TarjetaSUBE
             modelBuilder.Entity<Boleto>()
                 .HasOne(b => b.Tarjeta)
                 .WithMany()
-                .HasForeignKey(b => b.IdTarjeta);
+                .HasForeignKey(b => b.id_Tarjeta);
             modelBuilder.Entity<Boleto>()
                 .HasOne(b => b.Colectivo)
                 .WithMany()
-                .HasForeignKey(b => b.IdColectivo);
+                .HasForeignKey(b => b.id_Colectivo);
         }
     }
 }

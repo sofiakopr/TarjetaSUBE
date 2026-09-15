@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="TarjetaSUBE/TarjetaSUBE.csproj" />
+  <Project Path="TestProject/TestProject.csproj" Id="743bb38a-7d55-49f0-be3c-f7472c602c17" />
 </Solution>

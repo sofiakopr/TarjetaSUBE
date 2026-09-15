@@ -1,12 +1,139 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\felip\\Desktop\\6to A\u00F1o\\POO\\TP_TarjetaSUBE\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{743BB38A-7D55-49F0-BE3C-F7472C602C17}|TestProject\\TestProject.csproj|c:\\users\\felip\\desktop\\6to a\u00F1o\\poo\\tp_tarjetasube\\testproject\\testproject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{743BB38A-7D55-49F0-BE3C-F7472C602C17}|TestProject\\TestProject.csproj|solutionrelative:testproject\\testproject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{743BB38A-7D55-49F0-BE3C-F7472C602C17}|TestProject\\TestProject.csproj|c:\\users\\felip\\desktop\\6to a\u00F1o\\poo\\tp_tarjetasube\\testproject\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{743BB38A-7D55-49F0-BE3C-F7472C602C17}|TestProject\\TestProject.csproj|solutionrelative:testproject\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00E7C560-F71D-A10E-0321-B2B014EF70E8}|TarjetaSUBE\\TarjetaSUBE.csproj|c:\\users\\felip\\desktop\\6to a\u00F1o\\poo\\tp_tarjetasube\\tarjetasube\\boleto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00E7C560-F71D-A10E-0321-B2B014EF70E8}|TarjetaSUBE\\TarjetaSUBE.csproj|solutionrelative:tarjetasube\\boleto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00E7C560-F71D-A10E-0321-B2B014EF70E8}|TarjetaSUBE\\TarjetaSUBE.csproj|c:\\users\\felip\\desktop\\6to a\u00F1o\\poo\\tp_tarjetasube\\tarjetasube\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00E7C560-F71D-A10E-0321-B2B014EF70E8}|TarjetaSUBE\\TarjetaSUBE.csproj|solutionrelative:tarjetasube\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00E7C560-F71D-A10E-0321-B2B014EF70E8}|TarjetaSUBE\\TarjetaSUBE.csproj|c:\\users\\felip\\desktop\\6to a\u00F1o\\poo\\tp_tarjetasube\\tarjetasube\\tarjeta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00E7C560-F71D-A10E-0321-B2B014EF70E8}|TarjetaSUBE\\TarjetaSUBE.csproj|solutionrelative:tarjetasube\\tarjeta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00E7C560-F71D-A10E-0321-B2B014EF70E8}|TarjetaSUBE\\TarjetaSUBE.csproj|c:\\users\\felip\\desktop\\6to a\u00F1o\\poo\\tp_tarjetasube\\tarjetasube\\colectivo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00E7C560-F71D-A10E-0321-B2B014EF70E8}|TarjetaSUBE\\TarjetaSUBE.csproj|solutionrelative:tarjetasube\\colectivo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00E7C560-F71D-A10E-0321-B2B014EF70E8}|TarjetaSUBE\\TarjetaSUBE.csproj|c:\\users\\felip\\desktop\\6to a\u00F1o\\poo\\tp_tarjetasube\\tarjetasube\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00E7C560-F71D-A10E-0321-B2B014EF70E8}|TarjetaSUBE\\TarjetaSUBE.csproj|solutionrelative:tarjetasube\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TestProject",
+              "DocumentMoniker": "C:\\Users\\felip\\Desktop\\6to A\u00F1o\\POO\\TP_TarjetaSUBE\\TestProject\\TestProject.csproj",
+              "RelativeDocumentMoniker": "TestProject\\TestProject.csproj",
+              "ToolTip": "C:\\Users\\felip\\Desktop\\6to A\u00F1o\\POO\\TP_TarjetaSUBE\\TestProject\\TestProject.csproj",
+              "RelativeToolTip": "TestProject\\TestProject.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-09-15T19:07:47.069Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Boleto.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\Desktop\\6to A\u00F1o\\POO\\TP_TarjetaSUBE\\TarjetaSUBE\\Boleto.cs",
+              "RelativeDocumentMoniker": "TarjetaSUBE\\Boleto.cs",
+              "ToolTip": "C:\\Users\\felip\\Desktop\\6to A\u00F1o\\POO\\TP_TarjetaSUBE\\TarjetaSUBE\\Boleto.cs",
+              "RelativeToolTip": "TarjetaSUBE\\Boleto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-15T18:58:22.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\Desktop\\6to A\u00F1o\\POO\\TP_TarjetaSUBE\\TarjetaSUBE\\Program.cs",
+              "RelativeDocumentMoniker": "TarjetaSUBE\\Program.cs",
+              "ToolTip": "C:\\Users\\felip\\Desktop\\6to A\u00F1o\\POO\\TP_TarjetaSUBE\\TarjetaSUBE\\Program.cs",
+              "RelativeToolTip": "TarjetaSUBE\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-15T18:57:19.265Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Colectivo.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\Desktop\\6to A\u00F1o\\POO\\TP_TarjetaSUBE\\TarjetaSUBE\\Colectivo.cs",
+              "RelativeDocumentMoniker": "TarjetaSUBE\\Colectivo.cs",
+              "ToolTip": "C:\\Users\\felip\\Desktop\\6to A\u00F1o\\POO\\TP_TarjetaSUBE\\TarjetaSUBE\\Colectivo.cs",
+              "RelativeToolTip": "TarjetaSUBE\\Colectivo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-15T18:56:44.858Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Tarjeta.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\Desktop\\6to A\u00F1o\\POO\\TP_TarjetaSUBE\\TarjetaSUBE\\Tarjeta.cs",
+              "RelativeDocumentMoniker": "TarjetaSUBE\\Tarjeta.cs",
+              "ToolTip": "C:\\Users\\felip\\Desktop\\6to A\u00F1o\\POO\\TP_TarjetaSUBE\\TarjetaSUBE\\Tarjeta.cs",
+              "RelativeToolTip": "TarjetaSUBE\\Tarjeta.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-15T18:54:39.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DBContext.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\Desktop\\6to A\u00F1o\\POO\\TP_TarjetaSUBE\\TarjetaSUBE\\DBContext.cs",
+              "RelativeDocumentMoniker": "TarjetaSUBE\\DBContext.cs",
+              "ToolTip": "C:\\Users\\felip\\Desktop\\6to A\u00F1o\\POO\\TP_TarjetaSUBE\\TarjetaSUBE\\DBContext.cs",
+              "RelativeToolTip": "TarjetaSUBE\\DBContext.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowBwAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-15T18:54:17.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\Desktop\\6to A\u00F1o\\POO\\TP_TarjetaSUBE\\TestProject\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "TestProject\\UnitTest1.cs",
+              "ToolTip": "C:\\Users\\felip\\Desktop\\6to A\u00F1o\\POO\\TP_TarjetaSUBE\\TestProject\\UnitTest1.cs",
+              "RelativeToolTip": "TestProject\\UnitTest1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-15T18:53:47.861Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
