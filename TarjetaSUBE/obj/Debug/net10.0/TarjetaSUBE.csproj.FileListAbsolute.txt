@@ -1,0 +1,5 @@
+C:\Users\felip\Desktop\6to Año\POO\TP_TarjetaSUBE\TarjetaSUBE\obj\Debug\net10.0\TarjetaSUBE.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\felip\Desktop\6to Año\POO\TP_TarjetaSUBE\TarjetaSUBE\obj\Debug\net10.0\TarjetaSUBE.AssemblyInfoInputs.cache
+C:\Users\felip\Desktop\6to Año\POO\TP_TarjetaSUBE\TarjetaSUBE\obj\Debug\net10.0\TarjetaSUBE.AssemblyInfo.cs
+C:\Users\felip\Desktop\6to Año\POO\TP_TarjetaSUBE\TarjetaSUBE\obj\Debug\net10.0\TarjetaSUBE.csproj.CoreCompileInputs.cache
+C:\Users\felip\Desktop\6to Año\POO\TP_TarjetaSUBE\TarjetaSUBE\obj\Debug\net10.0\TarjetaSUBE.sourcelink.json

@@ -1,11 +1,14 @@
 ﻿using System;
 
-public class Colectivo
+namespace TarjetaSUBE
 {
-	public Colectivo()
-	{
+    public class Colectivo
+    {
+        public Colectivo()
+        {
 
 
 
-	}
+        }
+    }
 }
