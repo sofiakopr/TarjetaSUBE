@@ -3,11 +3,15 @@ using System.Reflection.Emit;
 
 namespace TarjetaSUBE
 {
-    public class ClinicaContext : DbContext
+    public class TarjetaSUBEContext : DbContext
     {
-        public DbSet<Tarjeta> Tarjetas { get; set; }
-        public DbSet<Colectivo> Colectivos { get; set; }
-        public DbSet<Boleto> Boletos { get; set; }
+        public TarjetaSUBEContext() { }
+
+        public TarjetaSUBEContext(DbContextOptions<TarjetaSUBEContext> opciones) : base(opciones) { }
+
+        public DbSet<Tarjeta> Tarjetas => Set<Tarjeta>();
+        public DbSet<Colectivo> Colectivos => Set<Colectivo>();
+        public DbSet<Boleto> Boletos => Set<Boleto>();
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
