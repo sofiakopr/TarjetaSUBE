@@ -11,18 +11,20 @@ namespace TarjetaSUBE
         
         public Colectivo() { }
 
-        public void pagarCon(Tarjeta tarjeta)
+        public bool pagarCon(Tarjeta tarjeta)
         {
             if (tarjeta.Saldo >= 1580)
             {
                 var boleto = new Boleto{ IdBoleto = 0, id_Tarjeta = tarjeta.IdTarjeta, Tarjeta = tarjeta, Fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") };
                 boleto.Crear(tarjeta);
                 Console.WriteLine("Pago realizado con éxito");
+                return true;
             }
             else
             {
                 Console.WriteLine("Saldo insuficiente.");
             }
+            return false;
         }
 
     }
