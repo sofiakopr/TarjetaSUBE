@@ -11,19 +11,10 @@ namespace TarjetaSUBE
         //public required Colectivo Colectivo { get; set; } , Colectivo = colectivo
         public int Monto = 1580;
         public required string Fecha { get; set; }
-        public Boleto()
+
+        public Boleto (Tarjeta tarjeta)
         {
-            
-            //boleto normal
-
-            //medio boleto
-
-            //boleto gratuito
-        }
-
-        public Boleto Crear(Tarjeta tarjeta)
-        {
-            var boleto = new Boleto { IdBoleto = 1, id_Tarjeta = tarjeta.IdTarjeta, Tarjeta = tarjeta, Fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") };
+            var boleto = new Boleto { id_Tarjeta = tarjeta.IdTarjeta, Tarjeta = tarjeta, Fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") };
             Contexto.Db.Boletos.Add(boleto);
             Contexto.Db.SaveChanges();
             return boleto;
