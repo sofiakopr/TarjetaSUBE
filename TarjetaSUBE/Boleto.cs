@@ -6,18 +6,18 @@ namespace TarjetaSUBE
     {
         public required int IdBoleto { get; set; }
         public required int id_Tarjeta { get; set; }
-        //public required int id_Colectivo { get; set; } , id_Colectivo = colectivo.IdColectivo
         public required Tarjeta Tarjeta { get; set; }
-        //public required Colectivo Colectivo { get; set; } , Colectivo = colectivo
-        public int Monto = 1580;
+        public int Monto;
         public required string Fecha { get; set; }
 
         public Boleto (Tarjeta tarjeta)
         {
-            var boleto = new Boleto { id_Tarjeta = tarjeta.IdTarjeta, Tarjeta = tarjeta, Fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") };
-            Contexto.Db.Boletos.Add(boleto);
+            id_Tarjeta = tarjeta.IdTarjeta;
+            Fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            Tarjeta = tarjeta;
+            Monto = 1500;
+            Contexto.Db.Boletos.Add(this);
             Contexto.Db.SaveChanges();
-            return boleto;
         }
     }
 }
