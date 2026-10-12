@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            var context = new TarjetaSUBEContext();
+            var context = new TarjetaSUBEContext()
         }
     }
 }

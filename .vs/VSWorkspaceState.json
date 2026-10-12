@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\TarjetaSUBE",
+    "\\TestProject",
     "\\TestProject1"
   ],
-  "SelectedNode": "\\TarjetaSUBE\\Colectivo.cs",
+  "SelectedNode": "\\TarjetaSUBE\\DBContext.cs",
   "PreviewInSolutionExplorer": false
 }

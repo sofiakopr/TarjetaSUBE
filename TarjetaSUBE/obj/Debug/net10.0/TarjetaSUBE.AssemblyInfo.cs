@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TarjetaSUBE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+977b847a002309aa2958e8ef625abae988194a70")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a9e525b7743e25597b07b376ccd13bf6271ee44a")]
 [assembly: System.Reflection.AssemblyProductAttribute("TarjetaSUBE")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TarjetaSUBE")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
