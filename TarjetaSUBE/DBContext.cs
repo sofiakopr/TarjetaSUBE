@@ -9,9 +9,11 @@ namespace TarjetaSUBE
 
         public TarjetaSUBEContext(DbContextOptions<TarjetaSUBEContext> opciones) : base(opciones) { }
 
+
         public DbSet<Tarjeta> Tarjetas => Set<Tarjeta>();
         public DbSet<Colectivo> Colectivos => Set<Colectivo>();
         public DbSet<Boleto> Boletos => Set<Boleto>();
+        public DbSet<Tarjeta_tipo> Tarjeta_tipos => Set<Tarjeta_tipo>();
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
@@ -25,6 +27,14 @@ namespace TarjetaSUBE
                 .HasKey(t => t.IdTarjeta);
             modelBuilder.Entity<Tarjeta>()
                 .Property(t => t.IdTarjeta).HasColumnName("id_Tarjeta");
+            modelBuilder.Entity<Tarjeta>()
+                .HasOne<Tarjeta_tipo>()
+                .WithOne()
+                .HasForeignKey<Tarjeta>(t => t.tarjeta_tipo);
+
+            modelBuilder.Entity<Tarjeta_tipo>()
+                .ToTable("tarjeta_tipo")
+                .HasKey(tt => tt.id_Tipo);
 
             modelBuilder.Entity<Colectivo>()
                 .ToTable("colectivo")

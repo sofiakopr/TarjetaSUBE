@@ -7,6 +7,7 @@ namespace TarjetaSUBE
 
         public int Saldo; //límite 40k
         public int IdTarjeta;
+        public int tarjeta_tipo;
         public Tarjeta(int saldo)
         {
             if (saldo > 40000)
@@ -19,7 +20,7 @@ namespace TarjetaSUBE
             }
             else
             {
-                Saldo = saldo
+                Saldo = saldo;
                 Contexto.Db.Tarjetas.Add(this);
                 Contexto.Db.SaveChanges();
             }
