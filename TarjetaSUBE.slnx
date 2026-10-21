@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="TarjetaSUBE/TarjetaSUBE.csproj" />
-  <Project Path="TestProject/TestProject.csproj" Id="743bb38a-7d55-49f0-be3c-f7472c602c17" />
+  <Project Path="TarjetaTest/TarjetaTest.csproj" Id="7dd5a4a0-3f8c-409d-83a5-b1c74544decf" />
+  <Project Path="TarjetaTipoTest/TarjetaTipoTest.csproj" Id="4b6495e3-a8f1-46cb-83b4-0f8e9e4fbb08" />
 </Solution>

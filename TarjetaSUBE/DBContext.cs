@@ -17,7 +17,10 @@ namespace TarjetaSUBE
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlite(@"Data Source=C: ..\tarjetaSUBE.db");
+            if (!options.IsConfigured)
+            {
+                options.UseSqlite(@"Data Source=C: ..\tarjetaSUBE.db");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -51,10 +54,6 @@ namespace TarjetaSUBE
                 .HasOne(b => b.Tarjeta)
                 .WithMany()
                 .HasForeignKey(b => b.id_Tarjeta);
-            modelBuilder.Entity<Boleto>()
-                .HasOne(b => b.Colectivo)
-                .WithMany()
-                .HasForeignKey(b => b.id_Colectivo);
         }
     }
 }

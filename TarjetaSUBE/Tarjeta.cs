@@ -8,6 +8,9 @@ namespace TarjetaSUBE
         public int Saldo; //límite 40k
         public int IdTarjeta;
         public int tarjeta_tipo;
+
+        public Tarjeta() { }
+
         public Tarjeta(int saldo)
         {
             if (saldo > 40000)
@@ -27,6 +30,18 @@ namespace TarjetaSUBE
         }
         public Tarjeta Cobrar (int monto)
         {
+            if (tarjeta_tipo == 3 || tarjeta_tipo == 4)
+            {
+                // no se resta nada
+                Contexto.Db.SaveChanges();
+                return this;
+            }
+            if (tarjeta_tipo == 2)
+            {
+                Saldo -= (monto / 2);
+                Contexto.Db.SaveChanges();
+                return this;
+            }
             if (Saldo - monto < -2000)
             {
                 throw new ArgumentException("El saldo no puede ser menor a -2000");

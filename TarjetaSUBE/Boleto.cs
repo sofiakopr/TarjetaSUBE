@@ -4,11 +4,13 @@ namespace TarjetaSUBE
 {
     public class Boleto
     {
-        public required int IdBoleto { get; set; }
-        public required int id_Tarjeta { get; set; }
-        public required Tarjeta Tarjeta { get; set; }
+        public int IdBoleto { get; set; }
+        public int id_Tarjeta { get; set; }
+        public Tarjeta Tarjeta { get; set; }
         public int Monto;
-        public required string Fecha { get; set; }
+        public string Fecha { get; set; }
+
+        public Boleto() { }
 
         public Boleto (Tarjeta tarjeta)
         {
