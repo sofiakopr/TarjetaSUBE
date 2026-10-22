@@ -6,9 +6,7 @@ namespace TarjetaSUBE
     public class TarjetaSUBEContext : DbContext
     {
         public TarjetaSUBEContext() { }
-
         public TarjetaSUBEContext(DbContextOptions<TarjetaSUBEContext> opciones) : base(opciones) { }
-
 
         public DbSet<Tarjeta> Tarjetas => Set<Tarjeta>();
         public DbSet<Colectivo> Colectivos => Set<Colectivo>();

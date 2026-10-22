@@ -1,4 +1,6 @@
 <Solution>
+  <Project Path="BoletoTest/BoletoTest.csproj" Id="bdfdcfcd-a4e7-4205-8b5d-516d0e2c7714" />
+  <Project Path="ColectivoTest/ColectivoTest.csproj" Id="9c0f0248-1a91-4dfb-8a75-80df10fc8234" />
   <Project Path="TarjetaSUBE/TarjetaSUBE.csproj" />
   <Project Path="TarjetaTest/TarjetaTest.csproj" Id="7dd5a4a0-3f8c-409d-83a5-b1c74544decf" />
   <Project Path="TarjetaTipoTest/TarjetaTipoTest.csproj" Id="4b6495e3-a8f1-46cb-83b4-0f8e9e4fbb08" />

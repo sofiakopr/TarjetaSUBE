@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using TarjetaSUBE;
 
-namespace TarjetaTest
+namespace CobrarSaldosNegativoYPositivoTests
 {
-	public class TarjetaTests
+	public class CobrarSaldosNegativoYPositivoTests
 	{
 		private TarjetaSUBEContext _db = null!;
 
@@ -29,11 +29,12 @@ namespace TarjetaTest
 		{
 			var tarjeta = new Tarjeta(-2000);
 
-			// Ensure the entity is tracked by the test DbContext before calling Cobrar,
-			// since the entity constructor no longer adds/saves itself.
 			Contexto.Db.Tarjetas.Add(tarjeta);
 
-			Assert.That(
+			var tarjetaGuardada = _db.Tarjetas.Single();
+
+            Assert.That(tarjetaGuardada, Is.SameAs(tarjeta));
+            Assert.That(
 				() => tarjeta.Cobrar(1),
 				Throws.TypeOf<ArgumentException>());
 		}
@@ -45,6 +46,9 @@ namespace TarjetaTest
 
             Contexto.Db.Tarjetas.Add(tarjeta2);
 
+            var tarjetaGuardada = _db.Tarjetas.Single();
+
+            Assert.That(tarjetaGuardada, Is.SameAs(tarjeta2));
             Assert.That(
                 () => tarjeta2.Cobrar(1580),
                 Throws.TypeOf<ArgumentException>());
