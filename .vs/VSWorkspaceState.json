@@ -1,11 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\BoletoTest",
-    "\\TarjetaSUBE",
-    "\\TarjetaTest",
-    "\\TestProject1"
+    "\\TarjetaSUBE"
   ],
-  "SelectedNode": "\\TarjetaSUBE.slnx",
+  "SelectedNode": "\\TarjetaSUBE\\Boleto.cs",
   "PreviewInSolutionExplorer": false
 }

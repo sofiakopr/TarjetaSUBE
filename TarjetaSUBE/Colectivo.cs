@@ -15,8 +15,8 @@ namespace TarjetaSUBE
         {
             if (tarjeta.Saldo >= -500)
             {
-                var boleto = new Boleto(tarjeta);
-                tarjeta.Cobrar(boleto.Monto);
+                var boleto = new Boleto(tarjeta, this);
+
                 Contexto.Db.SaveChanges();
                 Console.WriteLine("Pago realizado con éxito");
                 return true;
