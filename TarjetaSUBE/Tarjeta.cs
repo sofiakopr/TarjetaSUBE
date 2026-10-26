@@ -8,8 +8,11 @@ namespace TarjetaSUBE
         public int Saldo; //límite 40k
         public int IdTarjeta;
         public int tarjeta_tipo;
+        public DateTime fecha_ultimo_cobro = DateTime.Now;
+        public int CantidadViajes_Dia;
 
-        public Tarjeta() { }
+
+
 
         public Tarjeta(int saldo)
         {
@@ -28,29 +31,45 @@ namespace TarjetaSUBE
                 Contexto.Db.SaveChanges();
             }
         }
-        public Tarjeta Cobrar (int monto)
+
+        public Tarjeta Cobrar(int monto)
         {
-            if (tarjeta_tipo == 3 || tarjeta_tipo == 4)
-            {
-                // no se resta nada
-                Contexto.Db.SaveChanges();
-                return this;
+            TimeSpan diferencia = DateTime.Now - fecha_ultimo_cobro;
+            if (diferencia.TotalMinutes < 5) {
+                if (Saldo - monto < -2000)
+                {
+                    throw new ArgumentException("El saldo no puede ser menor a -2000");
+                }
+                else
+                {
+                    Saldo -= monto;
+                    Contexto.Db.SaveChanges();
+                    return this;
+                }
             }
-            if (tarjeta_tipo == 2)
-            {
-                Saldo -= (monto / 2);
-                Contexto.Db.SaveChanges();
-                return this;
-            }
-            if (Saldo - monto < -2000)
-            {
-                throw new ArgumentException("El saldo no puede ser menor a -2000");
-            }
-            else
-            {
-                Saldo -= monto;
-                Contexto.Db.SaveChanges();
-                return this;
+            else {
+                if (tarjeta_tipo == 3 || tarjeta_tipo == 4)
+                {
+                    // no se resta nada
+                    Contexto.Db.SaveChanges();
+                    return this;
+                }
+                if (tarjeta_tipo == 2)
+                {
+                    Saldo -= (monto / 2);
+                    Contexto.Db.SaveChanges();
+                    return this;
+                }
+                if (Saldo - monto < -2000)
+                {
+                    throw new ArgumentException("El saldo no puede ser menor a -2000");
+                }
+                else
+                {
+                    Saldo -= monto;
+                    Contexto.Db.SaveChanges();
+                    return this;
+                }
             }
         }
     }
