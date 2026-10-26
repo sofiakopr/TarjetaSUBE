@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection.Metadata.Ecma335;
 
 namespace TarjetaSUBE
 {
@@ -7,11 +8,13 @@ namespace TarjetaSUBE
 
         public int Saldo; //límite 40k
         public int IdTarjeta;
+        public Tarjeta_tipo tipo;
+        public DateTime fecha_ultimo_cobro = DateTime.Now;
         public int tarjeta_tipo;
 
         public Tarjeta() { }
 
-        public Tarjeta(int saldo)
+        public Tarjeta(int saldo, int tipo)
         {
             if (saldo > 40000)
             {
@@ -24,19 +27,42 @@ namespace TarjetaSUBE
             else
             {
                 Saldo = saldo;
+                tarjeta_tipo = tipo;
                 Contexto.Db.Tarjetas.Add(this);
                 Contexto.Db.SaveChanges();
             }
         }
-        public Tarjeta Cobrar (int monto)
-        {
-            if (tarjeta_tipo == 3 || tarjeta_tipo == 4)
+        public Tarjeta Cobrar (int monto) {
+        
+            int cantidad = Contexto.Db.Boletos
+            .Where(b => b.IdTarjeta == this.IdTarjeta && b.fecha.Date == DateTime.Now.Date)
+            .Count();
+
+            // Boleto Estudiantil Completo
+            if (this.tipo.nombre_Tipo ==  "Boleto gratuito estudiantil")
             {
-                // no se resta nada
+                if(cantidad < 2)
+                {
+                    // no se resta nada
+                    Contexto.Db.SaveChanges();
+                    return this;
+                }
+                else
+                {
+                    Saldo -= (monto / 2);
+                    Contexto.Db.SaveChanges();
+                    return this;
+                }
+            }
+            // Boleto Franquicia Completa (Juvilados supongo)
+            if (this.tipo.nombre_Tipo == "Franquicia completa")
+            {
+                //no se resta nada
                 Contexto.Db.SaveChanges();
                 return this;
             }
-            if (tarjeta_tipo == 2)
+            // Boleto Estudiantil Medio
+            if (this.tipo.nombre_Tipo == "Medio boleto estudiantil")
             {
                 Saldo -= (monto / 2);
                 Contexto.Db.SaveChanges();
