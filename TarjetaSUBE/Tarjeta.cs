@@ -35,19 +35,6 @@ namespace TarjetaSUBE
         public Tarjeta Cobrar(int monto)
         {
             TimeSpan diferencia = DateTime.Now - fecha_ultimo_cobro;
-            if (diferencia.TotalMinutes < 5) {
-                if (Saldo - monto < -2000)
-                {
-                    throw new ArgumentException("El saldo no puede ser menor a -2000");
-                }
-                else
-                {
-                    Saldo -= monto;
-                    Contexto.Db.SaveChanges();
-                    return this;
-                }
-            }
-            else {
                 if (tarjeta_tipo == 3 || tarjeta_tipo == 4)
                 {
                     // no se resta nada
@@ -56,9 +43,17 @@ namespace TarjetaSUBE
                 }
                 if (tarjeta_tipo == 2)
                 {
-                    Saldo -= (monto / 2);
-                    Contexto.Db.SaveChanges();
-                    return this;
+                    if (diferencia.TotalMinutes < 5)
+                    {
+                        throw new Exception ("No se puede cobrar el viaje, ya que no han pasado 5 minutos desde el último cobro de medio boleto");
+                    }
+                    else
+                    {
+                        Saldo -= (monto / 2);
+                        Contexto.Db.SaveChanges();
+                        return this;
+                    }
+                    
                 }
                 if (Saldo - monto < -2000)
                 {
