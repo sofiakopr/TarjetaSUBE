@@ -57,10 +57,17 @@ namespace TarjetaSUBE
             // Boleto Franquicia Completa (Juvilados supongo)
             if (this.tipo.nombre_Tipo == "Franquicia completa")
             {
-                //no se resta nada
-                Contexto.Db.SaveChanges();
-                return this;
+                if (fecha_ultimo_cobro.TotalMinutes - DateTime.Now.TotalMinutes > 5)
+                {
+                    //no se resta nada
+                    Contexto.Db.SaveChanges();
+                    return this;
+                } else
+                {
+                    throw new Exception ("EL JUVILADO PAGO HACE MENOS DE 5 MINUTOS")
+                }
             }
+            
             // Boleto Estudiantil Medio
             if (this.tipo.nombre_Tipo == "Medio boleto estudiantil")
             {
