@@ -49,7 +49,7 @@ namespace TarjetaSUBE
                 }
                 else
                 {
-                    Saldo -= (monto / 2);
+                    Saldo -= monto;
                     Contexto.Db.SaveChanges();
                     return this;
                 }
