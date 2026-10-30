@@ -3,7 +3,7 @@ using TarjetaSUBE;
 
 namespace SaldoTarjeta
 {
-    public class Tests
+    public class SaldoTarjetaTests
     {
         private TarjetaSUBEContext _db = null!;
         private Tarjeta _tarjeta = null!;

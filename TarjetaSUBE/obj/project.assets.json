@@ -1005,11 +1005,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaSUBE\\TarjetaSUBE.csproj",
+      "projectUniqueName": "C:\\Users\\sofia\\Downloads\\TarjetaSUBE-main\\TarjetaSUBE-main\\TarjetaSUBE\\TarjetaSUBE.csproj",
       "projectName": "TarjetaSUBE",
-      "projectPath": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaSUBE\\TarjetaSUBE.csproj",
+      "projectPath": "C:\\Users\\sofia\\Downloads\\TarjetaSUBE-main\\TarjetaSUBE-main\\TarjetaSUBE\\TarjetaSUBE.csproj",
       "packagesPath": "C:\\Users\\sofia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaSUBE\\obj\\",
+      "outputPath": "C:\\Users\\sofia\\Downloads\\TarjetaSUBE-main\\TarjetaSUBE-main\\TarjetaSUBE\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

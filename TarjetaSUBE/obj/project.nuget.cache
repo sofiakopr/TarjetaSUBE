@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qcAukGQuCFI=",
+  "dgSpecHash": "0akQG/GRpCc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaSUBE\\TarjetaSUBE.csproj",
+  "projectFilePath": "C:\\Users\\sofia\\Downloads\\TarjetaSUBE-main\\TarjetaSUBE-main\\TarjetaSUBE\\TarjetaSUBE.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sofia\\.nuget\\packages\\microsoft.data.sqlite.core\\10.0.12\\microsoft.data.sqlite.core.10.0.12.nupkg.sha512",
     "C:\\Users\\sofia\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.12\\microsoft.entityframeworkcore.10.0.12.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qXmLqr3/VDY=",
+  "dgSpecHash": "MdE6VhtVbeM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaTest\\TarjetaTest.csproj",
+  "projectFilePath": "C:\\Users\\sofia\\Downloads\\TarjetaSUBE-main\\TarjetaSUBE-main\\TarjetaTest\\TarjetaTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sofia\\.nuget\\packages\\coverlet.collector\\6.0.4\\coverlet.collector.6.0.4.nupkg.sha512",
     "C:\\Users\\sofia\\.nuget\\packages\\microsoft.applicationinsights\\2.22.0\\microsoft.applicationinsights.2.22.0.nupkg.sha512",

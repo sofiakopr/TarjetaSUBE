@@ -1,6 +1,14 @@
 <Solution>
   <Project Path="BoletoTest/BoletoTest.csproj" Id="bdfdcfcd-a4e7-4205-8b5d-516d0e2c7714" />
   <Project Path="ColectivoTest/ColectivoTest.csproj" Id="9c0f0248-1a91-4dfb-8a75-80df10fc8234" />
+  <Project Path="LimitacionFranquiciaTest/LimitacionFranquiciaTest.csproj" Id="fd7ab440-adfc-48ce-9b67-2631dc113bed" />
+  <Project Path="LimitacionFranquiciaTest2/LimitacionFranquiciaTest2.csproj" Id="5d1ffdf9-b919-4690-ae35-d04240822814" />
+  <Project Path="LimitacionMedioBoletoTest/LimitacionMedioBoletoTest.csproj" Id="f6615723-ffa3-4880-9e21-a1e5dbad5e2d" />
+  <Project Path="LimitacionMedioBoletoTest2/LimitacionMedioBoletoTest2.csproj" Id="5ba90afd-18de-48f8-89ac-84996c3cb98a" />
+  <Project Path="MasDatosBoletoTest/MasDatosBoletoTest.csproj" Id="557efe9d-dc0b-421c-87b7-a0b193fd6013" />
+  <Project Path="MasDatosBoletoTest2/MasDatosBoletoTest2.csproj" Id="c4a5c02d-9ad0-4512-b31a-df0aae44de89" />
+  <Project Path="SaldoTarjetaTest/SaldoTarjetaTest.csproj" Id="c4b5bf30-73db-4742-8bea-062839cb0789" />
+  <Project Path="SaldoTarjetaTest2/SaldoTarjetaTest2.csproj" Id="23688dc3-9a02-44d1-bdf4-8b19dcc591b9" />
   <Project Path="TarjetaSUBE/TarjetaSUBE.csproj" />
   <Project Path="TarjetaTest/TarjetaTest.csproj" Id="7dd5a4a0-3f8c-409d-83a5-b1c74544decf" />
   <Project Path="TarjetaTipoTest/TarjetaTipoTest.csproj" Id="4b6495e3-a8f1-46cb-83b4-0f8e9e4fbb08" />
