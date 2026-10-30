@@ -29,13 +29,13 @@ namespace TarjetaSUBE
             modelBuilder.Entity<Tarjeta>()
                 .Property(t => t.IdTarjeta).HasColumnName("id_Tarjeta");
             modelBuilder.Entity<Tarjeta>()
-                .HasOne<Tarjeta_tipo>()
-                .WithOne()
-                .HasForeignKey<Tarjeta>(t => t.tarjeta_tipo);
+                .HasOne(t => t.Tipo)
+                .WithMany()
+                .HasForeignKey("tarjeta_tipo");
 
             modelBuilder.Entity<Tarjeta_tipo>()
                 .ToTable("tarjeta_tipo")
-                .HasKey(tt => tt.id_Tipo);
+                .HasKey("id_Tipo");
 
             modelBuilder.Entity<Colectivo>()
                 .ToTable("colectivo")
@@ -51,7 +51,11 @@ namespace TarjetaSUBE
             modelBuilder.Entity<Boleto>()
                 .HasOne(b => b.Tarjeta)
                 .WithMany()
-                .HasForeignKey(b => b.id_Tarjeta);
+                .HasForeignKey("id_Tarjeta");
+            modelBuilder.Entity<Boleto>()
+                .HasOne(b => b.Colectivo)
+                .WithMany()
+                .HasForeignKey("id_Colectivo");
         }
     }
 }

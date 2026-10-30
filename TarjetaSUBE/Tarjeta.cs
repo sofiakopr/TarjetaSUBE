@@ -8,6 +8,7 @@ namespace TarjetaSUBE
         public int Saldo; //límite 40k
         public int IdTarjeta;
         public int tarjeta_tipo;
+        public Tarjeta_tipo Tipo { get; set; }
 
         public Tarjeta() { }
 
