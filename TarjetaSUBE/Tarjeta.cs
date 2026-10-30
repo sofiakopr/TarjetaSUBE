@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection.Metadata.Ecma335;
 
 namespace TarjetaSUBE
 {
@@ -13,7 +14,7 @@ namespace TarjetaSUBE
         public Tarjeta_tipo Tipo { get; set; }
 
 
-        public Tarjeta(int saldo)
+        public Tarjeta(int saldo, int tipo)
         {
             if (saldo > 40000)
             {
@@ -26,23 +27,52 @@ namespace TarjetaSUBE
             else
             {
                 Saldo = saldo;
+                tarjeta_tipo = tipo;
                 Contexto.Db.Tarjetas.Add(this);
                 Contexto.Db.SaveChanges();
             }
         }
-
-        public Tarjeta Cobrar(int monto)
-        {
+        public Tarjeta Cobrar (int monto) {
+            
             TimeSpan diferencia = DateTime.Now - fecha_ultimo_cobro;
-                if (tarjeta_tipo == 3 || tarjeta_tipo == 4)
+            int cantidad = Contexto.Db.Boletos
+            .Where(b => b.IdTarjeta == this.IdTarjeta && b.fecha.Date == DateTime.Now.Date)
+            .Count();
+
+            // Boleto Estudiantil Completo
+            if (this.Tipo.nombre_Tipo ==  "Boleto gratuito estudiantil")
+            {
+                if(cantidad < 2)
                 {
                     // no se resta nada
                     Contexto.Db.SaveChanges();
                     return this;
                 }
-                if (tarjeta_tipo == 2)
+                else
                 {
-                    if (diferencia.TotalMinutes < 5)
+                    Saldo -= monto;
+                    Contexto.Db.SaveChanges();
+                    return this;
+                }
+            }
+            // Boleto Franquicia Completa (Juvilados supongo)
+            if (this.Tipo.nombre_Tipo == "Franquicia completa")
+            {
+                if (diferencia.TotalMinutes < 5)
+                {
+                    //no se resta nada
+                    Contexto.Db.SaveChanges();
+                    return this;
+                } else
+                {
+                    throw new Exception ("EL JUVILADO PAGO HACE MENOS DE 5 MINUTOS")
+                }
+            }
+            
+            // Boleto Estudiantil Medio
+            if (this.Tipo.nombre_Tipo == "Medio boleto estudiantil")
+            {
+                if (diferencia.TotalMinutes < 5)
                     {
                         throw new Exception ("No se puede cobrar el viaje, ya que no han pasado 5 minutos desde el último cobro de medio boleto");
                     }
@@ -52,18 +82,16 @@ namespace TarjetaSUBE
                         Contexto.Db.SaveChanges();
                         return this;
                     }
-                    
-                }
-                if (Saldo - monto < -2000)
-                {
-                    throw new ArgumentException("El saldo no puede ser menor a -2000");
-                }
-                else
-                {
-                    Saldo -= monto;
-                    Contexto.Db.SaveChanges();
-                    return this;
-                }
+            }
+            if (Saldo - monto < -2000)
+            {
+                throw new ArgumentException("El saldo no puede ser menor a -2000");
+            }
+            else
+            {
+                Saldo -= monto;
+                Contexto.Db.SaveChanges();
+                return this;
             }
         }
     }
