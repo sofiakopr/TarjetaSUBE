@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Security.Cryptography.X509Certificates;
-//Más datos sobre el boleto
-//Además, el boleto deberá informar el monto total abonado en caso de que la tarjeta tuviera saldo negativo y eso produzca un valor final superior al valor normal de la tarifa.
-//Necesitamos avanzar con la tarea 3
-//Escribir los tests correspondientes a los posibles tipos de boletos a obtener según el tipo de tarjeta.
+
 namespace TarjetaSUBE
 {
     public class Boleto
@@ -17,19 +13,17 @@ namespace TarjetaSUBE
 
         public Boleto() { }
 
-        public Boleto (Tarjeta tarjeta, Colectivo colectivo)
+        public Boleto(Tarjeta tarjeta, Colectivo colectivo)
         {
             Fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             Tarjeta = tarjeta;
             Colectivo = colectivo;
-            Monto = 1500;
+            Monto = 1580;
             tarjeta.Cobrar(this.Monto);
             SaldoRestante = tarjeta.Saldo;
             Contexto.Db.Boletos.Add(this);
             Contexto.Db.SaveChanges();
-
         }
-
         public string Return_Fecha()
         {
             return this.Fecha;
@@ -47,7 +41,7 @@ namespace TarjetaSUBE
 
         public int Return_Total_Abonado()
         {
-            return this.Monto
+            return this.Monto;
         }
 
         public int Return_Saldo_Restante()
@@ -61,6 +55,4 @@ namespace TarjetaSUBE
         }
     }
 }
-
-
 
