@@ -10,8 +10,7 @@ namespace TarjetaSUBE
         public int tarjeta_tipo;
         public DateTime fecha_ultimo_cobro = DateTime.Now;
         public int CantidadViajes_Dia;
-
-
+        public Tarjeta_tipo Tipo { get; set; }
 
 
         public Tarjeta(int saldo)
