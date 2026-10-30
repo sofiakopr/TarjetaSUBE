@@ -8,11 +8,11 @@ namespace TarjetaSUBE
 
         public int Saldo; //límite 40k
         public int IdTarjeta;
-        public Tarjeta_tipo tipo;
-        public DateTime fecha_ultimo_cobro = DateTime.Now;
         public int tarjeta_tipo;
+        public DateTime fecha_ultimo_cobro = DateTime.Now;
+        public int CantidadViajes_Dia;
+        public Tarjeta_tipo Tipo { get; set; }
 
-        public Tarjeta() { }
 
         public Tarjeta(int saldo, int tipo)
         {
@@ -33,13 +33,14 @@ namespace TarjetaSUBE
             }
         }
         public Tarjeta Cobrar (int monto) {
-        
+            
+            TimeSpan diferencia = DateTime.Now - fecha_ultimo_cobro;
             int cantidad = Contexto.Db.Boletos
             .Where(b => b.IdTarjeta == this.IdTarjeta && b.fecha.Date == DateTime.Now.Date)
             .Count();
 
             // Boleto Estudiantil Completo
-            if (this.tipo.nombre_Tipo ==  "Boleto gratuito estudiantil")
+            if (this.Tipo.nombre_Tipo ==  "Boleto gratuito estudiantil")
             {
                 if(cantidad < 2)
                 {
@@ -55,9 +56,9 @@ namespace TarjetaSUBE
                 }
             }
             // Boleto Franquicia Completa (Juvilados supongo)
-            if (this.tipo.nombre_Tipo == "Franquicia completa")
+            if (this.Tipo.nombre_Tipo == "Franquicia completa")
             {
-                if (fecha_ultimo_cobro.TotalMinutes - DateTime.Now.TotalMinutes > 5)
+                if (diferencia.TotalMinutes < 5)
                 {
                     //no se resta nada
                     Contexto.Db.SaveChanges();
@@ -69,11 +70,18 @@ namespace TarjetaSUBE
             }
             
             // Boleto Estudiantil Medio
-            if (this.tipo.nombre_Tipo == "Medio boleto estudiantil")
+            if (this.Tipo.nombre_Tipo == "Medio boleto estudiantil")
             {
-                Saldo -= (monto / 2);
-                Contexto.Db.SaveChanges();
-                return this;
+                if (diferencia.TotalMinutes < 5)
+                    {
+                        throw new Exception ("No se puede cobrar el viaje, ya que no han pasado 5 minutos desde el último cobro de medio boleto");
+                    }
+                    else
+                    {
+                        Saldo -= (monto / 2);
+                        Contexto.Db.SaveChanges();
+                        return this;
+                    }
             }
             if (Saldo - monto < -2000)
             {
