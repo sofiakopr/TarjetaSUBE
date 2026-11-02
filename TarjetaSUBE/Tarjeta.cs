@@ -71,67 +71,95 @@ namespace TarjetaSUBE
             return this;
         }
 
-        public Tarjeta Cobrar(int monto)
+        public Tarjeta Cobrar(int monto, Colectivo colectivo)
         {
             TimeSpan diferencia = DateTime.Now - fecha_ultimo_cobro;
             int cantidad = Contexto.Db.Boletos
             .Where(b => b.Tarjeta.IdTarjeta == this.IdTarjeta && b.Fecha.StartsWith(DateTime.Now.ToString("yyyy-MM-dd")))
             .Count();
-
-            //Boleto Estudiantil Gratuito
-            if (this.Tipo.nombre_Tipo == "Boleto gratuito estudiantil")
+            
+            bool dentroDelHorario = DateTime.Now.DayOfWeek >= DayOfWeek.Monday
+                && DateTime.Now.DayOfWeek <= DayOfWeek.Saturday
+                && DateTime.Now.TimeOfDay >= TimeSpan.FromHours(7)
+                && DateTime.Now.TimeOfDay <= TimeSpan.FromHours(22);
+            var ultimoBoleto = Contexto.Db.Boletos
+                .Where(b => b.Tarjeta.IdTarjeta == this.IdTarjeta)
+                .OrderByDescending(b => b.Fecha)
+                .FirstOrDefault();
+            
+            if (dentroDelHorario && ultimoBoleto.Colectivo.Linea != colectivo.Linea && diferencia.TotalHours < 1)
             {
-                if (cantidad < 2)
+                var boleto = new Boleto(this, colectivo, 0, true);
+                fecha_ultimo_cobro = DateTime.Now;
+                return this;
+            }
+            else
+            {
+                //Boleto Estudiantil Gratuito
+                if (this.Tipo.nombre_Tipo == "Boleto gratuito estudiantil")
                 {
-                    // no se resta nada
-                    Contexto.Db.SaveChanges();
-                    return this;
+                    if (cantidad < 2)
+                    {
+                        // no se resta nada
+                        Contexto.Db.SaveChanges();
+                        var boleto = new Boleto(this, colectivo, 0, false);
+                        fecha_ultimo_cobro = DateTime.Now;
+                        return this;
+                    }
+                    else
+                    {
+                        Saldo -= monto;
+                        Contexto.Db.SaveChanges();
+                        var boleto = new Boleto(this, colectivo, monto, false);
+                        fecha_ultimo_cobro = DateTime.Now;
+                        return this;
+                    }
+                }
+                // Boleto Franquicia Completa (Jubilados)
+                if (this.Tipo.nombre_Tipo == "Franquicia completa")
+                {
+                    if (diferencia.TotalMinutes < 5)
+                    {
+                        //no se resta nada
+                        Contexto.Db.SaveChanges();
+                        var boleto = new Boleto(this, colectivo, 0, false);
+                        fecha_ultimo_cobro = DateTime.Now;
+                        return this;
+                    }
+                    else
+                    {
+                        throw new Exception("EL JUBILADO PAGO HACE MENOS DE 5 MINUTOS");
+                    }
+                }
+
+                // Boleto Estudiantil Medio
+                if (this.Tipo.nombre_Tipo == "Medio boleto estudiantil")
+                {
+                    if (diferencia.TotalMinutes < 5)
+                    {
+                        throw new Exception("No se puede cobrar el viaje, ya que no han pasado 5 minutos desde el último cobro de medio boleto");
+                    }
+                    else
+                    {
+                        Saldo -= (monto / 2);
+                        Contexto.Db.SaveChanges();
+                        var boleto = new Boleto(this, colectivo, monto / 2, false);
+                        fecha_ultimo_cobro = DateTime.Now;
+                        return this;
+                    }
+                }
+                if (Saldo - monto < -2000)
+                {
+                    throw new ArgumentException("El saldo no puede ser menor a -2000");
                 }
                 else
                 {
                     Saldo -= monto;
                     Contexto.Db.SaveChanges();
+                    var boleto = new Boleto(this, colectivo, monto, false);
+                    fecha_ultimo_cobro = DateTime.Now;
                     return this;
                 }
-            }
-            // Boleto Franquicia Completa (Jubilados)
-            if (this.Tipo.nombre_Tipo == "Franquicia completa")
-            {
-                if (diferencia.TotalMinutes < 5)
-                {
-                    //no se resta nada
-                    Contexto.Db.SaveChanges();
-                    return this;
-                }
-                else
-                {
-                    throw new Exception("EL JUBILADO PAGO HACE MENOS DE 5 MINUTOS");
-                }
-            }
-
-            // Boleto Estudiantil Medio
-            if (this.Tipo.nombre_Tipo == "Medio boleto estudiantil")
-            {
-                if (diferencia.TotalMinutes < 5)
-                {
-                    throw new Exception("No se puede cobrar el viaje, ya que no han pasado 5 minutos desde el último cobro de medio boleto");
-                }
-                else
-                {
-                    Saldo -= (monto / 2);
-                    Contexto.Db.SaveChanges();
-                    return this;
-                }
-            }
-            if (Saldo - monto < -2000)
-            {
-                throw new ArgumentException("El saldo no puede ser menor a -2000");
-            }
-            else
-            {
-                Saldo -= monto;
-                Contexto.Db.SaveChanges();
-                return this;
             }
         }
     }

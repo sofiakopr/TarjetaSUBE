@@ -13,18 +13,7 @@ namespace TarjetaSUBE
 
         public bool pagarCon(Tarjeta tarjeta)
         {
-            if (tarjeta.Saldo >= -500)
-            {
-                var boleto = new Boleto(tarjeta, this);
-                Contexto.Db.SaveChanges();
-                Console.WriteLine("Pago realizado con éxito");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("Saldo insuficiente.");
-            }
-            return false;
+            return tarjeta.Cobrar(2150, this);
         }
 
     }
