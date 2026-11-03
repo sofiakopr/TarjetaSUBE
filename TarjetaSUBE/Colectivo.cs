@@ -11,7 +11,7 @@ namespace TarjetaSUBE
         
         public Colectivo() { }
 
-        public bool pagarCon(Tarjeta tarjeta)
+        public Tarjeta pagarCon(Tarjeta tarjeta)
         {
             return tarjeta.Cobrar(2150, this);
         }

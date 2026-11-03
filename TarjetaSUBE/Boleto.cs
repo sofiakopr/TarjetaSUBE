@@ -16,7 +16,7 @@ namespace TarjetaSUBE
 
         public Boleto(Tarjeta tarjeta, Colectivo colectivo, int monto, bool transbordo)
         {
-            Fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            Fecha = Contexto.Reloj().ToString("yyyy-MM-dd HH:mm:ss");
             es_Transbordo = transbordo ? 1 : 0;
             Tarjeta = tarjeta;
             Colectivo = colectivo;

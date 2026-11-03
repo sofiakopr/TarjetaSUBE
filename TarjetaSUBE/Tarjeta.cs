@@ -10,7 +10,7 @@ namespace TarjetaSUBE
         public int Saldo; //límite 40k
         public int IdTarjeta;
         public int tarjeta_tipo; // 1.Normal (100%), 2.Medio Boleto Estudiantil (50%), 3.Boleto Gratuito Estudiantil (0%), 4.Franquicia Completa (0%)
-        public DateTime fecha_ultimo_cobro = DateTime.Now;
+        public DateTime fecha_ultimo_cobro = Contexto.Reloj();
         public int CantidadViajes_Dia;
         public Tarjeta_tipo Tipo { get; set; }
         public int Excedente;
@@ -73,24 +73,43 @@ namespace TarjetaSUBE
 
         public Tarjeta Cobrar(int monto, Colectivo colectivo)
         {
-            TimeSpan diferencia = DateTime.Now - fecha_ultimo_cobro;
+            var ahora = Contexto.Reloj();
+            TimeSpan diferencia = ahora - fecha_ultimo_cobro;
             int cantidad = Contexto.Db.Boletos
-            .Where(b => b.Tarjeta.IdTarjeta == this.IdTarjeta && b.Fecha.StartsWith(DateTime.Now.ToString("yyyy-MM-dd")))
+            .Where(b => b.Tarjeta.IdTarjeta == this.IdTarjeta && b.Fecha.StartsWith(ahora.ToString("yyyy-MM-dd")))
             .Count();
-            
-            bool dentroDelHorario = DateTime.Now.DayOfWeek >= DayOfWeek.Monday
-                && DateTime.Now.DayOfWeek <= DayOfWeek.Saturday
-                && DateTime.Now.TimeOfDay >= TimeSpan.FromHours(7)
-                && DateTime.Now.TimeOfDay <= TimeSpan.FromHours(22);
-            var ultimoBoleto = Contexto.Db.Boletos
+
+            var boletosTarjeta = Contexto.Db.Boletos
                 .Where(b => b.Tarjeta.IdTarjeta == this.IdTarjeta)
+                .ToArray();
+            var ultimoBoleto = boletosTarjeta
                 .OrderByDescending(b => b.Fecha)
                 .FirstOrDefault();
-            
-            if (dentroDelHorario && ultimoBoleto.Colectivo.Linea != colectivo.Linea && diferencia.TotalHours < 1)
+            var primerBoleto = boletosTarjeta
+                .Where(b => b.es_Transbordo == 0)
+                .OrderByDescending(b => b.Fecha)
+                .FirstOrDefault();
+            bool dentroDeLaHora = primerBoleto != null
+                && DateTime.TryParseExact(
+                    primerBoleto.Fecha,
+                    "yyyy-MM-dd HH:mm:ss",
+                    System.Globalization.CultureInfo.InvariantCulture,
+                    System.Globalization.DateTimeStyles.None,
+                    out var fechaPrimerBoleto)
+                && ahora >= fechaPrimerBoleto
+                && ahora - fechaPrimerBoleto < TimeSpan.FromHours(1);
+            bool dentroDelHorario = ahora.DayOfWeek >= DayOfWeek.Monday
+                && ahora.DayOfWeek <= DayOfWeek.Saturday
+                && ahora.TimeOfDay >= TimeSpan.FromHours(7)
+                && ahora.TimeOfDay <= TimeSpan.FromHours(22);
+
+            if (ultimoBoleto != null
+                && dentroDelHorario
+                && dentroDeLaHora
+                && ultimoBoleto.Colectivo.Linea != colectivo.Linea)
             {
                 var boleto = new Boleto(this, colectivo, 0, true);
-                fecha_ultimo_cobro = DateTime.Now;
+                fecha_ultimo_cobro = ahora;
                 return this;
             }
             else
@@ -103,7 +122,7 @@ namespace TarjetaSUBE
                         // no se resta nada
                         Contexto.Db.SaveChanges();
                         var boleto = new Boleto(this, colectivo, 0, false);
-                        fecha_ultimo_cobro = DateTime.Now;
+                        fecha_ultimo_cobro = ahora;
                         return this;
                     }
                     else
@@ -111,7 +130,7 @@ namespace TarjetaSUBE
                         Saldo -= monto;
                         Contexto.Db.SaveChanges();
                         var boleto = new Boleto(this, colectivo, monto, false);
-                        fecha_ultimo_cobro = DateTime.Now;
+                        fecha_ultimo_cobro = ahora;
                         return this;
                     }
                 }
@@ -123,7 +142,7 @@ namespace TarjetaSUBE
                         //no se resta nada
                         Contexto.Db.SaveChanges();
                         var boleto = new Boleto(this, colectivo, 0, false);
-                        fecha_ultimo_cobro = DateTime.Now;
+                        fecha_ultimo_cobro = ahora;
                         return this;
                     }
                     else
@@ -144,7 +163,7 @@ namespace TarjetaSUBE
                         Saldo -= (monto / 2);
                         Contexto.Db.SaveChanges();
                         var boleto = new Boleto(this, colectivo, monto / 2, false);
-                        fecha_ultimo_cobro = DateTime.Now;
+                        fecha_ultimo_cobro = ahora;
                         return this;
                     }
                 }
@@ -157,7 +176,7 @@ namespace TarjetaSUBE
                     Saldo -= monto;
                     Contexto.Db.SaveChanges();
                     var boleto = new Boleto(this, colectivo, monto, false);
-                    fecha_ultimo_cobro = DateTime.Now;
+                    fecha_ultimo_cobro = ahora;
                     return this;
                 }
             }
