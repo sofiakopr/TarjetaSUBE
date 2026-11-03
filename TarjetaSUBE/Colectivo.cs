@@ -21,12 +21,15 @@ namespace TarjetaSUBE
                 var boleto = new Boleto(tarjeta, this, PRECIO_URBANO);
                 return true;
             }
-            else
+            else if (interurbano == 1)
             {
                 var boleto = new Boleto(tarjeta, this, PRECIO_INTERURBANO);
                 return true;
             }
-            return false;
+            else 
+            { 
+                return false;
+            }
         }
 
     }

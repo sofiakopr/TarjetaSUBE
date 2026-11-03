@@ -3,32 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4B6495E3-A8F1-46CB-83B4-0F8E9E4FBB08}|TarjetaTipoTest\\TarjetaTipoTest.csproj|c:\\users\\sofia\\onedrive\\documents\\github\\tarjetasube\\tarjetatipotest\\tarjetatipotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4B6495E3-A8F1-46CB-83B4-0F8E9E4FBB08}|TarjetaTipoTest\\TarjetaTipoTest.csproj|solutionrelative:tarjetatipotest\\tarjetatipotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00E7C560-F71D-A10E-0321-B2B014EF70E8}|TarjetaSUBE\\TarjetaSUBE.csproj|c:\\users\\sofia\\onedrive\\documents\\github\\tarjetasube\\tarjetasube\\tarjeta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00E7C560-F71D-A10E-0321-B2B014EF70E8}|TarjetaSUBE\\TarjetaSUBE.csproj|solutionrelative:tarjetasube\\tarjeta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9C0F0248-1A91-4DFB-8A75-80DF10FC8234}|ColectivoTest\\ColectivoTest.csproj|c:\\users\\sofia\\onedrive\\documents\\github\\tarjetasube\\colectivotest\\colectivotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9C0F0248-1A91-4DFB-8A75-80DF10FC8234}|ColectivoTest\\ColectivoTest.csproj|solutionrelative:colectivotest\\colectivotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{84A1B02D-295F-4996-94AF-F43F8D4C97E9}|LineasInterurbanasTest\\LineasInterurbanasTest.csproj|c:\\users\\sofia\\onedrive\\documents\\github\\tarjetasube\\lineasinterurbanastest\\lineasinterurbanastest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84A1B02D-295F-4996-94AF-F43F8D4C97E9}|LineasInterurbanasTest\\LineasInterurbanasTest.csproj|solutionrelative:lineasinterurbanastest\\lineasinterurbanastest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84A1B02D-295F-4996-94AF-F43F8D4C97E9}|LineasInterurbanasTest\\LineasInterurbanasTest.csproj|c:\\users\\sofia\\onedrive\\documents\\github\\tarjetasube\\lineasinterurbanastest\\lineasinterurbanastest.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{84A1B02D-295F-4996-94AF-F43F8D4C97E9}|LineasInterurbanasTest\\LineasInterurbanasTest.csproj|solutionrelative:lineasinterurbanastest\\lineasinterurbanastest.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00E7C560-F71D-A10E-0321-B2B014EF70E8}|TarjetaSUBE\\TarjetaSUBE.csproj|c:\\users\\sofia\\onedrive\\documents\\github\\tarjetasube\\tarjetasube\\colectivo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00E7C560-F71D-A10E-0321-B2B014EF70E8}|TarjetaSUBE\\TarjetaSUBE.csproj|solutionrelative:tarjetasube\\colectivo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{4B6495E3-A8F1-46CB-83B4-0F8E9E4FBB08}|TarjetaTipoTest\\TarjetaTipoTest.csproj|c:\\users\\sofia\\onedrive\\documents\\github\\tarjetasube\\tarjetatipotest\\tarjetatipotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B6495E3-A8F1-46CB-83B4-0F8E9E4FBB08}|TarjetaTipoTest\\TarjetaTipoTest.csproj|solutionrelative:tarjetatipotest\\tarjetatipotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BDFDCFCD-A4E7-4205-8B5D-516D0E2C7714}|BoletoTest\\BoletoTest.csproj|c:\\users\\sofia\\onedrive\\documents\\github\\tarjetasube\\boletotest\\boletotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BDFDCFCD-A4E7-4205-8B5D-516D0E2C7714}|BoletoTest\\BoletoTest.csproj|solutionrelative:boletotest\\boletotest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00E7C560-F71D-A10E-0321-B2B014EF70E8}|TarjetaSUBE\\TarjetaSUBE.csproj|c:\\users\\sofia\\onedrive\\documents\\github\\tarjetasube\\tarjetasube\\tarjeta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00E7C560-F71D-A10E-0321-B2B014EF70E8}|TarjetaSUBE\\TarjetaSUBE.csproj|solutionrelative:tarjetasube\\tarjeta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7DD5A4A0-3F8C-409D-83A5-B1C74544DECF}|TarjetaTest\\TarjetaTest.csproj|c:\\users\\sofia\\onedrive\\documents\\github\\tarjetasube\\tarjetatest\\tarjetatest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7DD5A4A0-3F8C-409D-83A5-B1C74544DECF}|TarjetaTest\\TarjetaTest.csproj|solutionrelative:tarjetatest\\tarjetatest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\.github\\copilot-instructions.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.github\\copilot-instructions.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     }
   ],
   "DocumentGroupContainers": [
@@ -47,6 +47,60 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Tarjeta.cs",
+              "DocumentMoniker": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaSUBE\\Tarjeta.cs",
+              "RelativeDocumentMoniker": "TarjetaSUBE\\Tarjeta.cs",
+              "ToolTip": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaSUBE\\Tarjeta.cs",
+              "RelativeToolTip": "TarjetaSUBE\\Tarjeta.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAIA3wH8AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-15T18:54:39.26Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Colectivo.cs",
+              "DocumentMoniker": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaSUBE\\Colectivo.cs",
+              "RelativeDocumentMoniker": "TarjetaSUBE\\Colectivo.cs",
+              "ToolTip": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaSUBE\\Colectivo.cs",
+              "RelativeToolTip": "TarjetaSUBE\\Colectivo.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA4wAwAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-01T01:59:26.682Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LineasInterurbanasTest",
+              "DocumentMoniker": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\LineasInterurbanasTest\\LineasInterurbanasTest.csproj",
+              "RelativeDocumentMoniker": "LineasInterurbanasTest\\LineasInterurbanasTest.csproj",
+              "ToolTip": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\LineasInterurbanasTest\\LineasInterurbanasTest.csproj",
+              "RelativeToolTip": "LineasInterurbanasTest\\LineasInterurbanasTest.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-11-03T13:02:36.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LineasInterurbanasTest.cs",
+              "DocumentMoniker": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\LineasInterurbanasTest\\LineasInterurbanasTest.cs",
+              "RelativeDocumentMoniker": "LineasInterurbanasTest\\LineasInterurbanasTest.cs",
+              "ToolTip": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\LineasInterurbanasTest\\LineasInterurbanasTest.cs",
+              "RelativeToolTip": "LineasInterurbanasTest\\LineasInterurbanasTest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEcAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-03T12:55:35.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "TarjetaTipoTest.cs",
               "DocumentMoniker": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaTipoTest\\TarjetaTipoTest.cs",
               "RelativeDocumentMoniker": "TarjetaTipoTest\\TarjetaTipoTest.cs",
@@ -54,25 +108,11 @@
               "RelativeToolTip": "TarjetaTipoTest\\TarjetaTipoTest.cs",
               "ViewState": "AgIAADoAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-01T03:11:11.209Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-01T03:11:11.209Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ColectivoTest.cs",
-              "DocumentMoniker": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\ColectivoTest\\ColectivoTest.cs",
-              "RelativeDocumentMoniker": "ColectivoTest\\ColectivoTest.cs",
-              "ToolTip": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\ColectivoTest\\ColectivoTest.cs",
-              "RelativeToolTip": "ColectivoTest\\ColectivoTest.cs",
-              "ViewState": "AgIAAFIAAAAAAAAAAAAYwI4AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-01T02:35:12.654Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "BoletoTest.cs",
               "DocumentMoniker": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\BoletoTest\\BoletoTest.cs",
               "RelativeDocumentMoniker": "BoletoTest\\BoletoTest.cs",
@@ -80,25 +120,11 @@
               "RelativeToolTip": "BoletoTest\\BoletoTest.cs",
               "ViewState": "AgIAAFoAAAAAAAAAAIA5wE8AAABbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-01T02:51:11.241Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-01T02:51:11.241Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "copilot-instructions.md",
-              "DocumentMoniker": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\.github\\copilot-instructions.md",
-              "RelativeDocumentMoniker": ".github\\copilot-instructions.md",
-              "ToolTip": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\.github\\copilot-instructions.md",
-              "RelativeToolTip": ".github\\copilot-instructions.md",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2026-11-01T02:41:33.521Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "TarjetaTest.cs",
               "DocumentMoniker": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaTest\\TarjetaTest.cs",
               "RelativeDocumentMoniker": "TarjetaTest\\TarjetaTest.cs",
@@ -106,34 +132,7 @@
               "RelativeToolTip": "TarjetaTest\\TarjetaTest.cs",
               "ViewState": "AgIAAEkAAAAAAAAAAAASwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-01T02:23:14.858Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Colectivo.cs",
-              "DocumentMoniker": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaSUBE\\Colectivo.cs",
-              "RelativeDocumentMoniker": "TarjetaSUBE\\Colectivo.cs",
-              "ToolTip": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaSUBE\\Colectivo.cs",
-              "RelativeToolTip": "TarjetaSUBE\\Colectivo.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAD4vwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-01T01:59:26.682Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Tarjeta.cs",
-              "DocumentMoniker": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaSUBE\\Tarjeta.cs",
-              "RelativeDocumentMoniker": "TarjetaSUBE\\Tarjeta.cs",
-              "ToolTip": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaSUBE\\Tarjeta.cs",
-              "RelativeToolTip": "TarjetaSUBE\\Tarjeta.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAIAwwH8AAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-15T18:54:39.26Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-01T02:23:14.858Z"
             }
           ]
         }
