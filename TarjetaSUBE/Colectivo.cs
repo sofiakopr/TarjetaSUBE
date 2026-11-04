@@ -5,8 +5,8 @@ namespace TarjetaSUBE
 {
     public class Colectivo
     {
-        private const int PRECIO_URBANO = 2150;
-        private const int PRECIO_INTERURBANO = 3000;
+        private const decimal PRECIO_URBANO = 2150m;
+        private const decimal PRECIO_INTERURBANO = 3000m;
         public int IdColectivo;
         public required string Linea;
         public required string Matricula;
@@ -16,7 +16,15 @@ namespace TarjetaSUBE
 
         public Tarjeta pagarCon(Tarjeta tarjeta)
         {
-            return tarjeta.Cobrar(2150, this);
+            if (interurbano == 1)
+            {
+                return tarjeta.Cobrar(PRECIO_INTERURBANO, this);
+            }
+            if (interurbano == 0)
+            {
+                return tarjeta.Cobrar(PRECIO_URBANO, this);
+            }
+            throw new ArgumentException("El colectivo no tiene un tipo válido (0. urbano o 1. interurbano)");
         }
 
     }

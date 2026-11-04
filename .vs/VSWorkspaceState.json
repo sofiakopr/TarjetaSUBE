@@ -1,16 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\BoletoTest",
-    "\\ColectivoTest",
-    "\\HorarioFranquiciaTest",
-    "\\LimitacionFranquiciaTest",
-    "\\SaldoTarjetaTest",
     "\\TarjetaSUBE",
-    "\\TarjetaTest",
-    "\\TarjetaTipoTest",
     "\\TestProject1"
   ],
-  "SelectedNode": "\\TarjetaSUBE.slnx",
+  "SelectedNode": "\\TarjetaSUBE\\Colectivo.cs",
   "PreviewInSolutionExplorer": false
 }

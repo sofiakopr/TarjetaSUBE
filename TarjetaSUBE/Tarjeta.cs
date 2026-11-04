@@ -1,28 +1,29 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Reflection.Metadata.Ecma335;
 
 namespace TarjetaSUBE
 {
     public class Tarjeta
     {
-        private const int LIMITE_SUPERIOR = 56000;
-        public int Saldo; //límite 40k
+        private const decimal LIMITE_SUPERIOR = 56000m;
+        public decimal Saldo; //límite 40k
         public int IdTarjeta;
         public int tarjeta_tipo; // 1.Normal (100%), 2.Medio Boleto Estudiantil (50%), 3.Boleto Gratuito Estudiantil (0%), 4.Franquicia Completa (0%)
         public DateTime fecha_ultimo_cobro = Contexto.Reloj();
         public int CantidadViajes_Dia;
         public Tarjeta_tipo Tipo { get; set; }
-        public int Excedente;
+        public decimal Excedente;
 
         public Tarjeta() { }
 
-        public Tarjeta(int saldo, int tipo)
+        public Tarjeta(decimal saldo, int tipo)
         {
             if (saldo > LIMITE_SUPERIOR)
             {
                 throw new ArgumentException("El saldo no puede superar los 40.000");
             }
-            else if (saldo < -2000)
+            else if (saldo < -2000m)
             {
                 throw new ArgumentException("El saldo no puede ser menor a -2000");
             }
@@ -36,12 +37,12 @@ namespace TarjetaSUBE
             }
         }
 
-        public Tarjeta Cargar(int monto)
+        public Tarjeta Cargar(decimal monto)
         {
             if (monto < 0)
             {
                 throw new ArgumentException("El monto no puede ser negativo");
-            } else if (!new int[] { 2000, 3000, 4000, 5000, 8000, 10000, 15000, 20000, 25000, 30000 }.Contains(monto)) {
+            } else if (!new decimal[] { 2000m, 3000m, 4000m, 5000m, 8000m, 10000m, 15000m, 20000m, 25000m, 30000m }.Contains(monto)) {
                 throw new ArgumentException("El monto debe ser uno de los siguientes: 2000, 3000, 4000, 5000, 8000, 10000, 15000, 20000, 25000, 30000");
             }
             else
@@ -70,7 +71,14 @@ namespace TarjetaSUBE
             return this;
         }
 
-        public Tarjeta Cobrar(int monto, Colectivo colectivo)
+        public Tarjeta Cobrar_Bici(decimal monto)
+        {
+            Saldo -= monto;
+            Contexto.Db.SaveChanges();
+            return this;
+        }
+
+        public Tarjeta Cobrar(decimal monto, Colectivo colectivo)
         {
             var ahora = Contexto.Reloj();
             TimeSpan diferencia = ahora - fecha_ultimo_cobro;
@@ -166,7 +174,7 @@ namespace TarjetaSUBE
                         return this;
                     }
                 }
-                if (Saldo - monto < -2000)
+                if (Saldo - monto < -2000m)
                 {
                     throw new ArgumentException("El saldo no puede ser menor a -2000");
                 }

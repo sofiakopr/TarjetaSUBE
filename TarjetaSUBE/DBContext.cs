@@ -12,6 +12,8 @@ namespace TarjetaSUBE
         public DbSet<Colectivo> Colectivos => Set<Colectivo>();
         public DbSet<Boleto> Boletos => Set<Boleto>();
         public DbSet<Tarjeta_tipo> Tarjeta_tipos => Set<Tarjeta_tipo>();
+        public DbSet<Bicicleta> Bicicletas => Set<Bicicleta>();
+        public DbSet<Estacion_Bici> Estaciones_Bici => Set<Estacion_Bici>();
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
@@ -56,6 +58,22 @@ namespace TarjetaSUBE
                 .HasOne(b => b.Colectivo)
                 .WithMany()
                 .HasForeignKey("id_Colectivo");
+
+            modelBuilder.Entity<Bicicleta>()
+                .ToTable("bicicleta")
+                .HasKey(b => b.id);
+            modelBuilder.Entity<Bicicleta>()
+                .Property(b => b.estacionada)
+                .HasColumnName("estacionada")
+                .HasConversion(
+                    v => v ? 1 : 0,
+                    v => v == 1);
+
+            modelBuilder.Entity<Estacion_Bici>()
+                .ToTable("estacion_Bici")
+                .HasKey(e => e.id);
+            modelBuilder.Entity<Estacion_Bici>()
+                .Property(e => e.limite).HasColumnName("limite");
         }
     }
 }

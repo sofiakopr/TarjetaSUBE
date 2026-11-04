@@ -6,17 +6,17 @@ namespace TarjetaSUBE
     {
         public int IdBoleto { get; set; }
         public Tarjeta Tarjeta { get; set; }
-        public int Monto;
+        public decimal Monto;
         public string Fecha { get; set; }
         public Colectivo Colectivo { get; set; }
-        public int SaldoRestante { get; set; }
+        public decimal SaldoRestante { get; set; }
         public int es_Trasbordo { get; set; }
 
         public Boleto() { }
 
-        public Boleto(Tarjeta tarjeta, Colectivo colectivo, int monto, bool trasbordo)
+        public Boleto(Tarjeta tarjeta, Colectivo colectivo, decimal monto, bool trasbordo)
         {
-            Fecha = Contexto.Reloj().ToString("yyyy-MM-dd HH:mm:ss");
+            Fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             es_Trasbordo = trasbordo ? 1 : 0;
             Tarjeta = tarjeta;
             Colectivo = colectivo;
@@ -40,12 +40,12 @@ namespace TarjetaSUBE
             return this.Colectivo.Linea;
         }
 
-        public int Return_Total_Abonado()
+        public decimal Return_Total_Abonado()
         {
             return this.Monto;
         }
 
-        public int Return_Saldo_Restante()
+        public decimal Return_Saldo_Restante()
         {
             return this.SaldoRestante;
         }
