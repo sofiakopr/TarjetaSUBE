@@ -14,22 +14,9 @@ namespace TarjetaSUBE
 
         public Colectivo() { }
 
-        public bool pagarCon(Tarjeta tarjeta)
+        public Tarjeta pagarCon(Tarjeta tarjeta)
         {
-            if (interurbano == 0)
-            {
-                var boleto = new Boleto(tarjeta, this, PRECIO_URBANO);
-                return true;
-            }
-            else if (interurbano == 1)
-            {
-                var boleto = new Boleto(tarjeta, this, PRECIO_INTERURBANO);
-                return true;
-            }
-            else 
-            { 
-                return false;
-            }
+            return tarjeta.Cobrar(2150, this);
         }
 
     }

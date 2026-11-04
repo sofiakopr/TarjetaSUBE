@@ -10,21 +10,17 @@ namespace TarjetaSUBE
         public string Fecha { get; set; }
         public Colectivo Colectivo { get; set; }
         public int SaldoRestante { get; set; }
+        public int es_Transbordo { get; set; }
 
         public Boleto() { }
 
-        public Boleto(Tarjeta tarjeta, Colectivo colectivo)
-            : this(tarjeta, colectivo, DateTime.Now)
+        public Boleto(Tarjeta tarjeta, Colectivo colectivo, int monto, bool transbordo)
         {
-        }
-
-        public Boleto(Tarjeta tarjeta, Colectivo colectivo, DateTime fechaActual)
-        {
-            Fecha = fechaActual.ToString("yyyy-MM-dd HH:mm:ss");
+            Fecha = Contexto.Reloj().ToString("yyyy-MM-dd HH:mm:ss");
+            es_Transbordo = transbordo ? 1 : 0;
             Tarjeta = tarjeta;
             Colectivo = colectivo;
-            Monto = 2150;
-            tarjeta.Cobrar(this.Monto);
+            Monto = monto;
             SaldoRestante = tarjeta.Saldo;
             Contexto.Db.Boletos.Add(this);
             Contexto.Db.SaveChanges();
