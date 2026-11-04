@@ -16,7 +16,9 @@ namespace TarjetaSUBE
 
         public Estacion_Bici ingresar_bici(Bicicleta bici, int posicion)
         {
-            if (bicis.Count < limite)
+            int bicisIngresadas = bicis.Count();
+
+            if (bicisIngresadas < limite)
             {
                 if (posicion < 0 || posicion >= limite)
                 {

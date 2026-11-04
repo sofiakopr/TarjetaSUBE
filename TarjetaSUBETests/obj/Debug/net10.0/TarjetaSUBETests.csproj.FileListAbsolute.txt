@@ -204,3 +204,14 @@ C:\Users\sofia\OneDrive\Desktop\TarjetaSUBE\TarjetaSUBETests\obj\Debug\net10.0\r
 C:\Users\sofia\OneDrive\Desktop\TarjetaSUBE\TarjetaSUBETests\obj\Debug\net10.0\TarjetaSUBETests.pdb
 C:\Users\sofia\OneDrive\Desktop\TarjetaSUBE\TarjetaSUBETests\obj\Debug\net10.0\TarjetaSUBETests.genruntimeconfig.cache
 C:\Users\sofia\OneDrive\Desktop\TarjetaSUBE\TarjetaSUBETests\obj\Debug\net10.0\ref\TarjetaSUBETests.dll
+C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\bin\Debug\net10.0\.msCoverageSourceRootsMapping_TarjetaSUBETests
+C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\bin\Debug\net10.0\CoverletSourceRootsMapping_TarjetaSUBETests
+C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\obj\Debug\net10.0\TarjetaSUBETests.csproj.AssemblyReference.cache
+C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\obj\Debug\net10.0\TarjetaSUBETests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\obj\Debug\net10.0\TarjetaSUBETests.AssemblyInfoInputs.cache
+C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\obj\Debug\net10.0\TarjetaSUBETests.AssemblyInfo.cs
+C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\obj\Debug\net10.0\TarjetaSUBETests.csproj.CoreCompileInputs.cache
+C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\obj\Debug\net10.0\TarjetaSUBETests.sourcelink.json
+C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\obj\Debug\net10.0\TarjetaSUBETests.dll
+C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\obj\Debug\net10.0\refint\TarjetaSUBETests.dll
+C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\obj\Debug\net10.0\TarjetaSUBETests.pdb
