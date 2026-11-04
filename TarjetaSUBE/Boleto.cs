@@ -14,8 +14,13 @@ namespace TarjetaSUBE
         public Boleto() { }
 
         public Boleto(Tarjeta tarjeta, Colectivo colectivo)
+            : this(tarjeta, colectivo, DateTime.Now)
         {
-            Fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        }
+
+        public Boleto(Tarjeta tarjeta, Colectivo colectivo, DateTime fechaActual)
+        {
+            Fecha = fechaActual.ToString("yyyy-MM-dd HH:mm:ss");
             Tarjeta = tarjeta;
             Colectivo = colectivo;
             Monto = 2150;
