@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HorarioFranquiciaTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2260d43be54c1647505d54130535aed76da0ad10")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d69f0887450943600c8c81e0b4d65de165d87bb")]
 [assembly: System.Reflection.AssemblyProductAttribute("HorarioFranquiciaTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HorarioFranquiciaTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

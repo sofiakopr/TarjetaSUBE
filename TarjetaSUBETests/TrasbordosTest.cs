@@ -1,0 +1,188 @@
+﻿using Microsoft.EntityFrameworkCore;
+using TarjetaSUBE;
+
+namespace TrasbordosTest
+{
+    public class Tests
+    {
+        private TarjetaSUBEContext _db = null!;
+        private Tarjeta_tipo[] _tipos = null!;
+        private Tarjeta[] _tarjetas = null!;
+        private Colectivo[] _colectivos = null!;
+        private DateTime _ahora;
+
+        [SetUp]
+        public void Setup()
+        {
+            var opciones = new DbContextOptionsBuilder<TarjetaSUBEContext>()
+                .UseInMemoryDatabase(Guid.NewGuid().ToString())
+                .Options;
+
+            _db = new TarjetaSUBEContext(opciones);
+            Contexto.Db = _db;
+            _ahora = new DateTime(2026, 6, 1, 10, 0, 0);
+            Contexto.Reloj = () => _ahora;
+
+            _tipos =
+            [
+                new Tarjeta_tipo { id_Tipo = 1, nombre_Tipo = "Tarifa general", porcentaje_pago = 100 },
+                new Tarjeta_tipo { id_Tipo = 2, nombre_Tipo = "Medio boleto estudiantil", porcentaje_pago = 50 },
+                new Tarjeta_tipo { id_Tipo = 3, nombre_Tipo = "Boleto gratuito estudiantil", porcentaje_pago = 0 },
+                new Tarjeta_tipo { id_Tipo = 4, nombre_Tipo = "Franquicia completa", porcentaje_pago = 0 }
+            ];
+            _db.Tarjeta_tipos.AddRange(_tipos);
+
+            _colectivos =
+            [
+                new Colectivo { IdColectivo = 1, Linea = "A", Matricula = "BUS A" },
+                new Colectivo { IdColectivo = 2, Linea = "B", Matricula = "BUS B" },
+                new Colectivo { IdColectivo = 3, Linea = "C", Matricula = "BUS C" },
+                new Colectivo { IdColectivo = 4, Linea = "D", Matricula = "BUS D" }
+            ];
+            _db.Colectivos.AddRange(_colectivos);
+            _db.SaveChanges();
+
+            _tarjetas = _tipos
+                .Select(tipo => new Tarjeta(0, tipo.id_Tipo) { Tipo = tipo, fecha_ultimo_cobro = _ahora })
+                .ToArray();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            _db.Dispose();
+            Contexto.Reloj = () => DateTime.Now;
+        }
+
+        [Test]
+        [TestCase(1, 2850)]
+        [TestCase(2, 3925)]
+        [TestCase(3, 5000)]
+        [TestCase(4, 5000)]
+        public void TodosLosTiposPuedenRealizarUnTrasbordo(int tipoId, int saldoEsperado)
+        {
+            var tarjeta = PrepararTarjeta(tipoId);
+            _colectivos[0].pagarCon(tarjeta);
+            var boletoInicial = _db.Boletos.Single();
+
+            _ahora = _ahora.AddMinutes(30);
+            _colectivos[1].pagarCon(tarjeta);
+
+            var boletos = _db.Boletos.OrderBy(boleto => boleto.Fecha).ToArray();
+
+            Assert.That(boletos.Length, Is.EqualTo(2));
+            Assert.That(boletoInicial.es_Trasbordo, Is.Zero);
+            Assert.That(boletos[1].es_Trasbordo, Is.EqualTo(1));
+            Assert.That(boletos[1].Monto, Is.Zero);
+            Assert.That(boletos[1].Return_Linea(), Is.EqualTo("B"));
+            Assert.That(boletos[1].Return_Saldo_Restante(), Is.EqualTo(saldoEsperado));
+            Assert.That(tarjeta.Saldo, Is.EqualTo(saldoEsperado));
+        }
+
+        [Test]
+        public void PermiteTrasbordosIlimitadosDuranteLaHoraDesdeElPrimerBoleto()
+        {
+            var tarjeta = PrepararTarjeta(1);
+            _colectivos[0].pagarCon(tarjeta);
+
+            _ahora = _ahora.AddMinutes(20);
+            _colectivos[1].pagarCon(tarjeta);
+            _ahora = _ahora.AddMinutes(20);
+            _colectivos[2].pagarCon(tarjeta);
+            _ahora = _ahora.AddMinutes(19);
+            _colectivos[3].pagarCon(tarjeta);
+
+            var boletos = _db.Boletos.OrderBy(boleto => boleto.Fecha).ToArray();
+
+            Assert.That(boletos.Length, Is.EqualTo(4));
+            Assert.That(boletos[0].es_Trasbordo, Is.Zero);
+            Assert.That(boletos.Skip(1).All(boleto => boleto.es_Trasbordo == 1), Is.True);
+            Assert.That(boletos.Skip(1).All(boleto => boleto.Monto == 0), Is.True);
+        }
+
+        [Test]
+        [TestCase(10)]
+        [TestCase(11)]
+        public void NoPermiteTrasbordoAlCumplirseUnaHoraDesdeElPrimerBoleto(int minutosLuegoDelTrasbordo)
+        {
+            var tarjeta = PrepararTarjeta(1);
+            _colectivos[0].pagarCon(tarjeta);
+
+            _ahora = _ahora.AddMinutes(50);
+            _colectivos[1].pagarCon(tarjeta);
+            _ahora = _ahora.AddMinutes(minutosLuegoDelTrasbordo);
+            _colectivos[2].pagarCon(tarjeta);
+
+            var ultimoBoleto = _db.Boletos.OrderBy(boleto => boleto.Fecha).Last();
+
+            Assert.That(ultimoBoleto.es_Trasbordo, Is.Zero);
+            Assert.That(ultimoBoleto.Monto, Is.EqualTo(2150));
+            Assert.That(tarjeta.Saldo, Is.EqualTo(700));
+        }
+
+        [Test]
+        public void NoPermiteTrasbordoEntreLaMismaLinea()
+        {
+            var tarjeta = PrepararTarjeta(1);
+            _colectivos[0].pagarCon(tarjeta);
+
+            _ahora = _ahora.AddMinutes(10);
+            _colectivos[0].pagarCon(tarjeta);
+
+            var boletos = _db.Boletos.OrderBy(boleto => boleto.Fecha).ToArray();
+
+            Assert.That(boletos[1].es_Trasbordo, Is.Zero);
+            Assert.That(boletos[1].Monto, Is.EqualTo(2150));
+            Assert.That(tarjeta.Saldo, Is.EqualTo(700));
+        }
+
+        [TestCase(2026, 6, 1, 6, 59, false)]
+        [TestCase(2026, 6, 1, 7, 0, true)]
+        [TestCase(2026, 6, 6, 22, 0, true)]
+        [TestCase(2026, 6, 6, 22, 1, false)]
+        [TestCase(2026, 6, 7, 10, 0, false)]
+        public void SoloPermiteTrasbordosDeLunesASabadoEntreLasSieteYLasVeintidos(
+            int year, int month, int day, int hour, int minute, bool esperado)
+        {
+            var tarjeta = PrepararTarjeta(1);
+            _ahora = new DateTime(year, month, day, hour, minute, 0).AddMinutes(-30);
+            tarjeta.fecha_ultimo_cobro = _ahora;
+            _colectivos[0].pagarCon(tarjeta);
+
+            _ahora = new DateTime(year, month, day, hour, minute, 0);
+            _colectivos[1].pagarCon(tarjeta);
+
+            var ultimoBoleto = _db.Boletos.OrderBy(boleto => boleto.Fecha).Last();
+
+            Assert.That(ultimoBoleto.es_Trasbordo == 1, Is.EqualTo(esperado));
+            Assert.That(ultimoBoleto.Monto, Is.EqualTo(esperado ? 0 : 2150));
+        }
+
+        [Test]
+        public void PrimerPagoNoSeConsideraTrasbordoYPermitePagoRegular()
+        {
+            var tarjeta = PrepararTarjeta(1);
+
+            _colectivos[0].pagarCon(tarjeta);
+
+            var boleto = _db.Boletos.Single();
+
+            Assert.That(boleto.es_Trasbordo, Is.Zero);
+            Assert.That(boleto.Monto, Is.EqualTo(2150));
+            Assert.That(tarjeta.Saldo, Is.EqualTo(2850));
+        }
+
+        private Tarjeta PrepararTarjeta(int tipoId)
+        {
+            var tarjeta = _tarjetas.Single(tarjeta => tarjeta.tarjeta_tipo == tipoId);
+            tarjeta.Cargar(5000);
+
+            if (tipoId == 2)
+            {
+                tarjeta.fecha_ultimo_cobro = _ahora.AddMinutes(-6);
+            }
+
+            return tarjeta;
+        }
+    }
+}

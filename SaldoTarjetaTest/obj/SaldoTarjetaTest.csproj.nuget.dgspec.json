@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\SaldoTarjetaTest\\SaldoTarjetaTest.csproj": {}
+    "C:\\Users\\sofia\\OneDrive\\Desktop\\TarjetaSUBE\\SaldoTarjetaTest\\SaldoTarjetaTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\SaldoTarjetaTest\\SaldoTarjetaTest.csproj": {
+    "C:\\Users\\sofia\\OneDrive\\Desktop\\TarjetaSUBE\\SaldoTarjetaTest\\SaldoTarjetaTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\SaldoTarjetaTest\\SaldoTarjetaTest.csproj",
+        "projectUniqueName": "C:\\Users\\sofia\\OneDrive\\Desktop\\TarjetaSUBE\\SaldoTarjetaTest\\SaldoTarjetaTest.csproj",
         "projectName": "SaldoTarjetaTest",
-        "projectPath": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\SaldoTarjetaTest\\SaldoTarjetaTest.csproj",
+        "projectPath": "C:\\Users\\sofia\\OneDrive\\Desktop\\TarjetaSUBE\\SaldoTarjetaTest\\SaldoTarjetaTest.csproj",
         "packagesPath": "C:\\Users\\sofia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\SaldoTarjetaTest\\obj\\",
+        "outputPath": "C:\\Users\\sofia\\OneDrive\\Desktop\\TarjetaSUBE\\SaldoTarjetaTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaSUBE\\TarjetaSUBE.csproj": {
-                "projectPath": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaSUBE\\TarjetaSUBE.csproj"
+              "C:\\Users\\sofia\\OneDrive\\Desktop\\TarjetaSUBE\\TarjetaSUBE\\TarjetaSUBE.csproj": {
+                "projectPath": "C:\\Users\\sofia\\OneDrive\\Desktop\\TarjetaSUBE\\TarjetaSUBE\\TarjetaSUBE.csproj"
               }
             }
           }
@@ -383,14 +383,14 @@
         }
       }
     },
-    "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaSUBE\\TarjetaSUBE.csproj": {
+    "C:\\Users\\sofia\\OneDrive\\Desktop\\TarjetaSUBE\\TarjetaSUBE\\TarjetaSUBE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaSUBE\\TarjetaSUBE.csproj",
+        "projectUniqueName": "C:\\Users\\sofia\\OneDrive\\Desktop\\TarjetaSUBE\\TarjetaSUBE\\TarjetaSUBE.csproj",
         "projectName": "TarjetaSUBE",
-        "projectPath": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaSUBE\\TarjetaSUBE.csproj",
+        "projectPath": "C:\\Users\\sofia\\OneDrive\\Desktop\\TarjetaSUBE\\TarjetaSUBE\\TarjetaSUBE.csproj",
         "packagesPath": "C:\\Users\\sofia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TarjetaSUBE\\obj\\",
+        "outputPath": "C:\\Users\\sofia\\OneDrive\\Desktop\\TarjetaSUBE\\TarjetaSUBE\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -85,7 +85,7 @@ namespace TarjetaSUBE
                 .OrderByDescending(b => b.Fecha)
                 .FirstOrDefault();
             var primerBoleto = boletosTarjeta
-                .Where(b => b.es_Transbordo == 0)
+                .Where(b => b.es_Trasbordo == 0)
                 .OrderByDescending(b => b.Fecha)
                 .FirstOrDefault();
             bool dentroDeLaHora = primerBoleto != null

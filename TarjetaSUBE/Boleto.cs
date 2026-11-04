@@ -10,14 +10,14 @@ namespace TarjetaSUBE
         public string Fecha { get; set; }
         public Colectivo Colectivo { get; set; }
         public int SaldoRestante { get; set; }
-        public int es_Transbordo { get; set; }
+        public int es_Trasbordo { get; set; }
 
         public Boleto() { }
 
-        public Boleto(Tarjeta tarjeta, Colectivo colectivo, int monto, bool transbordo)
+        public Boleto(Tarjeta tarjeta, Colectivo colectivo, int monto, bool trasbordo)
         {
             Fecha = Contexto.Reloj().ToString("yyyy-MM-dd HH:mm:ss");
-            es_Transbordo = transbordo ? 1 : 0;
+            es_Trasbordo = trasbordo ? 1 : 0;
             Tarjeta = tarjeta;
             Colectivo = colectivo;
             Monto = monto;

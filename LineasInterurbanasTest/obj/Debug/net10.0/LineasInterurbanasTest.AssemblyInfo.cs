@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LineasInterurbanasTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9644bf6c84ba1c75e2dc402f606ad8e4ff799ec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d69f0887450943600c8c81e0b4d65de165d87bb")]
 [assembly: System.Reflection.AssemblyProductAttribute("LineasInterurbanasTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LineasInterurbanasTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

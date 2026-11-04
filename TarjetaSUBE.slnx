@@ -1,15 +1,4 @@
 <Solution>
-  <Project Path="BoletoFrecuenteTest/BoletoFrecuenteTest.csproj" Id="c992e249-82a8-4e6c-8781-55a9c964a7e7" />
-  <Project Path="BoletoTest/BoletoTest.csproj" Id="bdfdcfcd-a4e7-4205-8b5d-516d0e2c7714" />
-  <Project Path="ColectivoTest/ColectivoTest.csproj" Id="9c0f0248-1a91-4dfb-8a75-80df10fc8234" />
-  <Project Path="DatosBoletoTest/DatosBoletoTest.csproj" Id="fb083e67-584d-44b1-9574-b6104a742941" />
-  <Project Path="HorarioFranquiciaTest/HorarioFranquiciaTest.csproj" Id="c5045ed9-9eb0-496c-8984-ca0f69d7d7a6" />
-  <Project Path="LimitacionFranquiciaTest/LimitacionFranquiciaTest.csproj" Id="fd7ab440-adfc-48ce-9b67-2631dc113bed" />
-  <Project Path="LimitacionMedioBoletoTest/LimitacionMedioBoletoTest.csproj" Id="f6615723-ffa3-4880-9e21-a1e5dbad5e2d" />
-  <Project Path="LineasInterurbanasTest/LineasInterurbanasTest.csproj" Id="84a1b02d-295f-4996-94af-f43f8d4c97e9" />
-  <Project Path="SaldoTarjetaTest/SaldoTarjetaTest.csproj" Id="c4b5bf30-73db-4742-8bea-062839cb0789" />
   <Project Path="TarjetaSUBE/TarjetaSUBE.csproj" />
-  <Project Path="TarjetaTest/TarjetaTest.csproj" Id="7dd5a4a0-3f8c-409d-83a5-b1c74544decf" />
-  <Project Path="TarjetaTipoTest/TarjetaTipoTest.csproj" Id="4b6495e3-a8f1-46cb-83b4-0f8e9e4fbb08" />
-  <Project Path="TrasbordosTest/TrasbordosTest.csproj" Id="fe847950-9336-40b3-86ad-6ed6df3ab6f2" />
+  <Project Path="TarjetaSUBETests/TarjetaSUBETests.csproj" Id="179d4921-024b-40ca-89a6-8369c84ea48f" />
 </Solution>

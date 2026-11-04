@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FCNlBmaeHys=",
+  "dgSpecHash": "i3Mp9dZV6CY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\sofia\\OneDrive\\Documents\\GitHub\\TarjetaSUBE\\TrasbordosTest\\TrasbordosTest.csproj",
+  "projectFilePath": "C:\\Users\\sofia\\OneDrive\\Desktop\\TarjetaSUBE\\TrasbordosTest\\TrasbordosTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sofia\\.nuget\\packages\\coverlet.collector\\6.0.4\\coverlet.collector.6.0.4.nupkg.sha512",
     "C:\\Users\\sofia\\.nuget\\packages\\microsoft.applicationinsights\\2.22.0\\microsoft.applicationinsights.2.22.0.nupkg.sha512",
