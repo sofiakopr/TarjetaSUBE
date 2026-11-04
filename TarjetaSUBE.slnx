@@ -6,6 +6,7 @@
   <Project Path="HorarioFranquiciaTest/HorarioFranquiciaTest.csproj" Id="c5045ed9-9eb0-496c-8984-ca0f69d7d7a6" />
   <Project Path="LimitacionFranquiciaTest/LimitacionFranquiciaTest.csproj" Id="fd7ab440-adfc-48ce-9b67-2631dc113bed" />
   <Project Path="LimitacionMedioBoletoTest/LimitacionMedioBoletoTest.csproj" Id="f6615723-ffa3-4880-9e21-a1e5dbad5e2d" />
+  <Project Path="LineasInterurbanasTest/LineasInterurbanasTest.csproj" Id="84a1b02d-295f-4996-94af-f43f8d4c97e9" />
   <Project Path="SaldoTarjetaTest/SaldoTarjetaTest.csproj" Id="c4b5bf30-73db-4742-8bea-062839cb0789" />
   <Project Path="TarjetaSUBE/TarjetaSUBE.csproj" />
   <Project Path="TarjetaTest/TarjetaTest.csproj" Id="7dd5a4a0-3f8c-409d-83a5-b1c74544decf" />
