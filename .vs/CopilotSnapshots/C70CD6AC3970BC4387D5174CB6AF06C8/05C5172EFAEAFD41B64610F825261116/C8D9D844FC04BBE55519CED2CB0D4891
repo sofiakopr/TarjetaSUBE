@@ -1,0 +1,152 @@
+﻿using System;
+using System.Reflection.Metadata.Ecma335;
+
+namespace TarjetaSUBE
+{
+    public class Tarjeta
+    {
+        private const int LIMITE_SUPERIOR = 56000;
+        public int Saldo; //límite 40k
+        public int IdTarjeta;
+        public int tarjeta_tipo; // 1.Normal (100%), 2.Medio Boleto Estudiantil (50%), 3.Boleto Gratuito Estudiantil (0%), 4.Franquicia Completa (0%)
+        public DateTime fecha_ultimo_cobro = DateTime.Now;
+        public int CantidadViajes_Dia;
+        public Tarjeta_tipo Tipo { get; set; }
+        public int Excedente;
+
+        public Tarjeta() { }
+
+        public Tarjeta(int saldo, int tipo)
+        {
+            if (saldo > LIMITE_SUPERIOR)
+            {
+                throw new ArgumentException("El saldo no puede superar los 40.000");
+            }
+            else if (saldo < -2000)
+            {
+                throw new ArgumentException("El saldo no puede ser menor a -2000");
+            }
+            else
+            {
+                Saldo = saldo;
+                tarjeta_tipo = tipo;
+                Excedente = 0;
+                Contexto.Db.Tarjetas.Add(this);
+                Contexto.Db.SaveChanges();
+            }
+        }
+
+        public Tarjeta Cargar(int monto)
+        {
+            if (monto < 0)
+            {
+                throw new ArgumentException("El monto no puede ser negativo");
+            } else if (!new int[] { 2000, 3000, 4000, 5000, 8000, 10000, 15000, 20000, 25000, 30000 }.Contains(monto)) {
+                throw new ArgumentException("El monto debe ser uno de los siguientes: 2000, 3000, 4000, 5000, 8000, 10000, 15000, 20000, 25000, 30000");
+            }
+            else
+            {
+                Excedente += monto;
+                this.Acreditar();
+                return this;
+            }
+
+        }
+
+        public Tarjeta Acreditar()
+        {
+            if (Excedente + Saldo <= LIMITE_SUPERIOR)
+            {
+                Saldo += Excedente;
+                Excedente = 0;
+                Contexto.Db.SaveChanges();
+            }
+            else
+            {
+                Excedente = (Excedente + Saldo) - LIMITE_SUPERIOR;
+                Saldo = LIMITE_SUPERIOR;
+                Contexto.Db.SaveChanges();
+            }
+            return this;
+        }
+
+        public Tarjeta Cobrar(int monto)
+        {
+            TimeSpan diferencia = DateTime.Now - fecha_ultimo_cobro;
+            int cantidad = Contexto.Db.Boletos
+            .Where(b => b.Tarjeta.IdTarjeta == this.IdTarjeta && b.Fecha.StartsWith(DateTime.Now.ToString("yyyy-MM-dd")))
+            .Count();
+            int cantidad_mes = Contexto.Db.Boletos
+            .Where(b => b.Tarjeta.IdTarjeta == this.IdTarjeta && b.Fecha.StartsWith(DateTime.Now.ToString("yyyy-MM")))
+            .Count();
+
+            //Boleto Estudiantil Gratuito
+            if (this.Tipo.nombre_Tipo == "Boleto gratuito estudiantil")
+            {
+                if (cantidad < 2)
+                {
+                    // no se resta nada
+                    Contexto.Db.SaveChanges();
+                    return this;
+                }
+                else if(Saldo - monto < -2000){
+                    throw new ArgumentException("El saldo no puede ser menor a -2000");
+                }
+                else{
+                    Saldo -= monto;
+                    Contexto.Db.SaveChanges();
+                    return this;
+                }
+            }
+            // Boleto Franquicia Completa (Jubilados)
+            if (this.Tipo.nombre_Tipo == "Franquicia completa")
+            {
+                if (diferencia.TotalMinutes < 5)
+                {
+                    //no se resta nada
+                    Contexto.Db.SaveChanges();
+                    return this;
+                }
+                else
+                {
+                    throw new Exception("EL JUBILADO PAGO HACE MENOS DE 5 MINUTOS");
+                }
+            }
+
+            // Boleto Estudiantil Medio
+            if (this.Tipo.nombre_Tipo == "Medio boleto estudiantil")
+            {
+                if (diferencia.TotalMinutes < 5)
+                {
+                    throw new Exception("No se puede cobrar el viaje, ya que no han pasado 5 minutos desde el último cobro de medio boleto");
+                }
+                else
+                {
+                    Saldo -= (monto / 2);
+                    Contexto.Db.SaveChanges();
+                    return this;
+                }
+            }
+            if(this.Tipo.nombre_Tipo == "Normal")
+            {
+                if (cantidad_mes >= 79)
+                {
+                    monto = monto * 75 / 100; // se aplica un 25% de descuento
+                } else if (cantidad_mes >= 29)
+                {
+                    monto = monto * 80 / 100; // se aplica un 20% de descuento
+                }
+                if ((Saldo - monto) < -2000)
+                {
+                    throw new ArgumentException("Saldo insuficiente. El saldo no puede ser menor a -2000");
+                } 
+                else
+                {
+                    Saldo -= monto;
+                    Contexto.Db.SaveChanges();
+                    return this;
+                }
+            }
+        }
+    }
+}

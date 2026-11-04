@@ -70,8 +70,8 @@ namespace CobrarSaldosNegativoYPositivoTests
 		}
 
 		[Test]
-		[TestCase(1, 420)]
-		[TestCase(2, 1210)]
+		[TestCase(1, -150)]
+		[TestCase(2, 925)]
 		[TestCase(3, 2000)]
 		[TestCase(4, 2000)]
 		public void CobrarPasajeConSaldoPositivo(int tipoId, int saldoEsperado)
@@ -87,7 +87,7 @@ namespace CobrarSaldosNegativoYPositivoTests
 				tarjeta.fecha_ultimo_cobro = DateTime.Now;
 			}
 
-			Assert.That(tarjeta.Cobrar(1580), Is.SameAs(tarjeta));
+			Assert.That(tarjeta.Cobrar(2150), Is.SameAs(tarjeta));
 			Assert.That(tarjeta.Saldo, Is.EqualTo(saldoEsperado));
 		}
 

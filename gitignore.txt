@@ -6,6 +6,8 @@ obj/
 .vs/
 *.user
 *.suo
+**/bin/
+**/obj/
 
 ## Claude Code local settings
 .claude/settings.local.json

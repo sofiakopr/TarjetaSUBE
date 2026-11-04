@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LimitacionMedioBoletoTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9644bf6c84ba1c75e2dc402f606ad8e4ff799ec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+68dc930d319c813204d9871756e3ec8a5b603c20")]
 [assembly: System.Reflection.AssemblyProductAttribute("LimitacionMedioBoletoTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LimitacionMedioBoletoTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -9,9 +9,9 @@ namespace LimitacionMedioBoleto
         private Tarjeta_tipo[] _tipos = null!;
         private Colectivo _colectivo = null!;
 
-        private const int PrecioCompleto = 1580;
+        private const int PrecioCompleto = 2150;
         private const int PrecioMedio = PrecioCompleto / 2;
-        private const int SaldoInicial = 10000;
+        private const int SaldoInicial = 11140;
 
         [SetUp]
         public void Setup()

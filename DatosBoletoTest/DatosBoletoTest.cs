@@ -40,10 +40,10 @@ namespace MasSobreElBoletoTest
         }
 
         [Test]
-        [TestCase(1, "Tarifa general", 1580, 420)]
-        [TestCase(2, "Medio boleto estudiantil", 1580, 1210)]
-        [TestCase(3, "Boleto gratuito estudiantil", 1580, 2000)]
-        [TestCase(4, "Franquicia completa", 1580, 2000)]
+        [TestCase(1, "Tarifa general", 2150, -150)]
+        [TestCase(2, "Medio boleto estudiantil", 2150, 925)]
+        [TestCase(3, "Boleto gratuito estudiantil", 2150, 2000)]
+        [TestCase(4, "Franquicia completa", 2150, 2000)]
         public void BoletoInformaDatosSegunTipoDeTarjeta(int tipoId, string nombreTipo, int totalAbonado, int saldoRestante)
         {
             var tarjeta = new Tarjeta(2000, tipoId)
@@ -76,13 +76,13 @@ namespace MasSobreElBoletoTest
         }
 
         [Test]
-        [TestCase(1, 1580, -1680)]
-        [TestCase(2, 790, -890)]
-        [TestCase(3, 0, -100)]
-        [TestCase(4, 0, -100)]
+        [TestCase(1, 2150, -2000)]
+        [TestCase(2, 1075, -925)]
+        [TestCase(3, 0, 150)]
+        [TestCase(4, 0, 150)]
         public void CobrarIncluyeDeudaPreviaEnDebito(int tipoId, int montoDebitado, int saldoEsperado)
         {
-            var tarjeta = new Tarjeta(-100, tipoId)
+            var tarjeta = new Tarjeta(150, tipoId)
             {
                 tarjeta_tipo = tipoId,
                 Tipo = _tipos.Single(tipo => tipo.id_Tipo == tipoId)
@@ -97,9 +97,9 @@ namespace MasSobreElBoletoTest
 
             var boleto = _db.Boletos.Single();
 
-            Assert.That(boleto.Return_Total_Abonado(), Is.EqualTo(1580));
+            Assert.That(boleto.Return_Total_Abonado(), Is.EqualTo(2150));
             Assert.That(boleto.Return_Tipo_Tarjeta(), Is.EqualTo(tarjeta.Tipo.nombre_Tipo));
-            Assert.That(-100 - tarjeta.Saldo, Is.EqualTo(montoDebitado));
+            Assert.That(150 - tarjeta.Saldo, Is.EqualTo(montoDebitado));
             Assert.That(boleto.Return_Saldo_Restante(), Is.EqualTo(saldoEsperado));
             Assert.That(tarjeta.Saldo, Is.EqualTo(saldoEsperado));
         }
@@ -124,7 +124,7 @@ namespace MasSobreElBoletoTest
 
         [Test]
         [TestCase(1, true, -500, 0)]
-        [TestCase(2, false, -1290, 1)]
+        [TestCase(2, false, -1575, 1)]
         [TestCase(3, false, -500, 1)]
         [TestCase(4, false, -500, 1)]
         public void CobrarFallaSiDebitoSuperaLimiteNegativo(int tipoId, bool superaLimite, int saldoEsperado, int boletosEsperados)
