@@ -14,9 +14,23 @@ namespace TarjetaSUBE
 
         public Boleto() { }
 
-        public Boleto(Tarjeta tarjeta, Colectivo colectivo, decimal monto, bool trasbordo)
+        public Boleto(
+            Tarjeta tarjeta,
+            Colectivo colectivo,
+            decimal monto = 2150m,
+            bool trasbordo = false)
+            : this(tarjeta, colectivo, monto, trasbordo, DateTime.Now)
         {
-            Fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        }
+
+        public Boleto(Tarjeta tarjeta, Colectivo colectivo, DateTime fecha)
+            : this(tarjeta, colectivo, 2150m, false, fecha)
+        {
+        }
+
+        private Boleto(Tarjeta tarjeta, Colectivo colectivo, decimal monto, bool trasbordo, DateTime fecha)
+        {
+            Fecha = fecha.ToString("yyyy-MM-dd HH:mm:ss");
             es_Trasbordo = trasbordo ? 1 : 0;
             Tarjeta = tarjeta;
             Colectivo = colectivo;

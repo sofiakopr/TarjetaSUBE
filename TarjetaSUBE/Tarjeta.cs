@@ -78,7 +78,17 @@ namespace TarjetaSUBE
             return this;
         }
 
+        public Tarjeta Cobrar(decimal monto)
+        {
+            return CobrarInterno(monto, null);
+        }
+
         public Tarjeta Cobrar(decimal monto, Colectivo colectivo)
+        {
+            return CobrarInterno(monto, colectivo);
+        }
+
+        private Tarjeta CobrarInterno(decimal monto, Colectivo? colectivo)
         {
             var ahora = Contexto.Reloj();
             TimeSpan diferencia = ahora - fecha_ultimo_cobro;
@@ -110,12 +120,13 @@ namespace TarjetaSUBE
                 && ahora.TimeOfDay >= TimeSpan.FromHours(7)
                 && ahora.TimeOfDay <= TimeSpan.FromHours(22);
 
-            if (ultimoBoleto != null
+            if (colectivo != null
+                && ultimoBoleto != null
                 && dentroDelHorario
                 && dentroDeLaHora
                 && ultimoBoleto.Colectivo.Linea != colectivo.Linea)
             {
-                var boleto = new Boleto(this, colectivo, 0, true);
+                RegistrarBoleto(colectivo, 0, true);
                 fecha_ultimo_cobro = ahora;
                 return this;
             }
@@ -128,7 +139,7 @@ namespace TarjetaSUBE
                     {
                         // no se resta nada
                         Contexto.Db.SaveChanges();
-                        var boleto = new Boleto(this, colectivo, 0, false);
+                        RegistrarBoleto(colectivo, 0, false);
                         fecha_ultimo_cobro = ahora;
                         return this;
                     }
@@ -136,7 +147,7 @@ namespace TarjetaSUBE
                     {
                         Saldo -= monto;
                         Contexto.Db.SaveChanges();
-                        var boleto = new Boleto(this, colectivo, monto, false);
+                        RegistrarBoleto(colectivo, monto, false);
                         fecha_ultimo_cobro = ahora;
                         return this;
                     }
@@ -148,7 +159,7 @@ namespace TarjetaSUBE
                     {
                         //no se resta nada
                         Contexto.Db.SaveChanges();
-                        var boleto = new Boleto(this, colectivo, 0, false);
+                        RegistrarBoleto(colectivo, 0, false);
                         fecha_ultimo_cobro = ahora;
                         return this;
                     }
@@ -169,7 +180,7 @@ namespace TarjetaSUBE
                     {
                         Saldo -= (monto / 2);
                         Contexto.Db.SaveChanges();
-                        var boleto = new Boleto(this, colectivo, monto / 2, false);
+                        RegistrarBoleto(colectivo, monto / 2, false);
                         fecha_ultimo_cobro = ahora;
                         return this;
                     }
@@ -182,10 +193,18 @@ namespace TarjetaSUBE
                 {
                     Saldo -= monto;
                     Contexto.Db.SaveChanges();
-                    var boleto = new Boleto(this, colectivo, monto, false);
+                    RegistrarBoleto(colectivo, monto, false);
                     fecha_ultimo_cobro = ahora;
                     return this;
                 }
+            }
+        }
+
+        private void RegistrarBoleto(Colectivo? colectivo, decimal monto, bool trasbordo)
+        {
+            if (colectivo != null)
+            {
+                new Boleto(this, colectivo, monto, trasbordo);
             }
         }
     }
