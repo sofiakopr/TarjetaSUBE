@@ -51,8 +51,8 @@ namespace BoletoTest
         }
 
         [Test]
-        [TestCase(1, "Tarifa general", 420)]
-        [TestCase(2, "Medio boleto estudiantil", 1210)]
+        [TestCase(1, "Tarifa general", -150)]
+        [TestCase(2, "Medio boleto estudiantil", 925)]
         [TestCase(3, "Boleto gratuito estudiantil", 2000)]
         [TestCase(4, "Franquicia completa", 2000)]
         public void CrearBoletoAsignaTarjeta(int tipoId, string nombreTipo, int saldoEsperado)
@@ -75,7 +75,7 @@ namespace BoletoTest
 
             Assert.That(boletoGuardado.Return_Tipo_Tarjeta(), Is.EqualTo(nombreTipo));
             Assert.That(boletoGuardado.Return_Linea(), Is.EqualTo(_colectivo.Linea));
-            Assert.That(boletoGuardado.Return_Total_Abonado(), Is.EqualTo(1580));
+            Assert.That(boletoGuardado.Return_Total_Abonado(), Is.EqualTo(2150));
             Assert.That(boletoGuardado.Return_Saldo_Restante(), Is.EqualTo(saldoEsperado));
             Assert.That(boletoGuardado.Return_ID_Tarjeta(), Is.EqualTo(tarjeta.IdTarjeta));
             Assert.That(tarjeta.Saldo, Is.EqualTo(saldoEsperado));
@@ -91,14 +91,14 @@ namespace BoletoTest
         public void CrearBoletoFallaCuandoElDebitoSuperaElLimiteNegativo()
         {
             var tarjeta = ObtenerTarjeta(1);
-            tarjeta.Cargar(2000);
+            tarjeta.Cargar(4000);
 
             new Boleto(tarjeta, _colectivo);
             new Boleto(tarjeta, _colectivo);
 
             Assert.That(() => new Boleto(tarjeta, _colectivo), Throws.TypeOf<ArgumentException>());
             Assert.That(_db.Boletos.Count(), Is.EqualTo(2));
-            Assert.That(tarjeta.Saldo, Is.EqualTo(-1160));
+            Assert.That(tarjeta.Saldo, Is.EqualTo(-300));
         }
 
         [Test]

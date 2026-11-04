@@ -1,0 +1,80 @@
+﻿Test run completed. Ran 13 test(s). 7 Passed, 6 Failed 
+ColectivoPagarConAplicaLaTarifaDelTipo(4,2499) Failed | Error: System.Exception : No se puede cobrar el viaje, ya que no es horario de servicio (6:00 a 22:00) | StackTrace:    at TarjetaSUBE.Tarjeta.Cobrar(Int32 monto, DateTime fechaActual) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Tarjeta.cs:line 88
+   at TarjetaSUBE.Boleto..ctor(Tarjeta tarjeta, Colectivo colectivo, DateTime fechaActual) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Boleto.cs:line 27
+   at TarjetaSUBE.Boleto..ctor(Tarjeta tarjeta, Colectivo colectivo) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Boleto.cs:line 17
+   at TarjetaSUBE.Colectivo.pagarCon(Tarjeta tarjeta) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Colectivo.cs:line 18
+   at BoletoTest.BoletoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Int32 tipoId, Int32 saldoEsperado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\ColectivoTest\ColectivoTest.cs:line 82
+   at InvokeStub_BoletoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+
+ColectivoProcesaElSaldoEnElLimiteSegunTipo(3,False,-500,1) Failed | Error: System.Exception : No se puede cobrar el viaje, ya que no es horario de servicio (6:00 a 22:00) | StackTrace:    at TarjetaSUBE.Tarjeta.Cobrar(Int32 monto, DateTime fechaActual) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Tarjeta.cs:line 88
+   at TarjetaSUBE.Boleto..ctor(Tarjeta tarjeta, Colectivo colectivo, DateTime fechaActual) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Boleto.cs:line 27
+   at TarjetaSUBE.Boleto..ctor(Tarjeta tarjeta, Colectivo colectivo) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Boleto.cs:line 17
+   at TarjetaSUBE.Colectivo.pagarCon(Tarjeta tarjeta) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Colectivo.cs:line 18
+   at BoletoTest.BoletoTest.ColectivoProcesaElSaldoEnElLimiteSegunTipo(Int32 tipoId, Boolean excedeElLimiteNegativo, Int32 saldoEsperado, Int32 boletosEsperados) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\ColectivoTest\ColectivoTest.cs:line 131
+   at InvokeStub_BoletoTest.ColectivoProcesaElSaldoEnElLimiteSegunTipo(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+
+ColectivoPagarConAplicaLaTarifaDelTipo(3,2499) Failed | Error: System.Exception : No se puede cobrar el viaje, ya que no es horario de servicio (6:00 a 22:00) | StackTrace:    at TarjetaSUBE.Tarjeta.Cobrar(Int32 monto, DateTime fechaActual) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Tarjeta.cs:line 88
+   at TarjetaSUBE.Boleto..ctor(Tarjeta tarjeta, Colectivo colectivo, DateTime fechaActual) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Boleto.cs:line 27
+   at TarjetaSUBE.Boleto..ctor(Tarjeta tarjeta, Colectivo colectivo) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Boleto.cs:line 17
+   at TarjetaSUBE.Colectivo.pagarCon(Tarjeta tarjeta) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Colectivo.cs:line 18
+   at BoletoTest.BoletoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Int32 tipoId, Int32 saldoEsperado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\ColectivoTest\ColectivoTest.cs:line 82
+   at InvokeStub_BoletoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+
+ColectivoProcesaElSaldoEnElLimiteSegunTipo(4,False,-500,1) Failed | Error: System.Exception : No se puede cobrar el viaje, ya que no es horario de servicio (6:00 a 22:00) | StackTrace:    at TarjetaSUBE.Tarjeta.Cobrar(Int32 monto, DateTime fechaActual) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Tarjeta.cs:line 88
+   at TarjetaSUBE.Boleto..ctor(Tarjeta tarjeta, Colectivo colectivo, DateTime fechaActual) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Boleto.cs:line 27
+   at TarjetaSUBE.Boleto..ctor(Tarjeta tarjeta, Colectivo colectivo) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Boleto.cs:line 17
+   at TarjetaSUBE.Colectivo.pagarCon(Tarjeta tarjeta) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Colectivo.cs:line 18
+   at BoletoTest.BoletoTest.ColectivoProcesaElSaldoEnElLimiteSegunTipo(Int32 tipoId, Boolean excedeElLimiteNegativo, Int32 saldoEsperado, Int32 boletosEsperados) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\ColectivoTest\ColectivoTest.cs:line 131
+   at InvokeStub_BoletoTest.ColectivoProcesaElSaldoEnElLimiteSegunTipo(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+
+ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(4) Passed
+ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(1) Passed
+ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(2) Passed
+ColectivoProcesaElSaldoEnElLimiteSegunTipo(1,True,-500,0) Passed
+ColectivoPagarConAplicaLaTarifaDelTipo(1,919) Passed
+ColectivoProcesaElSaldoEnElLimiteSegunTipo(2,False,-1290,1) Failed | Error: System.Exception : No se puede cobrar el viaje, ya que no es horario de servicio (6:00 a 22:00) | StackTrace:    at TarjetaSUBE.Tarjeta.Cobrar(Int32 monto, DateTime fechaActual) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Tarjeta.cs:line 88
+   at TarjetaSUBE.Boleto..ctor(Tarjeta tarjeta, Colectivo colectivo, DateTime fechaActual) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Boleto.cs:line 27
+   at TarjetaSUBE.Boleto..ctor(Tarjeta tarjeta, Colectivo colectivo) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Boleto.cs:line 17
+   at TarjetaSUBE.Colectivo.pagarCon(Tarjeta tarjeta) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Colectivo.cs:line 18
+   at BoletoTest.BoletoTest.ColectivoProcesaElSaldoEnElLimiteSegunTipo(Int32 tipoId, Boolean excedeElLimiteNegativo, Int32 saldoEsperado, Int32 boletosEsperados) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\ColectivoTest\ColectivoTest.cs:line 131
+   at InvokeStub_BoletoTest.ColectivoProcesaElSaldoEnElLimiteSegunTipo(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+
+CrearColectivo Passed
+ColectivoPagarConAplicaLaTarifaDelTipo(2,1709) Failed | Error: System.Exception : No se puede cobrar el viaje, ya que no es horario de servicio (6:00 a 22:00) | StackTrace:    at TarjetaSUBE.Tarjeta.Cobrar(Int32 monto, DateTime fechaActual) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Tarjeta.cs:line 88
+   at TarjetaSUBE.Boleto..ctor(Tarjeta tarjeta, Colectivo colectivo, DateTime fechaActual) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Boleto.cs:line 27
+   at TarjetaSUBE.Boleto..ctor(Tarjeta tarjeta, Colectivo colectivo) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Boleto.cs:line 17
+   at TarjetaSUBE.Colectivo.pagarCon(Tarjeta tarjeta) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Colectivo.cs:line 18
+   at BoletoTest.BoletoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Int32 tipoId, Int32 saldoEsperado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\ColectivoTest\ColectivoTest.cs:line 82
+   at InvokeStub_BoletoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+
+ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(3) Passed
+
+Test Output:
+[Informational] Building Test Projects
+[Informational] Starting test discovery for requested test run
+[Informational] ========== Starting test discovery ==========
+[Informational] NUnit Adapter 5.0.0.0: Test discovery starting
+[Informational] NUnit Adapter 5.0.0.0: Test discovery complete
+[Informational] ========== Test discovery finished: 13 Tests found in 835.7 ms ==========
+[Informational] ========== Starting test run ==========
+[Informational] NUnit Adapter 5.0.0.0: Test execution started
+[Informational] Running selected tests in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\ColectivoTest\bin\Debug\net10.0\ColectivoTest.dll
+[Informational]    NUnit3TestExecutor discovered 13 of 13 NUnit test cases using Current Discovery mode, Non-Explicit run
+[Informational] Saldo insuficiente.
+
+[Informational] Saldo insuficiente.
+
+[Informational] Saldo insuficiente.
+
+[Informational] Saldo insuficiente.
+
+[Informational] Pago realizado con éxito
+
+[Informational] NUnit Adapter 5.0.0.0: Test execution complete
+[Informational] ========== Test run finished: 13 Tests (7 Passed, 6 Failed, 0 Skipped) run in 1.5 sec ==========

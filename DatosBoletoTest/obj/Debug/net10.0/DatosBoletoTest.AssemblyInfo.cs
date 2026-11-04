@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DatosBoletoTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+47354a12beabd1c16cc1bfc7fb1988d817a99053")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+68dc930d319c813204d9871756e3ec8a5b603c20")]
 [assembly: System.Reflection.AssemblyProductAttribute("DatosBoletoTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DatosBoletoTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

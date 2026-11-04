@@ -3,7 +3,6 @@ using System.Reflection.Metadata.Ecma335;
 
 namespace TarjetaSUBE
 {
-
     public class Tarjeta
     {
         private const int LIMITE_SUPERIOR = 56000;
@@ -183,5 +182,3 @@ namespace TarjetaSUBE
         }
     }
 }
-
-

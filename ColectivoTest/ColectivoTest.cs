@@ -61,8 +61,8 @@ namespace BoletoTest
         }
 
         [Test]
-        [TestCase(1, 919)]
-        [TestCase(2, 1709)]
+        [TestCase(1, 349)]
+        [TestCase(2, 1424)]
         [TestCase(3, 2499)]
         [TestCase(4, 2499)]
         public void ColectivoPagarConAplicaLaTarifaDelTipo(int tipoId, int saldoEsperado)
@@ -85,7 +85,7 @@ namespace BoletoTest
 
             Assert.That(boleto.Return_Tipo_Tarjeta(), Is.EqualTo(_tipos.Single(tipo => tipo.id_Tipo == tipoId).nombre_Tipo));
             Assert.That(boleto.Return_Linea(), Is.EqualTo(_colectivo.Linea));
-            Assert.That(boleto.Return_Total_Abonado(), Is.EqualTo(1580));
+            Assert.That(boleto.Return_Total_Abonado(), Is.EqualTo(2150));
             Assert.That(boleto.Return_Saldo_Restante(), Is.EqualTo(saldoEsperado));
             Assert.That(tarjeta.Saldo, Is.EqualTo(saldoEsperado));
         }
@@ -106,7 +106,7 @@ namespace BoletoTest
 
         [Test]
         [TestCase(1, true, -500, 0)]
-        [TestCase(2, false, -1290, 1)]
+        [TestCase(2, false, -1575, 1)]
         [TestCase(3, false, -500, 1)]
         [TestCase(4, false, -500, 1)]
         public void ColectivoProcesaElSaldoEnElLimiteSegunTipo(int tipoId, bool excedeElLimiteNegativo, int saldoEsperado, int boletosEsperados)

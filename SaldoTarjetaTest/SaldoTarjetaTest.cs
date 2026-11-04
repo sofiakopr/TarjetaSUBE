@@ -49,8 +49,8 @@ namespace SaldoTarjeta
         }
 
         [Test]
-        [TestCase(1, 54000)]
-        [TestCase(2, 55000)]
+        [TestCase(1, 53850)]
+        [TestCase(2, 54925)]
         [TestCase(3, 56000)]
         [TestCase(4, 56000)]
         public void CobrarConExcedentePendiente_AplicaLaReglaDelTipoDeTarjeta(int tipoId, int saldoEsperado)
@@ -65,7 +65,7 @@ namespace SaldoTarjeta
             {
                 tarjeta.fecha_ultimo_cobro = DateTime.Now;
             }
-            tarjeta.Cobrar(2000);
+            tarjeta.Cobrar(2150);
 
             Assert.That(tarjeta.Saldo, Is.EqualTo(saldoEsperado));
             Assert.That(tarjeta.Excedente, Is.EqualTo(4000));

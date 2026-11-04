@@ -45,10 +45,10 @@ namespace LimitacionFranquiciaTests
         }
 
         [Test]
-        [TestCase(1, 2840)]
-        [TestCase(2, 4420)]
-        [TestCase(3, 6000)]
-        [TestCase(4, 6000)]
+        [TestCase(1, 2700)]
+        [TestCase(2, 4850)]
+        [TestCase(3, 7000)]
+        [TestCase(4, 7000)]
         public void CadaTipoDeTarjetaAplicaSuTarifaEnLosPrimerosDosViajes(int tipoId, int saldoEsperado)
         {
             var tarjeta = CrearTarjeta(tipoId);
@@ -60,10 +60,10 @@ namespace LimitacionFranquiciaTests
         }
 
         [Test]
-        [TestCase(1, -320)]
-        [TestCase(2, 2840)]
-        [TestCase(3, 2840)]
-        [TestCase(4, 6000)]
+        [TestCase(1, -1600)]
+        [TestCase(2, 2700)]
+        [TestCase(3, 2700)]
+        [TestCase(4, 7000)]
         public void CadaTipoDeTarjetaAplicaSuTarifaEnLosViajesPosteriores(int tipoId, int saldoEsperado)
         {
             var tarjeta = CrearTarjeta(tipoId);
@@ -78,7 +78,7 @@ namespace LimitacionFranquiciaTests
 
         private Tarjeta CrearTarjeta(int tipoId)
         {
-            return new Tarjeta(6000, tipoId)
+            return new Tarjeta(7000, tipoId)
             {
                 Tipo = _tipos.Single(tipo => tipo.id_Tipo == tipoId)
             };
