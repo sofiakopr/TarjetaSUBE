@@ -1,0 +1,114 @@
+﻿Test run completed. Ran 13 test(s). 2 Passed, 11 Failed 
+ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(1) Failed | Error: System.ArgumentException : El saldo no puede ser menor a -2000 | StackTrace:    at TarjetaSUBE.Tarjeta.CobrarInterno(Decimal monto, Colectivo colectivo) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Tarjeta.cs:line 190
+   at TarjetaSUBE.Tarjeta.Cobrar(Decimal monto, Colectivo colectivo) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Tarjeta.cs:line 88
+   at TarjetaSUBE.Colectivo.pagarCon(Tarjeta tarjeta) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Colectivo.cs:line 24
+   at ColectivoTest.ColectivoTest.ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(Int32 tipoId) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 102
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+
+ColectivoPagarConAplicaLaTarifaDelTipo(4,2499) Failed | Error:   Assert.That(_colectivo.pagarCon(tarjeta), Is.True)
+  Expected: True
+  But was:  <TarjetaSUBE.Tarjeta>
+ | StackTrace:    at ColectivoTest.ColectivoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Int32 tipoId, Int32 saldoEsperado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 82
+   at InvokeStub_ColectivoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Object, Span`1)
+
+1)    at ColectivoTest.ColectivoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Int32 tipoId, Int32 saldoEsperado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 82
+   at InvokeStub_ColectivoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Object, Span`1)
+
+
+ColectivoProcesaElSaldoEnElLimiteSegunTipo(1,True,-500,0) Passed
+ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(4) Failed | Error:   Assert.That(_colectivo.pagarCon(tarjeta), Is.False)
+  Expected: False
+  But was:  <TarjetaSUBE.Tarjeta>
+ | StackTrace:    at ColectivoTest.ColectivoTest.ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(Int32 tipoId) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 102
+   at InvokeStub_ColectivoTest.ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(Object, Span`1)
+
+1)    at ColectivoTest.ColectivoTest.ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(Int32 tipoId) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 102
+   at InvokeStub_ColectivoTest.ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(Object, Span`1)
+
+
+ColectivoPagarConAplicaLaTarifaDelTipo(3,2499) Failed | Error:   Assert.That(_colectivo.pagarCon(tarjeta), Is.True)
+  Expected: True
+  But was:  <TarjetaSUBE.Tarjeta>
+ | StackTrace:    at ColectivoTest.ColectivoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Int32 tipoId, Int32 saldoEsperado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 82
+   at InvokeStub_ColectivoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Object, Span`1)
+
+1)    at ColectivoTest.ColectivoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Int32 tipoId, Int32 saldoEsperado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 82
+   at InvokeStub_ColectivoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Object, Span`1)
+
+
+ColectivoProcesaElSaldoEnElLimiteSegunTipo(3,False,-500,1) Failed | Error:   Assert.That(_colectivo.pagarCon(tarjeta), Is.True)
+  Expected: True
+  But was:  <TarjetaSUBE.Tarjeta>
+ | StackTrace:    at ColectivoTest.ColectivoTest.ColectivoProcesaElSaldoEnElLimiteSegunTipo(Int32 tipoId, Boolean excedeElLimiteNegativo, Int32 saldoEsperado, Int32 boletosEsperados) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 131
+   at InvokeStub_ColectivoTest.ColectivoProcesaElSaldoEnElLimiteSegunTipo(Object, Span`1)
+
+1)    at ColectivoTest.ColectivoTest.ColectivoProcesaElSaldoEnElLimiteSegunTipo(Int32 tipoId, Boolean excedeElLimiteNegativo, Int32 saldoEsperado, Int32 boletosEsperados) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 131
+   at InvokeStub_ColectivoTest.ColectivoProcesaElSaldoEnElLimiteSegunTipo(Object, Span`1)
+
+
+ColectivoPagarConAplicaLaTarifaDelTipo(2,1424) Failed | Error:   Assert.That(_colectivo.pagarCon(tarjeta), Is.True)
+  Expected: True
+  But was:  <TarjetaSUBE.Tarjeta>
+ | StackTrace:    at ColectivoTest.ColectivoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Int32 tipoId, Int32 saldoEsperado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 82
+   at InvokeStub_ColectivoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Object, Span`1)
+
+1)    at ColectivoTest.ColectivoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Int32 tipoId, Int32 saldoEsperado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 82
+   at InvokeStub_ColectivoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Object, Span`1)
+
+
+ColectivoProcesaElSaldoEnElLimiteSegunTipo(4,False,-500,1) Failed | Error:   Assert.That(_colectivo.pagarCon(tarjeta), Is.True)
+  Expected: True
+  But was:  <TarjetaSUBE.Tarjeta>
+ | StackTrace:    at ColectivoTest.ColectivoTest.ColectivoProcesaElSaldoEnElLimiteSegunTipo(Int32 tipoId, Boolean excedeElLimiteNegativo, Int32 saldoEsperado, Int32 boletosEsperados) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 131
+   at InvokeStub_ColectivoTest.ColectivoProcesaElSaldoEnElLimiteSegunTipo(Object, Span`1)
+
+1)    at ColectivoTest.ColectivoTest.ColectivoProcesaElSaldoEnElLimiteSegunTipo(Int32 tipoId, Boolean excedeElLimiteNegativo, Int32 saldoEsperado, Int32 boletosEsperados) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 131
+   at InvokeStub_ColectivoTest.ColectivoProcesaElSaldoEnElLimiteSegunTipo(Object, Span`1)
+
+
+ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(3) Failed | Error:   Assert.That(_colectivo.pagarCon(tarjeta), Is.False)
+  Expected: False
+  But was:  <TarjetaSUBE.Tarjeta>
+ | StackTrace:    at ColectivoTest.ColectivoTest.ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(Int32 tipoId) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 102
+   at InvokeStub_ColectivoTest.ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(Object, Span`1)
+
+1)    at ColectivoTest.ColectivoTest.ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(Int32 tipoId) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 102
+   at InvokeStub_ColectivoTest.ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(Object, Span`1)
+
+
+ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(2) Failed | Error: System.Exception : No se puede cobrar el viaje, ya que no han pasado 5 minutos desde el último cobro de medio boleto | StackTrace:    at TarjetaSUBE.Tarjeta.CobrarInterno(Decimal monto, Colectivo colectivo) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Tarjeta.cs:line 177
+   at TarjetaSUBE.Tarjeta.Cobrar(Decimal monto, Colectivo colectivo) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Tarjeta.cs:line 88
+   at TarjetaSUBE.Colectivo.pagarCon(Tarjeta tarjeta) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Colectivo.cs:line 24
+   at ColectivoTest.ColectivoTest.ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(Int32 tipoId) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 102
+   at InvokeStub_ColectivoTest.ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+
+CrearColectivo Passed
+ColectivoProcesaElSaldoEnElLimiteSegunTipo(2,False,-1575,1) Failed | Error:   Assert.That(_colectivo.pagarCon(tarjeta), Is.True)
+  Expected: True
+  But was:  <TarjetaSUBE.Tarjeta>
+ | StackTrace:    at ColectivoTest.ColectivoTest.ColectivoProcesaElSaldoEnElLimiteSegunTipo(Int32 tipoId, Boolean excedeElLimiteNegativo, Int32 saldoEsperado, Int32 boletosEsperados) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 131
+   at InvokeStub_ColectivoTest.ColectivoProcesaElSaldoEnElLimiteSegunTipo(Object, Span`1)
+
+1)    at ColectivoTest.ColectivoTest.ColectivoProcesaElSaldoEnElLimiteSegunTipo(Int32 tipoId, Boolean excedeElLimiteNegativo, Int32 saldoEsperado, Int32 boletosEsperados) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 131
+   at InvokeStub_ColectivoTest.ColectivoProcesaElSaldoEnElLimiteSegunTipo(Object, Span`1)
+
+
+ColectivoPagarConAplicaLaTarifaDelTipo(1,349) Failed | Error:   Assert.That(_colectivo.pagarCon(tarjeta), Is.True)
+  Expected: True
+  But was:  <TarjetaSUBE.Tarjeta>
+ | StackTrace:    at ColectivoTest.ColectivoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Int32 tipoId, Int32 saldoEsperado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 82
+
+1)    at ColectivoTest.ColectivoTest.ColectivoPagarConAplicaLaTarifaDelTipo(Int32 tipoId, Int32 saldoEsperado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\ColectivoTest.cs:line 82
+
+
+
+Test Output:
+[Informational] Building Test Projects
+[Informational] ========== Starting test run ==========
+[Informational] NUnit Adapter 5.0.0.0: Test execution started
+[Informational] Running selected tests in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\bin\Debug\net10.0\TarjetaSUBETests.dll
+[Informational]    NUnit3TestExecutor discovered 13 of 13 NUnit test cases using Current Discovery mode, Non-Explicit run
+[Informational] NUnit Adapter 5.0.0.0: Test execution complete
+[Informational] ========== Test run finished: 13 Tests (2 Passed, 11 Failed, 0 Skipped) run in 1.5 sec ==========

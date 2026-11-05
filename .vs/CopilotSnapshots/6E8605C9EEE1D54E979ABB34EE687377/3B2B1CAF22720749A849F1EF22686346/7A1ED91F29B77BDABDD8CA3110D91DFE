@@ -1,0 +1,108 @@
+﻿using System;
+
+namespace TarjetaSUBE
+{
+    public class Boleto
+    {
+        public int IdBoleto { get; set; }
+        public Tarjeta Tarjeta { get; set; }
+        public decimal Monto;
+        public string Fecha { get; set; }
+        public Colectivo Colectivo { get; set; }
+        public decimal SaldoRestante { get; set; }
+        public int es_Trasbordo { get; set; }
+
+        public Boleto() { }
+
+        public Boleto(
+            Tarjeta tarjeta,
+            Colectivo colectivo,
+            decimal monto = 2150m,
+            bool trasbordo = false)
+        {
+            int viajesPreviosDelMes = Contexto.Db.Boletos.Count(b =>
+                b.Tarjeta.IdTarjeta == tarjeta.IdTarjeta
+                && DateTime.TryParseExact(
+                    b.Fecha,
+                    "yyyy-MM-dd HH:mm:ss",
+                    System.Globalization.CultureInfo.InvariantCulture,
+                    System.Globalization.DateTimeStyles.None,
+                    out var fechaBoleto)
+                && fechaBoleto.Year == Contexto.Reloj().Year
+                && fechaBoleto.Month == Contexto.Reloj().Month);
+
+            if (monto == 2150m
+                && (tarjeta.Tipo.nombre_Tipo == "Normal" || viajesPreviosDelMes >= 29))
+            {
+                monto = 1580m;
+            }
+
+            tarjeta.Cobrar(monto, colectivo);
+            CopiarDesdeUltimoBoleto(tarjeta, colectivo);
+        }
+
+        public Boleto(Tarjeta tarjeta, Colectivo colectivo, DateTime fecha)
+        {
+            tarjeta.Cobrar(1580m, colectivo, fecha);
+            CopiarDesdeUltimoBoleto(tarjeta, colectivo);
+        }
+
+        internal Boleto(Tarjeta tarjeta, Colectivo colectivo, decimal monto, bool trasbordo, DateTime fecha)
+        {
+            Fecha = fecha.ToString("yyyy-MM-dd HH:mm:ss");
+            es_Trasbordo = trasbordo ? 1 : 0;
+            Tarjeta = tarjeta;
+            Colectivo = colectivo;
+            Monto = monto;
+            SaldoRestante = tarjeta.Saldo;
+            Contexto.Db.Boletos.Add(this);
+            Contexto.Db.SaveChanges();
+        }
+
+        private void CopiarDesdeUltimoBoleto(Tarjeta tarjeta, Colectivo colectivo)
+        {
+            var boleto = Contexto.Db.Boletos
+                .Where(b => b.Tarjeta.IdTarjeta == tarjeta.IdTarjeta && b.Colectivo.IdColectivo == colectivo.IdColectivo)
+                .OrderByDescending(b => b.IdBoleto)
+                .First();
+
+            IdBoleto = boleto.IdBoleto;
+            Tarjeta = boleto.Tarjeta;
+            Colectivo = boleto.Colectivo;
+            Monto = boleto.Monto;
+            Fecha = boleto.Fecha;
+            SaldoRestante = boleto.SaldoRestante;
+            es_Trasbordo = boleto.es_Trasbordo;
+        }
+        public string Return_Fecha()
+        {
+            return this.Fecha;
+        }
+
+        public string Return_Tipo_Tarjeta()
+        {
+            return this.Tarjeta.Tipo.nombre_Tipo;
+        }
+
+        public string Return_Linea()
+        {
+            return this.Colectivo.Linea;
+        }
+
+        public decimal Return_Total_Abonado()
+        {
+            return this.Monto;
+        }
+
+        public decimal Return_Saldo_Restante()
+        {
+            return this.SaldoRestante;
+        }
+
+        public int Return_ID_Tarjeta()
+        {
+            return this.Tarjeta.IdTarjeta;
+        }
+    }
+}
+

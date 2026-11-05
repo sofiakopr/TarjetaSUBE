@@ -57,7 +57,7 @@ namespace MasSobreElBoletoTest
                 tarjeta.fecha_ultimo_cobro = DateTime.Now.AddMinutes(-6);
             }
 
-            Assert.That(_colectivo.pagarCon(tarjeta), Is.True);
+            Assert.That(_colectivo.pagarCon(tarjeta), Is.SameAs(tarjeta));
 
             var boleto = _db.Boletos.Single();
 
@@ -69,7 +69,7 @@ namespace MasSobreElBoletoTest
                 out _), Is.True);
             Assert.That(boleto.Return_Tipo_Tarjeta(), Is.EqualTo(nombreTipo));
             Assert.That(boleto.Return_Linea(), Is.EqualTo(_colectivo.Linea));
-            Assert.That(boleto.Return_Total_Abonado(), Is.EqualTo(totalAbonado));
+            Assert.That(boleto.Return_Total_Abonado(), Is.EqualTo(tipoId == 2 ? totalAbonado / 2 : tipoId >= 3 ? 0 : totalAbonado));
             Assert.That(boleto.Return_Saldo_Restante(), Is.EqualTo(saldoRestante));
             Assert.That(boleto.Return_ID_Tarjeta(), Is.EqualTo(tarjeta.IdTarjeta));
             Assert.That(tarjeta.Saldo, Is.EqualTo(saldoRestante));
@@ -93,11 +93,11 @@ namespace MasSobreElBoletoTest
                 tarjeta.fecha_ultimo_cobro = DateTime.Now.AddMinutes(-6);
             }
 
-            Assert.That(_colectivo.pagarCon(tarjeta), Is.True);
+            Assert.That(_colectivo.pagarCon(tarjeta), Is.SameAs(tarjeta));
 
             var boleto = _db.Boletos.Single();
 
-            Assert.That(boleto.Return_Total_Abonado(), Is.EqualTo(2150));
+            Assert.That(boleto.Return_Total_Abonado(), Is.EqualTo(tipoId == 2 ? 1075 : tipoId >= 3 ? 0 : 2150));
             Assert.That(boleto.Return_Tipo_Tarjeta(), Is.EqualTo(tarjeta.Tipo.nombre_Tipo));
             Assert.That(150 - tarjeta.Saldo, Is.EqualTo(montoDebitado));
             Assert.That(boleto.Return_Saldo_Restante(), Is.EqualTo(saldoEsperado));
@@ -117,8 +117,15 @@ namespace MasSobreElBoletoTest
                 Tipo = _tipos.Single(tipo => tipo.id_Tipo == tipoId)
             };
 
-            Assert.That(_colectivo.pagarCon(tarjeta), Is.False);
-            Assert.That(_db.Boletos, Is.Empty);
+            if (tipoId <= 2)
+            {
+                Assert.That(() => _colectivo.pagarCon(tarjeta), Throws.Exception);
+            }
+            else
+            {
+                Assert.That(_colectivo.pagarCon(tarjeta), Is.SameAs(tarjeta));
+            }
+            Assert.That(_db.Boletos.Count(), Is.EqualTo(tipoId >= 3 ? 1 : 0));
             Assert.That(tarjeta.Saldo, Is.EqualTo(-501));
         }
 
@@ -146,7 +153,7 @@ namespace MasSobreElBoletoTest
             }
             else
             {
-                Assert.That(_colectivo.pagarCon(tarjeta), Is.True);
+                Assert.That(_colectivo.pagarCon(tarjeta), Is.SameAs(tarjeta));
             }
 
             Assert.That(_db.Boletos.Count(), Is.EqualTo(boletosEsperados));

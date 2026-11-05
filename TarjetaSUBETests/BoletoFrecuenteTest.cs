@@ -51,24 +51,25 @@ namespace BoletoFrecuenteTest
         }
 
         [Test]
-        [TestCase(0, 1580)]
-        [TestCase(28, 1580)]
-        [TestCase(29, 1264)]
-        [TestCase(78, 1264)]
-        [TestCase(79, 1185)]
-        [TestCase(80, 1185)]
-        public void AplicaDescuentoSegunCantidadDeViajesDelMes(int viajesPrevios, int montoDebitado)
+        [TestCase(0, 2150)]
+        [TestCase(28, 2150)]
+        [TestCase(29, 1720)]
+        [TestCase(78, 1720)]
+        [TestCase(79, 1612.5)]
+        [TestCase(80, 1612.5)]
+        public void AplicaDescuentoSegunCantidadDeViajesDelMes(int viajesPrevios, decimal montoDebitado)
         {
             var tarjeta = ObtenerTarjeta(1);
             tarjeta.Cargar(10000);
             AgregarViajesPrevios(tarjeta, viajesPrevios, DateTime.Now);
 
             var saldoInicial = tarjeta.Saldo;
-            var boleto = new Boleto(tarjeta, _colectivo);
+            tarjeta.Cobrar(2150m, _colectivo);
+            var boleto = _db.Boletos.OrderBy(b => b.IdBoleto).Last();
 
             Assert.That(saldoInicial - tarjeta.Saldo, Is.EqualTo(montoDebitado));
             Assert.That(boleto.Return_Saldo_Restante(), Is.EqualTo(saldoInicial - montoDebitado));
-            Assert.That(boleto.Return_Total_Abonado(), Is.EqualTo(1580));
+            Assert.That(boleto.Return_Total_Abonado(), Is.EqualTo(montoDebitado));
             Assert.That(_db.Boletos.Count(), Is.EqualTo(viajesPrevios + 1));
         }
 
@@ -80,15 +81,16 @@ namespace BoletoFrecuenteTest
             AgregarViajesPrevios(tarjeta, 80, DateTime.Now.AddMonths(-1));
 
             var saldoInicial = tarjeta.Saldo;
-            var boleto = new Boleto(tarjeta, _colectivo);
+            tarjeta.Cobrar(2150m, _colectivo);
+            var boleto = _db.Boletos.OrderBy(b => b.IdBoleto).Last();
 
-            Assert.That(saldoInicial - tarjeta.Saldo, Is.EqualTo(1580));
-            Assert.That(boleto.Return_Saldo_Restante(), Is.EqualTo(saldoInicial - 1580));
+            Assert.That(saldoInicial - tarjeta.Saldo, Is.EqualTo(2150));
+            Assert.That(boleto.Return_Saldo_Restante(), Is.EqualTo(saldoInicial - 2150));
         }
 
         [Test]
-        [TestCase(2, 790)]
-        [TestCase(3, 1580)]
+        [TestCase(2, 2150)]
+        [TestCase(3, 2150)]
         [TestCase(4, 0)]
         public void DescuentoFrecuenteSoloAplicaATarjetasNormales(int tipoId, int montoDebitado)
         {
@@ -96,6 +98,7 @@ namespace BoletoFrecuenteTest
             tarjeta.Cargar(2000);
             AgregarViajesPrevios(tarjeta, 79, DateTime.Now);
 
+            var saldoInicial = tarjeta.Saldo;
             if (tipoId == 2)
             {
                 tarjeta.fecha_ultimo_cobro = DateTime.Now.AddMinutes(-6);
@@ -104,9 +107,8 @@ namespace BoletoFrecuenteTest
             {
                 tarjeta.fecha_ultimo_cobro = DateTime.Now;
             }
-
-            var saldoInicial = tarjeta.Saldo;
-            var boleto = new Boleto(tarjeta, _colectivo);
+            tarjeta.Cobrar(2150m, _colectivo);
+            var boleto = _db.Boletos.OrderBy(b => b.IdBoleto).Last();
 
             Assert.That(saldoInicial - tarjeta.Saldo, Is.EqualTo(montoDebitado));
             Assert.That(boleto.Return_Saldo_Restante(), Is.EqualTo(saldoInicial - montoDebitado));

@@ -18,30 +18,31 @@ namespace TarjetaSUBE
         {
             if (estacionada)
             {
-                if (ultimo_uso.Date != DateTime.Now.Date)
+                if (tarjeta.Saldo < 2418.75m)
                 {
-                    tarjeta.Cobrar_Bici(2418.75m);
+                    throw new ArgumentException("Saldo insuficiente para retirar la bicicleta");
                 }
+
+                tarjeta.Cobrar_Bici(2418.75m);
                 ultimo_uso = DateTime.Now;
                 estacionada = false;
+                return this;
             }
 
-            if (!estacionada)
+            TimeSpan diferencia = DateTime.Now - ultimo_uso;
+            decimal multa = Math.Max(0, (decimal)diferencia.TotalHours - 1) * 1250m;
+            if (tarjeta.Saldo < multa)
             {
-                TimeSpan diferencia = DateTime.Now - ultimo_uso;
-                if (diferencia.TotalHours != 0)
-                {
-                    decimal total = (decimal)diferencia.TotalHours * 1250m;
-                    tarjeta.Cobrar_Bici(total);
-                    ultimo_uso = DateTime.Now;
-                    Console.WriteLine("Se cobraron " + total + " pesos de multa por el uso excesivo de la bicicleta retirada.");
-                }
-                else
-                {
-                    ultimo_uso = DateTime.Now;
-                }
-                estacionada = true;
+                throw new ArgumentException("Saldo insuficiente para pagar la multa de la bicicleta");
             }
+
+            if (multa > 0)
+            {
+                tarjeta.Cobrar_Bici(multa);
+                Console.WriteLine("Se cobraron " + multa + " pesos de multa por el uso excesivo de la bicicleta retirada.");
+            }
+            ultimo_uso = DateTime.Now;
+            estacionada = true;
             return this;
         }
 

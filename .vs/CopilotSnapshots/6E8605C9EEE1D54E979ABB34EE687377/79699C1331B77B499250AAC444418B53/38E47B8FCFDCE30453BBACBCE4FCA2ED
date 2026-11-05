@@ -1,0 +1,147 @@
+﻿using Microsoft.EntityFrameworkCore;
+using NUnit.Framework;
+using TarjetaSUBE;
+
+namespace FranquiciaBoletoYTarjetaTipoTest
+{
+    public class FranquiciaBoletoYTarjetaTipoTest
+    {
+        private TarjetaSUBEContext _db = null!;
+        private Tarjeta_tipo[] _tipos = null!;
+        private Tarjeta[] _tarjetas = null!;
+        private Colectivo _colectivo = null!;
+
+        [SetUp]
+        public void Setup()
+        {
+            var opciones = new DbContextOptionsBuilder<TarjetaSUBEContext>()
+                .UseInMemoryDatabase(Guid.NewGuid().ToString())
+                .Options;
+
+            _db = new TarjetaSUBEContext(opciones);
+            Contexto.Db = _db;
+
+            _tipos =
+            [
+                new Tarjeta_tipo { id_Tipo = 1, nombre_Tipo = "Tarifa general", porcentaje_pago = 100 },
+                new Tarjeta_tipo { id_Tipo = 2, nombre_Tipo = "Medio boleto estudiantil", porcentaje_pago = 50 },
+                new Tarjeta_tipo { id_Tipo = 3, nombre_Tipo = "Boleto gratuito estudiantil", porcentaje_pago = 0 },
+                new Tarjeta_tipo { id_Tipo = 4, nombre_Tipo = "Franquicia completa", porcentaje_pago = 0 }
+            ];
+            _db.Tarjeta_tipos.AddRange(_tipos);
+
+            _colectivo = new Colectivo
+            {
+                IdColectivo = 1,
+                Linea = "123",
+                Matricula = "ABC 123"
+            };
+            _db.Colectivos.Add(_colectivo);
+            _db.SaveChanges();
+
+            _tarjetas = _tipos
+                .Select(tipo => new Tarjeta(0, tipo.id_Tipo) { Tipo = tipo })
+                .ToArray();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            _db.Dispose();
+        }
+
+        [Test]
+        [TestCase(1, "Tarifa general", -150)]
+        [TestCase(2, "Medio boleto estudiantil", 925)]
+        [TestCase(3, "Boleto gratuito estudiantil", 2000)]
+        [TestCase(4, "Franquicia completa", 2000)]
+        public void BoletoAplicaElTipoDeTarjeta(int tipoId, string nombreTipo, int saldoEsperado)
+        {
+            var tarjeta = ObtenerTarjeta(tipoId);
+            tarjeta.Cargar(2000);
+
+            if (tipoId == 2)
+            {
+                tarjeta.fecha_ultimo_cobro = DateTime.Now.AddMinutes(-6);
+            }
+            else if (tipoId == 4)
+            {
+                tarjeta.fecha_ultimo_cobro = DateTime.Now;
+            }
+
+            var boleto = new Boleto(tarjeta, _colectivo);
+            var boletoGuardado = _db.Boletos.Single();
+
+            Assert.That(boletoGuardado.Return_Tipo_Tarjeta(), Is.EqualTo(nombreTipo));
+            Assert.That(boletoGuardado.Return_Linea(), Is.EqualTo(_colectivo.Linea));
+            Assert.That(boletoGuardado.Return_Total_Abonado(), Is.EqualTo(2150));
+            Assert.That(boletoGuardado.Return_Saldo_Restante(), Is.EqualTo(saldoEsperado));
+            Assert.That(boletoGuardado.Return_ID_Tarjeta(), Is.EqualTo(tarjeta.IdTarjeta));
+            Assert.That(tarjeta.Saldo, Is.EqualTo(saldoEsperado));
+            Assert.That(boleto.Fecha, Does.Match(@"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$"));
+        }
+
+        [Test]
+        public void BoletoGratuitoEstudiantilCobraDespuesDeDosViajesGratuitos()
+        {
+            var tarjeta = ObtenerTarjeta(3);
+            tarjeta.Cargar(2000);
+
+            new Boleto(tarjeta, _colectivo);
+            new Boleto(tarjeta, _colectivo);
+            Assert.That(tarjeta.Saldo, Is.EqualTo(2000));
+
+            new Boleto(tarjeta, _colectivo);
+
+            Assert.That(tarjeta.Saldo, Is.EqualTo(-150));
+            Assert.That(_db.Boletos.Count(), Is.EqualTo(3));
+        }
+
+        [Test]
+        public void MedioBoletoFallaDuranteElTiempoDeEspera()
+        {
+            var tarjeta = ObtenerTarjeta(2);
+            tarjeta.Cargar(2000);
+            tarjeta.fecha_ultimo_cobro = DateTime.Now;
+
+            var exception = Assert.Throws<Exception>(() => new Boleto(tarjeta, _colectivo));
+
+            Assert.That(exception!.Message, Is.EqualTo("No se puede cobrar el viaje, ya que no han pasado 5 minutos desde el último cobro de medio boleto"));
+            Assert.That(_db.Boletos, Is.Empty);
+            Assert.That(tarjeta.Saldo, Is.EqualTo(2000));
+        }
+
+        [Test]
+        public void TarifaGeneralFallaAlSuperarElLimiteNegativo()
+        {
+            var tarjeta = ObtenerTarjeta(1);
+            tarjeta.Cargar(3000);
+
+            new Boleto(tarjeta, _colectivo);
+            new Boleto(tarjeta, _colectivo);
+
+            Assert.That(() => new Boleto(tarjeta, _colectivo), Throws.TypeOf<ArgumentException>());
+            Assert.That(_db.Boletos.Count(), Is.EqualTo(2));
+            Assert.That(tarjeta.Saldo, Is.EqualTo(-1300));
+        }
+
+        [Test]
+        public void FranquiciaCompletaFallaFueraDelTiempoPermitido()
+        {
+            var tarjeta = ObtenerTarjeta(4);
+            tarjeta.Cargar(2000);
+            tarjeta.fecha_ultimo_cobro = DateTime.Now.AddMinutes(-6);
+
+            var exception = Assert.Throws<Exception>(() => new Boleto(tarjeta, _colectivo));
+
+            Assert.That(exception!.Message, Is.EqualTo("EL JUBILADO PAGO HACE MENOS DE 5 MINUTOS"));
+            Assert.That(_db.Boletos, Is.Empty);
+            Assert.That(tarjeta.Saldo, Is.EqualTo(2000));
+        }
+
+        private Tarjeta ObtenerTarjeta(int tipoId)
+        {
+            return _tarjetas.Single(tarjeta => tarjeta.tarjeta_tipo == tipoId);
+        }
+    }
+}

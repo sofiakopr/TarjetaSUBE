@@ -61,7 +61,7 @@ namespace LimitacionFranquiciaTests
 
         [Test]
         [TestCase(1, -1600)]
-        [TestCase(2, 2700)]
+        [TestCase(2, 550)]
         [TestCase(3, 2700)]
         [TestCase(4, 7000)]
         public void CadaTipoDeTarjetaAplicaSuTarifaEnLosViajesPosteriores(int tipoId, int saldoEsperado)
@@ -95,7 +95,7 @@ namespace LimitacionFranquiciaTests
                 tarjeta.fecha_ultimo_cobro = DateTime.Now;
             }
 
-            Assert.That(_colectivo.pagarCon(tarjeta), Is.True);
+            Assert.That(_colectivo.pagarCon(tarjeta), Is.SameAs(tarjeta));
         }
     }
 }

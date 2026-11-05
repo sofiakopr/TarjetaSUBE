@@ -64,7 +64,7 @@ namespace LimitacionMedioBoleto
 
         [Test]
         [TestCase(1, SaldoInicial - 4 * PrecioCompleto)]
-        [TestCase(2, SaldoInicial - 4 * PrecioMedio)]
+        [TestCase(2, SaldoInicial - 2 * PrecioMedio - 2 * PrecioCompleto)]
         [TestCase(3, SaldoInicial - 2 * PrecioCompleto)]
         [TestCase(4, SaldoInicial)]
         public void CadaTipoDeTarjetaAplicaSuTarifaEnLosViajesPosteriores(int tipoId, int saldoEsperado)
@@ -98,7 +98,7 @@ namespace LimitacionMedioBoleto
                 tarjeta.fecha_ultimo_cobro = DateTime.Now;
             }
 
-            Assert.That(_colectivo.pagarCon(tarjeta), Is.True);
+            Assert.That(_colectivo.pagarCon(tarjeta), Is.SameAs(tarjeta));
         }
     }
 }

@@ -1,0 +1,151 @@
+﻿using Microsoft.EntityFrameworkCore;
+using NUnit.Framework;
+using TarjetaSUBE;
+
+namespace ColectivoTest
+{
+    public class ColectivoTest
+    {
+        private TarjetaSUBEContext _db = null!;
+        private Tarjeta_tipo[] _tipos = null!;
+        private Tarjeta[] _tarjetasDebajoDelLimite = null!;
+        private Tarjeta[] _tarjetasEnElLimite = null!;
+        private Colectivo _colectivo = null!;
+
+        [SetUp]
+        public void Setup()
+        {
+            var opciones = new DbContextOptionsBuilder<TarjetaSUBEContext>()
+                .UseInMemoryDatabase(Guid.NewGuid().ToString())
+                .Options;
+
+            _db = new TarjetaSUBEContext(opciones);
+            Contexto.Db = _db;
+
+            _tipos =
+            [
+                new Tarjeta_tipo { id_Tipo = 1, nombre_Tipo = "Tarifa general", porcentaje_pago = 100 },
+                new Tarjeta_tipo { id_Tipo = 2, nombre_Tipo = "Medio boleto estudiantil", porcentaje_pago = 50 },
+                new Tarjeta_tipo { id_Tipo = 3, nombre_Tipo = "Boleto gratuito estudiantil", porcentaje_pago = 0 },
+                new Tarjeta_tipo { id_Tipo = 4, nombre_Tipo = "Franquicia completa", porcentaje_pago = 0 }
+            ];
+            _db.Tarjeta_tipos.AddRange(_tipos);
+
+            _colectivo = new Colectivo
+            {
+                IdColectivo = 98,
+                Linea = "123",
+                Matricula = "ABC 123"
+            };
+            _db.Colectivos.Add(_colectivo);
+            _db.SaveChanges();
+
+            _tarjetasDebajoDelLimite = _tipos
+                .Select(tipo => new Tarjeta(-501, tipo.id_Tipo) { Tipo = tipo })
+                .ToArray();
+            _tarjetasEnElLimite = _tipos
+                .Select(tipo => new Tarjeta(-500, tipo.id_Tipo) { Tipo = tipo })
+                .ToArray();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            _db.Dispose();
+        }
+
+        [Test]
+        public void CrearColectivo()
+        {
+            Assert.That(_db.Colectivos.Count(), Is.EqualTo(1));
+        }
+
+        [Test]
+        [TestCase(1, 349)]
+        [TestCase(2, 1424)]
+        [TestCase(3, 2499)]
+        [TestCase(4, 2499)]
+        public void ColectivoPagarConAplicaLaTarifaDelTipo(int tipoId, int saldoEsperado)
+        {
+            var tarjeta = ObtenerTarjeta(_tarjetasDebajoDelLimite, tipoId);
+            tarjeta.Cargar(3000);
+
+            if (tipoId == 2)
+            {
+                tarjeta.fecha_ultimo_cobro = DateTime.Now.AddMinutes(-6);
+            }
+            else if (tipoId == 4)
+            {
+                tarjeta.fecha_ultimo_cobro = DateTime.Now;
+            }
+
+            Assert.That(_colectivo.pagarCon(tarjeta), Is.SameAs(tarjeta));
+
+            var boleto = _db.Boletos.Single();
+
+            Assert.That(boleto.Return_Tipo_Tarjeta(), Is.EqualTo(_tipos.Single(tipo => tipo.id_Tipo == tipoId).nombre_Tipo));
+            Assert.That(boleto.Return_Linea(), Is.EqualTo(_colectivo.Linea));
+            Assert.That(boleto.Return_Total_Abonado(), Is.EqualTo(2150));
+            Assert.That(boleto.Return_Saldo_Restante(), Is.EqualTo(saldoEsperado));
+            Assert.That(tarjeta.Saldo, Is.EqualTo(saldoEsperado));
+        }
+
+        [Test]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
+        [TestCase(4)]
+        public void ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(int tipoId)
+        {
+            var tarjeta = ObtenerTarjeta(_tarjetasDebajoDelLimite, tipoId);
+
+            if (tipoId <= 2)
+            {
+                Assert.That(() => _colectivo.pagarCon(tarjeta), Throws.Exception);
+            }
+            else
+            {
+                Assert.That(_colectivo.pagarCon(tarjeta), Is.SameAs(tarjeta));
+            }
+            Assert.That(_db.Boletos, Is.Empty);
+            Assert.That(tarjeta.Saldo, Is.EqualTo(-501));
+        }
+
+        [Test]
+        [TestCase(1, true, -500, 0)]
+        [TestCase(2, false, -1575, 1)]
+        [TestCase(3, false, -500, 1)]
+        [TestCase(4, false, -500, 1)]
+        public void ColectivoProcesaElSaldoEnElLimiteSegunTipo(int tipoId, bool excedeElLimiteNegativo, int saldoEsperado, int boletosEsperados)
+        {
+            var tarjeta = ObtenerTarjeta(_tarjetasEnElLimite, tipoId);
+
+            if (tipoId == 2)
+            {
+                tarjeta.fecha_ultimo_cobro = DateTime.Now.AddMinutes(-6);
+            }
+            else if (tipoId == 4)
+            {
+                tarjeta.fecha_ultimo_cobro = DateTime.Now;
+            }
+
+            if (excedeElLimiteNegativo)
+            {
+                Assert.That(() => _colectivo.pagarCon(tarjeta), Throws.TypeOf<ArgumentException>());
+            }
+            else
+            {
+                Assert.That(_colectivo.pagarCon(tarjeta), Is.SameAs(tarjeta));
+            }
+
+            Assert.That(_db.Boletos.Count(), Is.EqualTo(boletosEsperados));
+            Assert.That(tarjeta.Saldo, Is.EqualTo(saldoEsperado));
+        }
+
+        private static Tarjeta ObtenerTarjeta(Tarjeta[] tarjetas, int tipoId)
+        {
+            return tarjetas.Single(tarjeta => tarjeta.tarjeta_tipo == tipoId);
+
+        }
+    }
+}

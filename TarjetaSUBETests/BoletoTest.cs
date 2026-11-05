@@ -69,13 +69,14 @@ namespace BoletoTest
                 tarjeta.fecha_ultimo_cobro = DateTime.Now;
             }
 
-            var boleto = new Boleto(tarjeta, _colectivo);
+            tarjeta.Cobrar(2150m, _colectivo);
+            var boleto = _db.Boletos.Single();
 
             var boletoGuardado = _db.Boletos.Single();
 
             Assert.That(boletoGuardado.Return_Tipo_Tarjeta(), Is.EqualTo(nombreTipo));
             Assert.That(boletoGuardado.Return_Linea(), Is.EqualTo(_colectivo.Linea));
-            Assert.That(boletoGuardado.Return_Total_Abonado(), Is.EqualTo(2150));
+            Assert.That(boletoGuardado.Return_Total_Abonado(), Is.EqualTo(tipoId == 2 ? 1075 : tipoId >= 3 ? 0 : 2150));
             Assert.That(boletoGuardado.Return_Saldo_Restante(), Is.EqualTo(saldoEsperado));
             Assert.That(boletoGuardado.Return_ID_Tarjeta(), Is.EqualTo(tarjeta.IdTarjeta));
             Assert.That(tarjeta.Saldo, Is.EqualTo(saldoEsperado));
@@ -93,10 +94,10 @@ namespace BoletoTest
             var tarjeta = ObtenerTarjeta(1);
             tarjeta.Cargar(4000);
 
-            new Boleto(tarjeta, _colectivo);
-            new Boleto(tarjeta, _colectivo);
+            tarjeta.Cobrar(2150m, _colectivo);
+            tarjeta.Cobrar(2150m, _colectivo);
 
-            Assert.That(() => new Boleto(tarjeta, _colectivo), Throws.TypeOf<ArgumentException>());
+            Assert.That(() => tarjeta.Cobrar(2150m, _colectivo), Throws.TypeOf<ArgumentException>());
             Assert.That(_db.Boletos.Count(), Is.EqualTo(2));
             Assert.That(tarjeta.Saldo, Is.EqualTo(-300));
         }
@@ -108,7 +109,7 @@ namespace BoletoTest
             tarjeta.Cargar(2000);
             tarjeta.fecha_ultimo_cobro = DateTime.Now;
 
-            var exception = Assert.Throws<Exception>(() => new Boleto(tarjeta, _colectivo));
+            var exception = Assert.Throws<Exception>(() => tarjeta.Cobrar(2150m, _colectivo));
 
             Assert.That(exception!.Message, Is.EqualTo("No se puede cobrar el viaje, ya que no han pasado 5 minutos desde el último cobro de medio boleto"));
             Assert.That(_db.Boletos, Is.Empty);

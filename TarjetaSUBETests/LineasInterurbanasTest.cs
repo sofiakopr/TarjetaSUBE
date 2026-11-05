@@ -71,7 +71,7 @@ namespace LineasInterurbanasTest
             _tarjeta.Cargar(montoCargado);
             var colectivo = ObtenerColectivo(tipoLinea);
 
-            Assert.That(colectivo.pagarCon(_tarjeta), Is.True);
+            Assert.That(colectivo.pagarCon(_tarjeta), Is.SameAs(_tarjeta));
 
             var boleto = _db.Boletos.Single();
             Assert.That(boleto.Return_Total_Abonado(), Is.EqualTo(tarifaEsperada));
@@ -97,7 +97,7 @@ namespace LineasInterurbanasTest
         {
             _colectivoUrbano.interurbano = 2;
 
-            Assert.That(_colectivoUrbano.pagarCon(_tarjeta), Is.False);
+            Assert.That(() => _colectivoUrbano.pagarCon(_tarjeta), Throws.TypeOf<ArgumentException>());
             Assert.That(_db.Boletos, Is.Empty);
             Assert.That(_tarjeta.Saldo, Is.Zero);
         }

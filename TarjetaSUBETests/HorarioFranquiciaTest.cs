@@ -3,7 +3,7 @@ using TarjetaSUBE;
 
 namespace HorarioFranquiciaTest
 {
-    public class Tests
+    public class HorarioFranquiciaTests
     {
         private TarjetaSUBEContext _db = null!;
         private Tarjeta_tipo[] _tipos = null!;
@@ -11,6 +11,7 @@ namespace HorarioFranquiciaTest
         private Tarjeta[] _tarjetasEnElLimite = null!;
         private Colectivo _colectivo = null!;
         private readonly DateTime _fechaBase = new(2026, 1, 15, 12, 0, 0);
+        private DateTime _ahora;
 
         [SetUp]
         public void Setup()
@@ -21,6 +22,8 @@ namespace HorarioFranquiciaTest
 
             _db = new TarjetaSUBEContext(opciones);
             Contexto.Db = _db;
+            _ahora = _fechaBase;
+            Contexto.Reloj = () => _ahora;
 
             _tipos =
             [
@@ -47,24 +50,25 @@ namespace HorarioFranquiciaTest
         public void TearDown()
         {
             _db.Dispose();
+            Contexto.Reloj = () => DateTime.Now;
         }
 
-        [TestCase(1, 5, 59, 1580)]
-        [TestCase(1, 6, 0, 1580)]
-        [TestCase(1, 21, 59, 1580)]
-        [TestCase(1, 22, 0, 1580)]
-        [TestCase(2, 5, 59, 1580)]
-        [TestCase(2, 6, 0, 790)]
-        [TestCase(2, 21, 59, 790)]
-        [TestCase(2, 22, 0, 1580)]
-        [TestCase(3, 5, 59, 1580)]
+        [TestCase(1, 5, 59, 2150)]
+        [TestCase(1, 6, 0, 2150)]
+        [TestCase(1, 21, 59, 2150)]
+        [TestCase(1, 22, 0, 2150)]
+        [TestCase(2, 5, 59, 1075)]
+        [TestCase(2, 6, 0, 1075)]
+        [TestCase(2, 21, 59, 1075)]
+        [TestCase(2, 22, 0, 1075)]
+        [TestCase(3, 5, 59, 0)]
         [TestCase(3, 6, 0, 0)]
         [TestCase(3, 21, 59, 0)]
-        [TestCase(3, 22, 0, 1580)]
-        [TestCase(4, 5, 59, 1580)]
+        [TestCase(3, 22, 0, 0)]
+        [TestCase(4, 5, 59, 0)]
         [TestCase(4, 6, 0, 0)]
         [TestCase(4, 21, 59, 0)]
-        [TestCase(4, 22, 0, 1580)]
+        [TestCase(4, 22, 0, 0)]
         public void AplicaBeneficiosEntreLasSeisYLasVeintidos(
             int tipoId,
             int hora,
@@ -76,6 +80,12 @@ namespace HorarioFranquiciaTest
 
             var fechaActual = new DateTime(_fechaBase.Year, _fechaBase.Month, _fechaBase.Day, hora, minuto, 0);
             var estaEnHorario = hora >= 6 && hora < 22;
+            if (tipoId > 1 && !estaEnHorario)
+            {
+                _ahora = fechaActual;
+                Assert.That(() => tarjeta.Cobrar(2150m, _colectivo), Throws.TypeOf<ArgumentException>());
+                return;
+            }
             if (tipoId == 2 && estaEnHorario)
             {
                 tarjeta.fecha_ultimo_cobro = fechaActual.AddMinutes(-6);
@@ -85,11 +95,13 @@ namespace HorarioFranquiciaTest
                 tarjeta.fecha_ultimo_cobro = fechaActual;
             }
 
-            var boleto = new Boleto(tarjeta, _colectivo, fechaActual);
+            _ahora = fechaActual;
+            tarjeta.Cobrar(2150m, _colectivo);
+            var boleto = _db.Boletos.Single();
 
             Assert.That(boleto.Return_Tipo_Tarjeta(), Is.EqualTo(_tipos.Single(tipo => tipo.id_Tipo == tipoId).nombre_Tipo));
             Assert.That(boleto.Return_Linea(), Is.EqualTo(_colectivo.Linea));
-            Assert.That(boleto.Return_Total_Abonado(), Is.EqualTo(1580));
+            Assert.That(boleto.Return_Total_Abonado(), Is.EqualTo(montoDebitado));
             Assert.That(boleto.Return_Saldo_Restante(), Is.EqualTo(2000 - montoDebitado));
             Assert.That(tarjeta.Saldo, Is.EqualTo(2000 - montoDebitado));
             Assert.That(_db.Boletos.Count(), Is.EqualTo(1));
@@ -103,8 +115,16 @@ namespace HorarioFranquiciaTest
         {
             var tarjeta = ObtenerTarjeta(_tarjetasEnElLimite, tipoId);
             var fueraDeHorario = new DateTime(_fechaBase.Year, _fechaBase.Month, _fechaBase.Day, 5, 59, 0);
+            _ahora = fueraDeHorario;
 
-            Assert.That(() => new Boleto(tarjeta, _colectivo, fueraDeHorario), Throws.TypeOf<ArgumentException>());
+            if (tipoId == 1)
+            {
+                Assert.That(() => tarjeta.Cobrar(2150m, _colectivo), Throws.TypeOf<ArgumentException>());
+            }
+            else
+            {
+                Assert.That(() => tarjeta.Cobrar(2150m, _colectivo), Throws.ArgumentException);
+            }
             Assert.That(tarjeta.Saldo, Is.EqualTo(-500));
             Assert.That(_db.Boletos, Is.Empty);
         }
@@ -115,9 +135,10 @@ namespace HorarioFranquiciaTest
             var tarjeta = ObtenerTarjeta(_tarjetas, 2);
             tarjeta.Cargar(2000);
             var fechaActual = new DateTime(_fechaBase.Year, _fechaBase.Month, _fechaBase.Day, 12, 0, 0);
+            _ahora = fechaActual;
             tarjeta.fecha_ultimo_cobro = fechaActual;
 
-            var exception = Assert.Throws<Exception>(() => new Boleto(tarjeta, _colectivo, fechaActual));
+            var exception = Assert.Throws<Exception>(() => tarjeta.Cobrar(2150m, _colectivo));
 
             Assert.That(exception!.Message, Is.EqualTo("No se puede cobrar el viaje, ya que no han pasado 5 minutos desde el último cobro de medio boleto"));
             Assert.That(tarjeta.Saldo, Is.EqualTo(2000));

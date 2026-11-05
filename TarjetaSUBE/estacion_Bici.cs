@@ -16,18 +16,19 @@ namespace TarjetaSUBE
 
         public Estacion_Bici ingresar_bici(Bicicleta bici, int posicion)
         {
-            int bicisIngresadas = bicis.Count();
+            if (posicion < 0 || posicion >= limite)
+            {
+                throw new Exception("Posición inválida");
+            }
+            if (bicis[posicion] != null)
+            {
+                throw new Exception("La posición ya está ocupada");
+            }
+
+            int bicisIngresadas = bicis.Count(bicicleta => bicicleta != null);
 
             if (bicisIngresadas < limite)
             {
-                if (posicion < 0 || posicion >= limite)
-                {
-                    throw new Exception("Posición inválida");
-                }
-                if (bicis[posicion] != null)
-                {
-                    throw new Exception("La posición ya está ocupada");
-                }
                 bicis[posicion] = bici;
                 return this;
             }

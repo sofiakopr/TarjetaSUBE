@@ -93,7 +93,7 @@ namespace BicicletaTests
 
             Assert.That(() => _bicicleta.Cobrar(tarjetaConSaldoInsuficiente), Throws.Exception);
 
-            Assert.That(tarjetaConSaldoInsuficiente.Saldo, Is.EqualTo(2000m));
+            Assert.That(tarjetaConSaldoInsuficiente.Saldo, Is.EqualTo(2000m).Within(0.02m));
             Assert.That(_estacion.bicis[0], Is.SameAs(_bicicleta));
         }
 

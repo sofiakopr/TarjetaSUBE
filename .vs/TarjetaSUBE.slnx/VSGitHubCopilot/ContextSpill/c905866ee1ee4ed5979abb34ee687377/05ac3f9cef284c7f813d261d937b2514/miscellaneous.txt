@@ -1,0 +1,116 @@
+﻿Test run completed. Ran 21 test(s). 12 Passed, 9 Failed 
+AplicaBeneficiosEntreLasSeisYLasVeintidos(1,6,0,1580) Failed | Error:   Assert.That(boleto.Return_Saldo_Restante(), Is.EqualTo(2000 - montoDebitado))
+  Expected: 420
+  But was:  2000m
+ | StackTrace:    at HorarioFranquiciaTest.HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Int32 tipoId, Int32 hora, Int32 minuto, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 93
+   at InvokeStub_HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Object, Span`1)
+
+1)    at HorarioFranquiciaTest.HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Int32 tipoId, Int32 hora, Int32 minuto, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 93
+   at InvokeStub_HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Object, Span`1)
+
+
+AplicaBeneficiosEntreLasSeisYLasVeintidos(3,21,59,0) Failed | Error:   Assert.That(boleto.Return_Total_Abonado(), Is.EqualTo(1580))
+  Expected: 1580
+  But was:  0m
+ | StackTrace:    at HorarioFranquiciaTest.HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Int32 tipoId, Int32 hora, Int32 minuto, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 92
+   at InvokeStub_HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Object, Span`1)
+
+1)    at HorarioFranquiciaTest.HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Int32 tipoId, Int32 hora, Int32 minuto, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 92
+   at InvokeStub_HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Object, Span`1)
+
+
+AplicaBeneficiosEntreLasSeisYLasVeintidos(4,21,59,0) Failed | Error:   Assert.That(boleto.Return_Total_Abonado(), Is.EqualTo(1580))
+  Expected: 1580
+  But was:  0m
+ | StackTrace:    at HorarioFranquiciaTest.HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Int32 tipoId, Int32 hora, Int32 minuto, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 92
+   at InvokeStub_HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Object, Span`1)
+
+1)    at HorarioFranquiciaTest.HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Int32 tipoId, Int32 hora, Int32 minuto, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 92
+   at InvokeStub_HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Object, Span`1)
+
+
+AplicaBeneficiosEntreLasSeisYLasVeintidos(2,5,59,1580) Passed
+FueraDelHorarioElCobroCompletoRespetaElLimiteNegativo(2) Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(4,22,0,1580) Failed | Error: System.Exception : EL JUBILADO PAGO HACE MENOS DE 5 MINUTOS | StackTrace:    at TarjetaSUBE.Tarjeta.CobrarInterno(Decimal monto, Colectivo colectivo, Nullable`1 fechaCobro) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Tarjeta.cs:line 183
+   at TarjetaSUBE.Tarjeta.Cobrar(Decimal monto, Colectivo colectivo, DateTime fechaCobro) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Tarjeta.cs:line 98
+   at TarjetaSUBE.Boleto..ctor(Tarjeta tarjeta, Colectivo colectivo, DateTime fecha) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Boleto.cs:line 29
+   at HorarioFranquiciaTest.HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Int32 tipoId, Int32 hora, Int32 minuto, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 88
+   at InvokeStub_HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+
+AplicaBeneficiosEntreLasSeisYLasVeintidos(4,6,0,0) Failed | Error:   Assert.That(boleto.Return_Total_Abonado(), Is.EqualTo(1580))
+  Expected: 1580
+  But was:  0m
+ | StackTrace:    at HorarioFranquiciaTest.HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Int32 tipoId, Int32 hora, Int32 minuto, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 92
+   at InvokeStub_HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Object, Span`1)
+
+1)    at HorarioFranquiciaTest.HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Int32 tipoId, Int32 hora, Int32 minuto, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 92
+   at InvokeStub_HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Object, Span`1)
+
+
+AplicaBeneficiosEntreLasSeisYLasVeintidos(3,22,0,1580) Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(1,22,0,1580) Passed
+FueraDelHorarioElCobroCompletoRespetaElLimiteNegativo(1) Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(2,6,0,790) Passed
+FueraDelHorarioElCobroCompletoRespetaElLimiteNegativo(4) Failed | Error:   Assert.That(() => new Boleto(tarjeta, _colectivo, fueraDeHorario), Throws.TypeOf<ArgumentException>())
+  Expected: <System.ArgumentException>
+  But was:  <System.Exception: EL JUBILADO PAGO HACE MENOS DE 5 MINUTOS
+   at TarjetaSUBE.Tarjeta.CobrarInterno(Decimal monto, Colectivo colectivo, Nullable`1 fechaCobro) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Tarjeta.cs:line 183
+   at TarjetaSUBE.Tarjeta.Cobrar(Decimal monto, Colectivo colectivo, DateTime fechaCobro) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Tarjeta.cs:line 98
+   at TarjetaSUBE.Boleto..ctor(Tarjeta tarjeta, Colectivo colectivo, DateTime fecha) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Boleto.cs:line 29
+   at HorarioFranquiciaTest.HorarioFranquiciaTests.<>c__DisplayClass9_0.<FueraDelHorarioElCobroCompletoRespetaElLimiteNegativo>b__0() in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 107
+   at InvokeStub_ActualValueDelegate`1.Invoke(Object, Object, IntPtr*)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+--- End of stack trace from previous location ---
+   at NUnit.Framework.Internal.ExceptionHelper.Rethrow(Exception exception)
+   at NUnit.Framework.Internal.Reflect.DynamicInvokeWithTransparentExceptions(Delegate delegate)
+   at NUnit.Framework.Internal.ExceptionHelper.RecordException(Delegate parameterlessDelegate, String parameterName)>
+ | StackTrace:    at HorarioFranquiciaTest.HorarioFranquiciaTests.FueraDelHorarioElCobroCompletoRespetaElLimiteNegativo(Int32 tipoId) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 107
+   at InvokeStub_HorarioFranquiciaTests.FueraDelHorarioElCobroCompletoRespetaElLimiteNegativo(Object, Span`1)
+
+1)    at HorarioFranquiciaTest.HorarioFranquiciaTests.FueraDelHorarioElCobroCompletoRespetaElLimiteNegativo(Int32 tipoId) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 107
+   at InvokeStub_HorarioFranquiciaTests.FueraDelHorarioElCobroCompletoRespetaElLimiteNegativo(Object, Span`1)
+
+
+MedioBoletoFallaDuranteElTiempoDeEsperaDentroDelHorario Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(4,5,59,1580) Failed | Error: System.Exception : EL JUBILADO PAGO HACE MENOS DE 5 MINUTOS | StackTrace:    at TarjetaSUBE.Tarjeta.CobrarInterno(Decimal monto, Colectivo colectivo, Nullable`1 fechaCobro) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Tarjeta.cs:line 183
+   at TarjetaSUBE.Tarjeta.Cobrar(Decimal monto, Colectivo colectivo, DateTime fechaCobro) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Tarjeta.cs:line 98
+   at TarjetaSUBE.Boleto..ctor(Tarjeta tarjeta, Colectivo colectivo, DateTime fecha) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Boleto.cs:line 29
+   at HorarioFranquiciaTest.HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Int32 tipoId, Int32 hora, Int32 minuto, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 88
+   at InvokeStub_HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+
+AplicaBeneficiosEntreLasSeisYLasVeintidos(1,5,59,1580) Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(2,21,59,790) Passed
+FueraDelHorarioElCobroCompletoRespetaElLimiteNegativo(3) Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(3,5,59,1580) Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(3,6,0,0) Failed | Error:   Assert.That(boleto.Return_Total_Abonado(), Is.EqualTo(1580))
+  Expected: 1580
+  But was:  0m
+ | StackTrace:    at HorarioFranquiciaTest.HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Int32 tipoId, Int32 hora, Int32 minuto, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 92
+   at InvokeStub_HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Object, Span`1)
+
+1)    at HorarioFranquiciaTest.HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Int32 tipoId, Int32 hora, Int32 minuto, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 92
+   at InvokeStub_HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Object, Span`1)
+
+
+AplicaBeneficiosEntreLasSeisYLasVeintidos(2,22,0,1580) Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(1,21,59,1580) Failed | Error:   Assert.That(boleto.Return_Saldo_Restante(), Is.EqualTo(2000 - montoDebitado))
+  Expected: 420
+  But was:  2000m
+ | StackTrace:    at HorarioFranquiciaTest.HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Int32 tipoId, Int32 hora, Int32 minuto, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 93
+   at InvokeStub_HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Object, Span`1)
+
+1)    at HorarioFranquiciaTest.HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Int32 tipoId, Int32 hora, Int32 minuto, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 93
+   at InvokeStub_HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Object, Span`1)
+
+
+
+Test Output:
+[Informational] Building Test Projects
+[Informational] ========== Starting test run ==========
+[Informational] NUnit Adapter 5.0.0.0: Test execution started
+[Informational] Running selected tests in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\bin\Debug\net10.0\TarjetaSUBETests.dll
+[Informational]    NUnit3TestExecutor discovered 21 of 21 NUnit test cases using Current Discovery mode, Non-Explicit run
+[Informational] NUnit Adapter 5.0.0.0: Test execution complete
+[Informational] ========== Test run finished: 21 Tests (12 Passed, 9 Failed, 0 Skipped) run in 1.5 sec ==========

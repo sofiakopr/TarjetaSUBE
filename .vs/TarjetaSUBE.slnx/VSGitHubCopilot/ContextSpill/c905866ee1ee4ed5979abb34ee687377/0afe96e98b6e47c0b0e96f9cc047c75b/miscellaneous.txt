@@ -1,0 +1,281 @@
+﻿Test run completed. Ran 149 test(s). 134 Passed, 15 Failed 
+RetirarBicicletaDePosicionInvalidaFalla(-1) Passed
+RechazaElRetiroSiNoHaySaldoNiMultaPendiente Passed
+SoloPermiteTrasbordosDeLunesASabadoEntreLasSieteYLasVeintidos(2026,6,1,6,59,False) Passed
+CargarConMontoInvalido_LanzaExcepcionSinModificarSaldo(1,-2000) Passed
+PagarConAplicaLaTarifaSegunElTipoDeLinea(1,4000,3000,1000) Passed
+CobrarFallaSiDebitoSuperaLimiteNegativo(4,False,-500,1) Passed
+SoloPermiteTrasbordosDeLunesASabadoEntreLasSieteYLasVeintidos(2026,6,1,7,0,True) Passed
+ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(1) Passed
+PagarConFallaSiLaTarifaSuperaElLimiteNegativo(0,2150) Failed | Error:   Assert.That(() => colectivo.pagarCon(_tarjetaEnLimite), Throws.TypeOf<ArgumentException>())
+  Expected: <System.ArgumentException>
+  But was:  no exception thrown
+ | StackTrace:    at LineasInterurbanasTest.Tests.PagarConFallaSiLaTarifaSuperaElLimiteNegativo(Int32 tipoLinea, Int32 tarifa) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\LineasInterurbanasTest.cs:line 90
+
+1)    at LineasInterurbanasTest.Tests.PagarConFallaSiLaTarifaSuperaElLimiteNegativo(Int32 tipoLinea, Int32 tarifa) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\LineasInterurbanasTest.cs:line 90
+
+
+TodosLosTiposPuedenRealizarUnTrasbordo(1,2850) Passed
+CargarConMontoInvalido_LanzaExcepcionSinModificarSaldo(2,-2000) Passed
+CadaTipoDeTarjetaAplicaSuTarifaEnLosPrimerosDosViajes(1,6840) Passed
+NoBoletoCuandoSaldoEsMenorALimiteDeViaje(1) Passed
+AplicaDescuentoSegunCantidadDeViajesDelMes(79,1185) Failed | Error:   Assert.That(saldoInicial - tarjeta.Saldo, Is.EqualTo(montoDebitado))
+  Expected: 1185
+  But was:  1612.5m
+ | StackTrace:    at BoletoFrecuenteTest.BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Int32 viajesPrevios, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\BoletoFrecuenteTest.cs:line 69
+   at InvokeStub_BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Object, Span`1)
+
+1)    at BoletoFrecuenteTest.BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Int32 viajesPrevios, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\BoletoFrecuenteTest.cs:line 69
+   at InvokeStub_BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Object, Span`1)
+
+
+AplicaBeneficiosEntreLasSeisYLasVeintidos(1,6,0,1580) Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(3,21,59,0) Passed
+ColectivoPagarConAplicaLaTarifaDelTipo(4,2499) Passed
+BoletoInformaDatosSegunTipoDeTarjeta(4,"Franquicia completa",2150,2000) Passed
+CadaTipoDeTarjetaAplicaSuTarifaEnLosViajesPosteriores(1,2540) Passed
+BoletoGratuitoEstudiantilCobraDespuesDeDosViajesGratuitos Passed
+CargarPorEncimaDelLimite_AcreditaHastaElMaximoYDejaExcedentePendiente(2) Passed
+NoPermiteTrasbordoAlCumplirseUnaHoraDesdeElPrimerBoleto(11) Passed
+CadaTipoDeTarjetaAplicaSuTarifaEnLosViajesPosteriores(2,6840) Passed
+PagarConFallaSiLaTarifaSuperaElLimiteNegativo(1,3000) Failed | Error:   Assert.That(() => colectivo.pagarCon(_tarjetaEnLimite), Throws.TypeOf<ArgumentException>())
+  Expected: <System.ArgumentException>
+  But was:  no exception thrown
+ | StackTrace:    at LineasInterurbanasTest.Tests.PagarConFallaSiLaTarifaSuperaElLimiteNegativo(Int32 tipoLinea, Int32 tarifa) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\LineasInterurbanasTest.cs:line 90
+   at InvokeStub_Tests.PagarConFallaSiLaTarifaSuperaElLimiteNegativo(Object, Span`1)
+
+1)    at LineasInterurbanasTest.Tests.PagarConFallaSiLaTarifaSuperaElLimiteNegativo(Int32 tipoLinea, Int32 tarifa) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\LineasInterurbanasTest.cs:line 90
+   at InvokeStub_Tests.PagarConFallaSiLaTarifaSuperaElLimiteNegativo(Object, Span`1)
+
+
+AplicaDescuentoSegunCantidadDeViajesDelMes(80,1185) Failed | Error:   Assert.That(saldoInicial - tarjeta.Saldo, Is.EqualTo(montoDebitado))
+  Expected: 1185
+  But was:  1612.5m
+ | StackTrace:    at BoletoFrecuenteTest.BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Int32 viajesPrevios, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\BoletoFrecuenteTest.cs:line 69
+   at InvokeStub_BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Object, Span`1)
+
+1)    at BoletoFrecuenteTest.BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Int32 viajesPrevios, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\BoletoFrecuenteTest.cs:line 69
+   at InvokeStub_BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Object, Span`1)
+
+
+CadaTipoDeTarjetaAplicaSuTarifaEnLosPrimerosDosViajes(2,4850) Passed
+BoletoAplicaElTipoDeTarjeta(2,"Medio boleto estudiantil",925) Passed
+BoletoAplicaElTipoDeTarjeta(3,"Boleto gratuito estudiantil",2000) Passed
+NoPermiteTrasbordoEntreLaMismaLinea Passed
+CrearBoletoAsignaTarjeta(4,"Franquicia completa",2000) Passed
+CadaTipoDeTarjetaAplicaSuTarifaEnLosViajesPosteriores(4,7000) Passed
+AplicaDescuentoSegunCantidadDeViajesDelMes(28,1580) Failed | Error:   Assert.That(saldoInicial - tarjeta.Saldo, Is.EqualTo(montoDebitado))
+  Expected: 1580
+  But was:  2150m
+ | StackTrace:    at BoletoFrecuenteTest.BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Int32 viajesPrevios, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\BoletoFrecuenteTest.cs:line 69
+   at InvokeStub_BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Object, Span`1)
+
+1)    at BoletoFrecuenteTest.BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Int32 viajesPrevios, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\BoletoFrecuenteTest.cs:line 69
+   at InvokeStub_BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Object, Span`1)
+
+
+CobrarPasajeConSaldoNegativo(3,1,False,-2000) Passed
+SoloPermiteTrasbordosDeLunesASabadoEntreLasSieteYLasVeintidos(2026,6,6,22,0,True) Passed
+RetirarBicicletaDePosicionVaciaFalla Passed
+NoBoletoCuandoSaldoEsMenorALimiteDeViaje(2) Passed
+CargarConMontoInvalido_LanzaExcepcionSinModificarSaldo(3,1000) Passed
+ColectivoProcesaElSaldoEnElLimiteSegunTipo(1,True,-500,0) Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(4,21,59,0) Passed
+NoBoletoCuandoSaldoEsMenorALimiteDeViaje(3) Passed
+AplicaDescuentoSegunCantidadDeViajesDelMes(29,1264) Failed | Error:   Assert.That(saldoInicial - tarjeta.Saldo, Is.EqualTo(montoDebitado))
+  Expected: 1264
+  But was:  1720m
+ | StackTrace:    at BoletoFrecuenteTest.BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Int32 viajesPrevios, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\BoletoFrecuenteTest.cs:line 69
+   at InvokeStub_BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Object, Span`1)
+
+1)    at BoletoFrecuenteTest.BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Int32 viajesPrevios, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\BoletoFrecuenteTest.cs:line 69
+   at InvokeStub_BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Object, Span`1)
+
+
+TarifaGeneralFallaAlSuperarElLimiteNegativo Passed
+NoAplicaMultaCuandoElUsoNoSuperaUnaHora Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(2,5,59,1580) Passed
+CobrarPasajeConSaldoNegativo(1,1,True,-2000) Passed
+CrearBoletoFallaCuandoElDebitoSuperaElLimiteNegativo Passed
+ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(4) Passed
+ColectivoPagarConAplicaLaTarifaDelTipo(3,2499) Passed
+CobraLaTarifaCompletaSinDescuentoPorTipoDeTarjeta(2) Passed
+PagaLaTarifaDiariaYRetiraLaBicicletaConSaldoSuficiente Passed
+RetirarBicicletaDePosicionInvalidaFalla(2) Passed
+CobrarIncluyeDeudaPreviaEnDebito(2,1075,-925) Passed
+DescuentoFrecuenteSoloAplicaATarjetasNormales(2,790) Failed | Error:   Assert.That(saldoInicial - tarjeta.Saldo, Is.EqualTo(montoDebitado))
+  Expected: 790
+  But was:  1075m
+ | StackTrace:    at BoletoFrecuenteTest.BoletoFrecuenteTest.DescuentoFrecuenteSoloAplicaATarjetasNormales(Int32 tipoId, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\BoletoFrecuenteTest.cs:line 111
+
+1)    at BoletoFrecuenteTest.BoletoFrecuenteTest.DescuentoFrecuenteSoloAplicaATarjetasNormales(Int32 tipoId, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\BoletoFrecuenteTest.cs:line 111
+
+
+FueraDelHorarioElCobroCompletoRespetaElLimiteNegativo(2) Passed
+IngresarBicicletaEnPosicionInvalidaFalla(2) Passed
+CargarPorEncimaDelLimite_AcreditaHastaElMaximoYDejaExcedentePendiente(1) Passed
+CobrarPasajeConSaldoPositivo(4,2000) Passed
+CadaTipoDeTarjetaAplicaSuTarifaEnLosPrimerosDosViajes(4,11140) Passed
+CobrarConExcedentePendiente_AplicaLaReglaDelTipoDeTarjeta(3,56000) Passed
+CobrarFallaSiDebitoSuperaLimiteNegativo(3,False,-500,1) Passed
+CobrarConExcedentePendiente_AplicaLaReglaDelTipoDeTarjeta(4,56000) Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(4,22,0,1580) Failed | Error:   Assert.That(boleto.Return_Saldo_Restante(), Is.EqualTo(2000 - montoDebitado))
+  Expected: 420
+  But was:  2000m
+ | StackTrace:    at HorarioFranquiciaTest.HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Int32 tipoId, Int32 hora, Int32 minuto, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 93
+   at InvokeStub_HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Object, Span`1)
+
+1)    at HorarioFranquiciaTest.HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Int32 tipoId, Int32 hora, Int32 minuto, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 93
+   at InvokeStub_HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Object, Span`1)
+
+
+AplicaBeneficiosEntreLasSeisYLasVeintidos(4,6,0,0) Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(3,22,0,1580) Failed | Error:   Assert.That(boleto.Return_Saldo_Restante(), Is.EqualTo(2000 - montoDebitado))
+  Expected: 420
+  But was:  2000m
+ | StackTrace:    at HorarioFranquiciaTest.HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Int32 tipoId, Int32 hora, Int32 minuto, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 93
+   at InvokeStub_HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Object, Span`1)
+
+1)    at HorarioFranquiciaTest.HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Int32 tipoId, Int32 hora, Int32 minuto, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 93
+   at InvokeStub_HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Object, Span`1)
+
+
+AplicaBeneficiosEntreLasSeisYLasVeintidos(1,22,0,1580) Passed
+CargarConMontoInvalido_LanzaExcepcionSinModificarSaldo(3,-2000) Passed
+PermiteTrasbordosIlimitadosDuranteLaHoraDesdeElPrimerBoleto Passed
+DescuentoFrecuenteSoloAplicaATarjetasNormales(4,0) Passed
+CadaTipoDeTarjetaAplicaSuTarifaEnLosPrimerosDosViajes(3,11140) Passed
+CobraLaTarifaCompletaSinDescuentoPorTipoDeTarjeta(3) Passed
+ColectivoProcesaElSaldoEnElLimiteSegunTipo(3,False,-500,1) Passed
+FueraDelHorarioElCobroCompletoRespetaElLimiteNegativo(1) Passed
+BoletoInformaDatosSegunTipoDeTarjeta(2,"Medio boleto estudiantil",2150,925) Passed
+CobrarIncluyeDeudaPreviaEnDebito(4,0,150) Passed
+CargarConMontoInvalido_LanzaExcepcionSinModificarSaldo(1,1000) Passed
+ColectivoPagarConAplicaLaTarifaDelTipo(2,1424) Passed
+TodosLosTiposPuedenRealizarUnTrasbordo(2,3925) Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(2,6,0,790) Passed
+CadaTipoDeTarjetaAplicaSuTarifaEnLosViajesPosteriores(4,11140) Passed
+CargarConMontoInvalido_LanzaExcepcionSinModificarSaldo(4,-2000) Passed
+CobrarPasajeConSaldoPositivo(1,-150) Passed
+SoloPermiteTrasbordosDeLunesASabadoEntreLasSieteYLasVeintidos(2026,6,7,10,0,False) Passed
+BoletoAplicaElTipoDeTarjeta(1,"Tarifa general",-150) Passed
+FueraDelHorarioElCobroCompletoRespetaElLimiteNegativo(4) Passed
+CobrarFallaSiDebitoSuperaLimiteNegativo(1,True,-500,0) Passed
+MedioBoletoFallaDuranteElTiempoDeEsperaDentroDelHorario Passed
+ColectivoProcesaElSaldoEnElLimiteSegunTipo(4,False,-500,1) Passed
+ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(3) Passed
+ColectivoNoCreaBoletoSiElSaldoEsMenorAlLimite(2) Passed
+CobraLaTarifaCompletaSinDescuentoPorTipoDeTarjeta(4) Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(4,5,59,1580) Passed
+CadaTipoDeTarjetaAplicaSuTarifaEnLosPrimerosDosViajes(2,8990) Passed
+AplicaDescuentoSegunCantidadDeViajesDelMes(78,1264) Failed | Error:   Assert.That(saldoInicial - tarjeta.Saldo, Is.EqualTo(montoDebitado))
+  Expected: 1264
+  But was:  1720m
+ | StackTrace:    at BoletoFrecuenteTest.BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Int32 viajesPrevios, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\BoletoFrecuenteTest.cs:line 69
+   at InvokeStub_BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Object, Span`1)
+
+1)    at BoletoFrecuenteTest.BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Int32 viajesPrevios, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\BoletoFrecuenteTest.cs:line 69
+   at InvokeStub_BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Object, Span`1)
+
+
+MedioBoletoFallaDuranteElTiempoDeEspera Passed
+NoPermiteTrasbordoAlCumplirseUnaHoraDesdeElPrimerBoleto(10) Passed
+CrearColectivo Passed
+PagarConRechazaUnValorDeLineaNoSoportado Passed
+BoletoInformaDatosSegunTipoDeTarjeta(1,"Tarifa general",2150,-150) Passed
+CobrarPasajeConSaldoPositivo(3,2000) Passed
+NoBoletoCuandoSaldoEsMenorALimiteDeViaje(4) Passed
+CargarPorEncimaDelLimite_AcreditaHastaElMaximoYDejaExcedentePendiente(4) Passed
+CobrarPasajeConSaldoPositivo(2,925) Passed
+CobrarConExcedentePendiente_AplicaLaReglaDelTipoDeTarjeta(2,54925) Passed
+RechazaElRetiroSiElSaldoNoCubreLaMultaPendiente Passed
+IngresarBicicletaEnPosicionOcupadaFalla Passed
+FranquiciaCompletaFallaFueraDelTiempoPermitido Passed
+IngresarBicicletaEnPosicionDisponible Passed
+DescuentoFrecuenteSoloAplicaATarjetasNormales(3,1580) Failed | Error:   Assert.That(saldoInicial - tarjeta.Saldo, Is.EqualTo(montoDebitado))
+  Expected: 1580
+  But was:  2150m
+ | StackTrace:    at BoletoFrecuenteTest.BoletoFrecuenteTest.DescuentoFrecuenteSoloAplicaATarjetasNormales(Int32 tipoId, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\BoletoFrecuenteTest.cs:line 111
+   at InvokeStub_BoletoFrecuenteTest.DescuentoFrecuenteSoloAplicaATarjetasNormales(Object, Span`1)
+
+1)    at BoletoFrecuenteTest.BoletoFrecuenteTest.DescuentoFrecuenteSoloAplicaATarjetasNormales(Int32 tipoId, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\BoletoFrecuenteTest.cs:line 111
+   at InvokeStub_BoletoFrecuenteTest.DescuentoFrecuenteSoloAplicaATarjetasNormales(Object, Span`1)
+
+
+CargarConMontoInvalido_LanzaExcepcionSinModificarSaldo(4,1000) Passed
+CadaTipoDeTarjetaAplicaSuTarifaEnLosPrimerosDosViajes(3,7000) Passed
+CobrarIncluyeDeudaPreviaEnDebito(1,2150,-2000) Passed
+CrearBoletoAsignaTarjeta(2,"Medio boleto estudiantil",925) Passed
+CadaTipoDeTarjetaAplicaSuTarifaEnLosViajesPosteriores(2,2700) Passed
+BoletoInformaDatosSegunTipoDeTarjeta(3,"Boleto gratuito estudiantil",2150,2000) Passed
+CobrarPasajeConSaldoNegativo(2,2,False,-2001) Passed
+ColectivoProcesaElSaldoEnElLimiteSegunTipo(2,False,-1575,1) Passed
+ReiniciaLaCuentaDeViajesAlCambiarElMes Failed | Error:   Assert.That(saldoInicial - tarjeta.Saldo, Is.EqualTo(1580))
+  Expected: 1580
+  But was:  2150m
+ | StackTrace:    at BoletoFrecuenteTest.BoletoFrecuenteTest.ReiniciaLaCuentaDeViajesAlCambiarElMes() in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\BoletoFrecuenteTest.cs:line 85
+
+1)    at BoletoFrecuenteTest.BoletoFrecuenteTest.ReiniciaLaCuentaDeViajesAlCambiarElMes() in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\BoletoFrecuenteTest.cs:line 85
+
+
+AplicaBeneficiosEntreLasSeisYLasVeintidos(1,5,59,1580) Passed
+CadaTipoDeTarjetaAplicaSuTarifaEnLosViajesPosteriores(1,-1600) Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(2,21,59,790) Passed
+CrearBoletoAsignaTarjeta(1,"Tarifa general",-150) Passed
+FueraDelHorarioElCobroCompletoRespetaElLimiteNegativo(3) Passed
+BoletoAplicaElTipoDeTarjeta(4,"Franquicia completa",2000) Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(3,5,59,1580) Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(3,6,0,0) Passed
+TodosLosTiposPuedenRealizarUnTrasbordo(4,5000) Passed
+CadaTipoDeTarjetaAplicaSuTarifaEnLosPrimerosDosViajes(1,2700) Passed
+CobraLaTarifaCompletaSinDescuentoPorTipoDeTarjeta(1) Passed
+CrearBoletoAsignaTarjeta(3,"Boleto gratuito estudiantil",2000) Passed
+CobrarFallaSiDebitoSuperaLimiteNegativo(2,False,-1575,1) Passed
+AcumulaLasMultasDeVariosUsosQueSuperanUnaHora Failed | Error: System.ArgumentException : El saldo no es suficiente para pagar el uso de la bicicleta | StackTrace:    at TarjetaSUBE.Tarjeta.Cobrar_Bici(Decimal monto) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Tarjeta.cs:line 78
+   at TarjetaSUBE.Bicicleta.Cobrar(Tarjeta tarjeta) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Bicicleta.cs:line 37
+   at BicicletaTests.BicicletaTests.AcumulaLasMultasDeVariosUsosQueSuperanUnaHora() in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\BicicletaTests.cs:line 110
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+
+PagarConAplicaLaTarifaSegunElTipoDeLinea(0,3000,2150,850) Passed
+TodosLosTiposPuedenRealizarUnTrasbordo(3,5000) Passed
+CargarConMontoInvalido_LanzaExcepcionSinModificarSaldo(2,1000) Passed
+ColectivoPagarConAplicaLaTarifaDelTipo(1,349) Passed
+CadaTipoDeTarjetaAplicaSuTarifaEnLosViajesPosteriores(3,6840) Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(2,22,0,1580) Failed | Error: System.Exception : No se puede cobrar el viaje, ya que no han pasado 5 minutos desde el último cobro de medio boleto | StackTrace:    at TarjetaSUBE.Tarjeta.CobrarInterno(Decimal monto, Colectivo colectivo, Nullable`1 fechaCobro) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Tarjeta.cs:line 210
+   at TarjetaSUBE.Tarjeta.Cobrar(Decimal monto, Colectivo colectivo, DateTime fechaCobro) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Tarjeta.cs:line 98
+   at TarjetaSUBE.Boleto..ctor(Tarjeta tarjeta, Colectivo colectivo, DateTime fecha) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBE\Boleto.cs:line 29
+   at HorarioFranquiciaTest.HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Int32 tipoId, Int32 hora, Int32 minuto, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\HorarioFranquiciaTest.cs:line 88
+   at InvokeStub_HorarioFranquiciaTests.AplicaBeneficiosEntreLasSeisYLasVeintidos(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+
+CobrarIncluyeDeudaPreviaEnDebito(3,0,150) Passed
+PrimerPagoNoSeConsideraTrasbordoYPermitePagoRegular Passed
+AplicaDescuentoSegunCantidadDeViajesDelMes(0,1580) Failed | Error:   Assert.That(saldoInicial - tarjeta.Saldo, Is.EqualTo(montoDebitado))
+  Expected: 1580
+  But was:  2150m
+ | StackTrace:    at BoletoFrecuenteTest.BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Int32 viajesPrevios, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\BoletoFrecuenteTest.cs:line 69
+
+1)    at BoletoFrecuenteTest.BoletoFrecuenteTest.AplicaDescuentoSegunCantidadDeViajesDelMes(Int32 viajesPrevios, Int32 montoDebitado) in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\BoletoFrecuenteTest.cs:line 69
+
+
+CadaTipoDeTarjetaAplicaSuTarifaEnLosViajesPosteriores(3,2700) Passed
+AplicaBeneficiosEntreLasSeisYLasVeintidos(1,21,59,1580) Passed
+CargarPorEncimaDelLimite_AcreditaHastaElMaximoYDejaExcedentePendiente(3) Passed
+SoloPermiteTrasbordosDeLunesASabadoEntreLasSieteYLasVeintidos(2026,6,6,22,1,False) Passed
+CrearBoletoMedioBoletoFallaDuranteElTiempoDeEspera Passed
+CobrarConExcedentePendiente_AplicaLaReglaDelTipoDeTarjeta(1,53850) Passed
+IngresarBicicletaEnPosicionInvalidaFalla(-1) Passed
+CadaTipoDeTarjetaAplicaSuTarifaEnLosPrimerosDosViajes(4,7000) Passed
+CobrarPasajeConSaldoNegativo(4,1,False,-2000) Passed
+
+Test Output:
+[Informational] Building Test Projects
+[Informational] ========== Starting test run ==========
+[Informational] NUnit Adapter 5.0.0.0: Test execution started
+[Informational] Running selected tests in C:\Users\sofia\OneDrive\Documents\GitHub\TarjetaSUBE\TarjetaSUBETests\bin\Debug\net10.0\TarjetaSUBETests.dll
+[Informational]    NUnit3TestExecutor discovered 149 of 149 NUnit test cases using Current Discovery mode, Non-Explicit run
+[Informational] Se cobraron 3750 pesos de multa por el uso excesivo de la bicicleta retirada.
+
+[Informational] NUnit Adapter 5.0.0.0: Test execution complete
+[Informational] ========== Test run finished: 149 Tests (134 Passed, 15 Failed, 0 Skipped) run in 2 sec ==========

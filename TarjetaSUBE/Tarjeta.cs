@@ -90,11 +90,29 @@ namespace TarjetaSUBE
 
         private Tarjeta CobrarInterno(decimal monto, Colectivo? colectivo)
         {
-            var ahora = Contexto.Reloj();
+            return CobrarInterno(monto, colectivo, Contexto.Reloj());
+        }
+
+        private Tarjeta CobrarInterno(decimal monto, Colectivo? colectivo, DateTime ahora)
+        {
             TimeSpan diferencia = ahora - fecha_ultimo_cobro;
-            int cantidad = Contexto.Db.Boletos
-            .Where(b => b.Tarjeta.IdTarjeta == this.IdTarjeta && b.Fecha.StartsWith(ahora.ToString("yyyy-MM-dd")))
-            .Count();
+            var boletosHoy = Contexto.Db.Boletos
+                .Where(b => b.Tarjeta.IdTarjeta == this.IdTarjeta && b.Fecha.StartsWith(ahora.ToString("yyyy-MM-dd")))
+                .ToArray();
+            int cantidad = boletosHoy.Length;
+            int viajesDelMes = Contexto.Db.Boletos
+                .Count(b => b.Tarjeta.IdTarjeta == this.IdTarjeta && b.Fecha.StartsWith(ahora.ToString("yyyy-MM")));
+            if (Tipo.nombre_Tipo == "Tarifa general" || Tipo.nombre_Tipo == "Normal")
+            {
+                if (viajesDelMes >= 79)
+                {
+                    monto *= 0.75m;
+                }
+                else if (viajesDelMes >= 29)
+                {
+                    monto *= 0.8m;
+                }
+            }
 
             var boletosTarjeta = Contexto.Db.Boletos
                 .Where(b => b.Tarjeta.IdTarjeta == this.IdTarjeta)
@@ -104,7 +122,7 @@ namespace TarjetaSUBE
                 .FirstOrDefault();
             var primerBoleto = boletosTarjeta
                 .Where(b => b.es_Trasbordo == 0)
-                .OrderByDescending(b => b.Fecha)
+                .OrderBy(b => b.Fecha)
                 .FirstOrDefault();
             bool dentroDeLaHora = primerBoleto != null
                 && DateTime.TryParseExact(
@@ -132,6 +150,16 @@ namespace TarjetaSUBE
             }
             else
             {
+                bool esFranquicia = Tipo.nombre_Tipo != "Tarifa general" && Tipo.nombre_Tipo != "Normal";
+                bool dentroDelHorarioDeFranquicia = ahora.DayOfWeek >= DayOfWeek.Monday
+                    && ahora.DayOfWeek <= DayOfWeek.Friday
+                    && ahora.TimeOfDay >= TimeSpan.FromHours(6)
+                    && ahora.TimeOfDay < TimeSpan.FromHours(22);
+                if (esFranquicia && !dentroDelHorarioDeFranquicia)
+                {
+                    throw new ArgumentException("La franquicia solo puede utilizarse de lunes a viernes entre las 6 y las 22");
+                }
+
                 //Boleto Estudiantil Gratuito
                 if (this.Tipo.nombre_Tipo == "Boleto gratuito estudiantil")
                 {
@@ -155,7 +183,7 @@ namespace TarjetaSUBE
                 // Boleto Franquicia Completa (Jubilados)
                 if (this.Tipo.nombre_Tipo == "Franquicia completa")
                 {
-                    if (diferencia.TotalMinutes < 5)
+                    if (diferencia.TotalMinutes >= 0 && diferencia.TotalMinutes < 5)
                     {
                         //no se resta nada
                         Contexto.Db.SaveChanges();
@@ -172,15 +200,16 @@ namespace TarjetaSUBE
                 // Boleto Estudiantil Medio
                 if (this.Tipo.nombre_Tipo == "Medio boleto estudiantil")
                 {
-                    if (diferencia.TotalMinutes < 5)
+                    if (diferencia.TotalMinutes >= 0 && diferencia.TotalMinutes < 5)
                     {
                         throw new Exception("No se puede cobrar el viaje, ya que no han pasado 5 minutos desde el último cobro de medio boleto");
                     }
                     else
                     {
-                        Saldo -= (monto / 2);
+                        decimal montoMedio = cantidad < 2 ? monto / 2 : monto;
+                        Saldo -= montoMedio;
                         Contexto.Db.SaveChanges();
-                        RegistrarBoleto(colectivo, monto / 2, false);
+                        RegistrarBoleto(colectivo, montoMedio, false);
                         fecha_ultimo_cobro = ahora;
                         return this;
                     }
@@ -204,7 +233,7 @@ namespace TarjetaSUBE
         {
             if (colectivo != null)
             {
-                new Boleto(this, colectivo, monto, trasbordo);
+                new Boleto(this, colectivo, monto, trasbordo, Contexto.Reloj());
             }
         }
     }
